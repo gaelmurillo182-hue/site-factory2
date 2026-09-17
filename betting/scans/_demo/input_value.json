@@ -1,0 +1,69 @@
+{
+ "scan_date": "ДЕМО-2: заведомо ошибочная линия",
+ "bankroll": 100000,
+ "unit": 1000,
+ "max_session_units": 5.0,
+ "reserve_units": 1.5,
+ "kelly_fraction": 0.25,
+ "data_notes": [
+  "ЭТО ДЕМО-ПРОГОН НА ВЫМЫШЛЕННЫХ ЦИФРАХ. Ни один коэффициент и ни один xG здесь не взят из реального источника."
+ ],
+ "events": [
+  {
+   "match": "Команда A - Команда B",
+   "sport": "football",
+   "competition": "ДЕМО-лига",
+   "kickoff": "2026-09-18T21:00",
+   "model": {
+    "lambda_home": 2.05,
+    "lambda_away": 0.85,
+    "rho": -0.05,
+    "uncertainty": 0.2
+   },
+   "data_quality": {
+    "lineup_goalie_certainty": 21,
+    "source_quality": 17,
+    "freshness": 13,
+    "advanced_stats": 13,
+    "market_data": 12,
+    "schedule_context": 8
+   },
+   "confidence_parts": {
+    "model_agreement": 13,
+    "lineup_goalie_certainty": 13,
+    "market_agreement": 9,
+    "source_reliability": 8
+   },
+   "flags": {},
+   "reason_codes": [
+    "XG_EDGE",
+    "LINEUP_EDGE"
+   ],
+   "markets": [
+    {
+     "key": "moneyline",
+     "odds": {
+      "home": 2.1,
+      "draw": 3.5,
+      "away": 3.6
+     }
+    },
+    {
+     "key": "dnb",
+     "odds": {
+      "home": 1.62,
+      "away": 2.35
+     }
+    },
+    {
+     "key": "total",
+     "line": 2.5,
+     "odds": {
+      "over": 1.85,
+      "under": 1.95
+     }
+    }
+   ]
+  }
+ ]
+}
