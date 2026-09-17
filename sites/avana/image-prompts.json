@@ -1,0 +1,62 @@
+{
+  "_комментарий": "Готовый набор для generate_image_batch. Собран по схеме из docs/06-ГЕНЕРАЦИЯ-ИЗОБРАЖЕНИЙ.md. Палитра взята из src/styles/tokens.css: почти чёрный #16130F, бумага #F5F3EF, загар #E3A155. Только фактуры и атмосфера — работы мастеров, интерьер и портреты берём у клиента.",
+  "_стоимость": "6 кадров = 6 кредитов, модель marketing_studio_image, разрешение 1k",
+  "_после_генерации": "Скачать по result_url, затем пережать: node ../../scripts/optimize-image.mjs вход.png src/assets/texture/имя.jpg 1600 0.82",
+
+  "requests": [
+    {
+      "index": 1,
+      "_куда": "Services — фон светлой секции, под белыми карточками",
+      "params": {
+        "model": "marketing_studio_image",
+        "aspect_ratio": "16:9",
+        "prompt": "Abstract tactile texture for a section background of a premium beauty salon website. Warm off-white paper surface with a faint diagonal fold and very soft shadow gradient, delicate grain, almost imperceptible warm tan tint in the shadow. Extremely subtle and calm, large empty areas for overlaying cards and typography. No text, no logos, no UI, no people, no faces, no hands, no eyes, no products, no flowers, no recognizable objects. Editorial studio photography, large format, quiet luxury, low chroma, fine film grain, restrained."
+      }
+    },
+    {
+      "index": 2,
+      "_куда": "Training — фон секции для мастеров, тёмный, отделяет от клиентской части",
+      "params": {
+        "model": "marketing_studio_image",
+        "aspect_ratio": "16:9",
+        "prompt": "Abstract tactile texture for a section background of a premium beauty website. Deep matte near-black surface with a slow diagonal wash of warm tan and amber light crossing from the upper right, soft caustic glow, fine micro-grain, subtle depth. Low chroma, palette-locked to warm tan on near-black. Generous calm dark areas on the left for typography. No text, no logos, no UI, no people, no faces, no hands, no eyes, no products, no flowers, no recognizable objects. Editorial studio photography, large format, cinematic tonal gradient, quiet luxury, restrained."
+      }
+    },
+    {
+      "index": 3,
+      "_куда": "Reviews — узкая атмосферная полоса за блоком рейтинга",
+      "params": {
+        "model": "marketing_studio_image",
+        "aspect_ratio": "21:9",
+        "prompt": "Atmospheric band for a section divider on a premium beauty website. Warm amber light diffusing through deep charcoal darkness, soft out-of-focus bokeh, gentle golden haze, very dark overall exposure. Entirely abstract. No text, no logos, no UI, no people, no faces, no hands, no eyes, no products, no flowers, no recognizable objects. Cinematic anamorphic lens character, low chroma, warm tan highlights, fine film grain, professional and restrained."
+      }
+    },
+    {
+      "index": 4,
+      "_куда": "ContactForm — фон секции с формой, спокойный",
+      "params": {
+        "model": "marketing_studio_image",
+        "aspect_ratio": "16:9",
+        "prompt": "Minimal editorial background for a contact section of a premium beauty website. Smooth matte dark stone surface in warm near-black, a single soft shaft of warm tan light crossing diagonally from the right, delicate shadow gradient, very calm. Completely abstract and empty. No text, no logos, no UI, no people, no faces, no hands, no eyes, no products, no flowers, no recognizable objects. Studio photography, large format, quiet luxury, muted warm palette, subtle grain."
+      }
+    },
+    {
+      "index": 5,
+      "_куда": "Разделители между секциями — узкая полоса, используется 2–3 раза с разным кадрированием",
+      "params": {
+        "model": "marketing_studio_image",
+        "aspect_ratio": "21:9",
+        "prompt": "Ultra-minimal abstract divider band for a premium beauty website. Near-black warm surface with a single soft horizontal gradient of warm tan light fading to darkness at both edges, very low contrast, silky smooth falloff, fine grain. Completely abstract and empty. No text, no logos, no UI, no people, no faces, no hands, no eyes, no products, no flowers, no recognizable objects. Editorial photography, cinematic tonal gradient, low chroma, restrained."
+      }
+    },
+    {
+      "index": 6,
+      "_куда": "Tiers — подложка под секцией трёх уровней мастера",
+      "params": {
+        "model": "marketing_studio_image",
+        "aspect_ratio": "16:9",
+        "prompt": "Abstract tactile background for a pricing section of a premium beauty website. Deep warm near-black surface with three faint vertical bands of slightly different tone, subtle warm tan rim light along the right band, matte finish, fine micro-grain. Structural but entirely abstract, calm enough to place cards on top. No text, no logos, no UI, no people, no faces, no hands, no eyes, no products, no flowers, no recognizable objects. Editorial studio photography, large format, low chroma, quiet luxury, restrained."
+      }
+    }
+  ]
+}

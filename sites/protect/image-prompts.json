@@ -1,0 +1,53 @@
+{
+  "_комментарий": "ПРОТЕКТ, направление «Лист проекта». Только фактуры и атмосфера — по границе честности из docs/06-ГЕНЕРАЦИЯ-ИЗОБРАЖЕНИЙ.md. Документальное (камера на фасаде, щиток, бригада, экран регистратора) не генерируется: слоты размечены в вёрстке и ждут файлов клиента.",
+  "_палитра": "из src/styles/tokens.css: калька #EEF0F1, лист #E4E8EA, графит #14181A, петроль #0E5A63, глубина #0B2E33, охра #D98A1F (только на тёмном)",
+  "_куда": "src/assets/texture/",
+
+  "requests": [
+    {
+      "index": 1,
+      "_имя": "01-film-light",
+      "_куда": "Hero — очень слабая фактура под первым экраном, поверх неё вся типографика",
+      "params": {
+        "aspect_ratio": "16:9",
+        "prompt": "Abstract tactile texture for a hero section background of a technical security-systems contractor website. Cool pale grey drafting film surface, almost white with a faint blue-grey undertone, one very soft diagonal fold catching cool raking light from the upper left, delicate fine grain, barely-there shadow gradient. Extremely subtle, flat and calm, very low contrast, enormous empty areas suitable for overlaying dark typography and thin line drawings. Palette locked to cool pale grey and graphite, no warm tones, no colour cast beyond a faint blue-grey. No text, no logos, no UI, no people, no faces, no hands, no cameras, no devices, no cables, no recognizable objects, no grid lines, no blueprint drawings. Editorial studio photography, large format, restrained, fine film grain, quiet and technical."
+      }
+    },
+    {
+      "index": 2,
+      "_имя": "02-deep-band",
+      "_куда": "Техника — фон тёмной полосы-разреза, охряная графика поверх",
+      "params": {
+        "aspect_ratio": "16:9",
+        "prompt": "Abstract tactile texture for a dark section band on a technical security-systems website. Deep matte teal-black surface, a dark petrol blue-green near-black, with a slow diagonal wash of warm ochre light crossing from the upper right and fading to nothing, soft depth, fine micro-grain, no hard edges. Very dark overall exposure, low chroma, palette locked to deep petrol teal with a single warm ochre wash. Generous calm dark areas on the left and bottom for typography. No text, no logos, no UI, no people, no faces, no hands, no cameras, no devices, no lens flare, no neon, no recognizable objects. Cinematic tonal gradient, large format studio photography, restrained, fine film grain."
+      }
+    },
+    {
+      "index": 3,
+      "_имя": "03-divider",
+      "_куда": "Узкая атмосферная полоса-разделитель между секциями",
+      "params": {
+        "aspect_ratio": "21:9",
+        "prompt": "Atmospheric band for a thin section divider on a technical contractor website. Cool grey mist over a deep teal-black ground, gentle out-of-focus depth, a single soft pale gradient sweeping horizontally, very dark on both ends and slightly lighter in the middle. Entirely abstract, no subject at all. Palette locked to cool grey and deep petrol teal, no warm tones. No text, no logos, no UI, no people, no faces, no hands, no buildings, no cameras, no recognizable objects. Anamorphic lens character, low chroma, fine film grain, professional and restrained."
+      }
+    },
+    {
+      "index": 4,
+      "_имя": "04-stone-cool",
+      "_куда": "Заявка — спокойный фон секции с формой",
+      "params": {
+        "aspect_ratio": "16:9",
+        "prompt": "Minimal editorial background for a contact section of a technical security-systems website. Smooth matte cool grey stone surface, a single soft shaft of pale cool light crossing diagonally from the right, delicate shadow gradient, very calm and even. Completely abstract and empty, low contrast, light overall exposure so dark text stays readable on top. Palette locked to cool pale grey and graphite, no warm tones. No text, no logos, no UI, no people, no faces, no hands, no devices, no recognizable objects. Studio photography, large format, subtle grain, restrained."
+      }
+    },
+    {
+      "index": 5,
+      "_имя": "05-wash-pale",
+      "_куда": "Объекты — почти незаметная подложка светлой секции",
+      "params": {
+        "aspect_ratio": "16:9",
+        "prompt": "Abstract tactile texture for a light section background of a technical contractor website. Cool pale grey paper with an extremely soft vertical gradient, faint cloudy unevenness in the tone, very fine grain, no folds and no creases. Almost imperceptible, flat, very low contrast, designed to sit under columns of text without competing with them. Palette locked to cool pale grey with a faint blue-grey undertone, no warm tones. No text, no logos, no UI, no people, no faces, no hands, no objects, no lines, no grid, no recognizable objects. Editorial studio photography, large format, quiet, restrained, fine film grain."
+      }
+    }
+  ]
+}

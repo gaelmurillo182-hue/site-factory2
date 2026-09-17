@@ -1,0 +1,2498 @@
+<!doctype html>
+<html lang="ru"><head><meta charset="utf-8">
+<title>Каталог твердосплавных волок — ЛАВИТЕК</title>
+<style>
+/* ── шрифты, локально, без CDN ─────────────────────────────────────────── */
+@font-face { font-family: 'PT Sans'; font-style: normal; font-weight: 400; font-display: block;
+  src: url('fonts/pt-sans-cyrillic-400-normal.woff2') format('woff2');
+  unicode-range: U+0301,U+0400-045F,U+0490-0491,U+04B0-04B1,U+2116; }
+@font-face { font-family: 'PT Sans'; font-style: normal; font-weight: 400; font-display: block;
+  src: url('fonts/pt-sans-latin-400-normal.woff2') format('woff2'); }
+@font-face { font-family: 'PT Sans'; font-style: normal; font-weight: 700; font-display: block;
+  src: url('fonts/pt-sans-cyrillic-700-normal.woff2') format('woff2');
+  unicode-range: U+0301,U+0400-045F,U+0490-0491,U+04B0-04B1,U+2116; }
+@font-face { font-family: 'PT Sans'; font-style: normal; font-weight: 700; font-display: block;
+  src: url('fonts/pt-sans-latin-700-normal.woff2') format('woff2'); }
+
+@font-face { font-family: 'PT Sans Narrow'; font-style: normal; font-weight: 400; font-display: block;
+  src: url('fonts/pt-sans-narrow-cyrillic-400-normal.woff2') format('woff2');
+  unicode-range: U+0301,U+0400-045F,U+0490-0491,U+04B0-04B1,U+2116; }
+@font-face { font-family: 'PT Sans Narrow'; font-style: normal; font-weight: 400; font-display: block;
+  src: url('fonts/pt-sans-narrow-latin-400-normal.woff2') format('woff2'); }
+@font-face { font-family: 'PT Sans Narrow'; font-style: normal; font-weight: 700; font-display: block;
+  src: url('fonts/pt-sans-narrow-cyrillic-700-normal.woff2') format('woff2');
+  unicode-range: U+0301,U+0400-045F,U+0490-0491,U+04B0-04B1,U+2116; }
+@font-face { font-family: 'PT Sans Narrow'; font-style: normal; font-weight: 700; font-display: block;
+  src: url('fonts/pt-sans-narrow-latin-700-normal.woff2') format('woff2'); }
+
+/* ── токены ─────────────────────────────────────────────────────────────── */
+:root {
+  --ink:        #16191c;
+  --ink-2:      #4a5359;
+  --ink-3:      #79848b;
+  --brand:      #14304a;   /* фирменная плашка, белый текст = 12,4:1 */
+  --brand-2:    #1e4468;
+  --accent:     #a8501c;   /* маркер серии, на белом = 5,4:1 */
+  --rule:       #ccd3d8;
+  --rule-2:     #e4e9ec;
+  --zebra:      #f2f5f7;
+  --paper:      #ffffff;
+  --todo-bg:    #fdf3e3;
+  --todo-ink:   #7a4a05;   /* на --todo-bg = 6,3:1 */
+  --todo-line:  #d8a349;
+
+  --s1: 4px;  --s2: 8px;  --s3: 12px; --s4: 16px;
+  --s5: 24px; --s6: 32px; --s7: 48px;
+
+  --t-xs: 7.5pt; --t-sm: 8.5pt; --t-base: 9.5pt;
+  --t-md: 11pt;  --t-lg: 14pt;  --t-xl: 19pt; --t-2xl: 34pt;
+}
+
+/* ── страница ───────────────────────────────────────────────────────────── */
+/* Верхнее поле 24 мм: 18 мм полосы набора плюс место под колонтитул с логотипом,
+   который Chromium рисует внутри верхнего поля. Обложки печатаются отдельным
+   документом и обнуляют поля своим правилом — см. shell() в make-catalog.mjs. */
+@page { size: A4 portrait; margin: 24mm 18mm 16mm; }
+
+* { box-sizing: border-box; }
+
+html { font-size: 12pt; }
+body {
+  margin: 0;
+  background: var(--paper);
+  color: var(--ink);
+  font-family: 'PT Sans', 'Segoe UI', sans-serif;
+  font-size: var(--t-base);
+  line-height: 1.42;
+  -webkit-font-smoothing: antialiased;
+}
+
+.sheet { break-after: page; }
+.sheet:last-child { break-after: auto; }
+
+/* ── шапка раздела ──────────────────────────────────────────────────────── */
+.sec-head {
+  border-bottom: 2px solid var(--brand);
+  padding-bottom: var(--s2);
+  margin-bottom: var(--s4);
+}
+.kicker {
+  display: block;
+  min-height: 1.2em;
+  font-family: 'PT Sans Narrow', sans-serif;
+  font-size: var(--t-xs);
+  letter-spacing: .14em;
+  text-transform: uppercase;
+  color: var(--accent);
+  margin-bottom: var(--s1);
+}
+.sec-head h2 {
+  margin: 0;
+  font-size: var(--t-xl);
+  line-height: 1.15;
+  letter-spacing: -.01em;
+  font-weight: 700;
+}
+h3 {
+  font-size: var(--t-md);
+  margin: var(--s5) 0 var(--s2);
+  font-weight: 700;
+}
+h3:first-child { margin-top: 0; }
+p { margin: 0 0 var(--s3); }
+.lead { font-size: var(--t-md); color: var(--ink-2); max-width: 58em; }
+.note {
+  font-size: var(--t-sm);
+  color: var(--ink-2);
+  border-left: 2px solid var(--rule);
+  padding-left: var(--s3);
+  margin-top: var(--s4);
+  break-inside: avoid;
+}
+.flag-note { border-left-color: var(--todo-line); }
+
+/* ── обложка ────────────────────────────────────────────────────────────── */
+.cover {
+  height: 297mm;
+  padding: 22mm 20mm 18mm;
+  display: flex;
+  flex-direction: column;
+  background: var(--brand);
+  color: #fff;
+}
+.cover-logo { color: #fff; }
+.cover-logo svg { width: 62mm; height: auto; display: block; }
+.cover-mid { margin-top: auto; }
+.cover-kicker {
+  font-family: 'PT Sans Narrow', sans-serif;
+  font-size: var(--t-sm);
+  letter-spacing: .22em;
+  text-transform: uppercase;
+  opacity: .72;
+  margin-bottom: var(--s3);
+}
+.cover h1 {
+  margin: 0 0 var(--s4);
+  font-size: var(--t-2xl);
+  line-height: 1.04;
+  letter-spacing: -.02em;
+  font-weight: 700;
+}
+.cover-sub {
+  font-size: var(--t-md);
+  opacity: .82;
+  max-width: 34em;
+  margin: 0;
+}
+.cover-grid {
+  margin-top: var(--s7);
+  padding-top: var(--s4);
+  border-top: 1px solid rgba(255,255,255,.28);
+  display: flex;
+  flex-wrap: wrap;
+  gap: var(--s2) var(--s5);
+  font-family: 'PT Sans Narrow', sans-serif;
+  font-size: var(--t-sm);
+  letter-spacing: .1em;
+  opacity: .78;
+}
+.cover-foot {
+  margin-top: auto;
+  padding-top: var(--s5);
+  display: flex;
+  justify-content: space-between;
+  font-family: 'PT Sans Narrow', sans-serif;
+  font-size: var(--t-sm);
+  letter-spacing: .1em;
+  text-transform: uppercase;
+  opacity: .72;
+}
+
+/* ── содержание ─────────────────────────────────────────────────────────── */
+.toc-group {
+  display: grid;
+  grid-template-columns: 9mm 1fr;
+  gap: var(--s4);
+  padding: var(--s4) 0;
+  border-top: 1px solid var(--rule);
+}
+.toc-tag {
+  font-family: 'PT Sans Narrow', sans-serif;
+  font-size: var(--t-md);
+  font-weight: 700;
+  color: #fff;
+  background: var(--brand);
+  width: 9mm; height: 9mm;
+  display: flex; align-items: center; justify-content: center;
+}
+.toc-group.b .toc-tag { background: var(--accent); }
+.toc-group.c .toc-tag { background: var(--ink-2); }
+.toc-line {
+  display: flex;
+  align-items: baseline;
+  gap: var(--s2);
+  padding: 3px 0;
+}
+.toc-line span { flex: 0 1 auto; }
+.toc-line::after {
+  content: '';
+  flex: 1 1 auto;
+  border-bottom: 1px dotted var(--rule);
+  transform: translateY(-2px);
+  order: 1;
+}
+.toc-line b { order: 2; font-family: 'PT Sans Narrow', sans-serif; }
+
+/* ── карточки, списки ───────────────────────────────────────────────────── */
+.cols-2 { display: grid; grid-template-columns: 1fr 1fr; gap: var(--s4); }
+.card {
+  border-top: 2px solid var(--brand);
+  padding-top: var(--s3);
+  break-inside: avoid;
+}
+.card h3 { margin-top: 0; font-size: var(--t-base); }
+.card p, .card ul, .card dl { margin-bottom: 0; }
+
+ul.tick { list-style: none; margin: 0; padding: 0; }
+ul.tick li {
+  position: relative;
+  padding-left: var(--s4);
+  margin-bottom: var(--s1);
+}
+ul.tick li::before {
+  content: '';
+  position: absolute;
+  left: 0; top: .48em;
+  width: 5px; height: 5px;
+  background: var(--accent);
+}
+ol.numbered { margin: 0; padding-left: var(--s5); }
+ol.numbered li { margin-bottom: var(--s2); }
+
+dl { margin: 0; }
+dt { font-weight: 700; margin-top: var(--s2); }
+dd { margin: 0 0 var(--s1); color: var(--ink-2); }
+.wide-dl { display: grid; grid-template-columns: 48mm 1fr; gap: var(--s2) var(--s4); }
+.wide-dl dt, .wide-dl dd { margin: 0; }
+
+.proc { display: grid; grid-template-columns: repeat(4, 1fr); gap: var(--s3); margin-bottom: var(--s5); }
+.proc-item {
+  border-top: 2px solid var(--accent);
+  padding-top: var(--s2);
+}
+.proc-item b { display: block; font-size: var(--t-base); }
+.proc-item span { display: block; font-size: var(--t-sm); color: var(--ink-2); margin-top: 2px; }
+
+/* ── цепочка переделов ──────────────────────────────────────────────────── */
+.chain {
+  display: flex;
+  align-items: stretch;
+  gap: 0;
+  margin: var(--s4) 0 var(--s3);
+}
+.chain .node {
+  flex: 1 1 0;
+  border: 1px solid var(--rule);
+  padding: var(--s3) var(--s2);
+  font-size: var(--t-sm);
+  text-align: center;
+  display: flex; align-items: center; justify-content: center;
+  min-height: 18mm;
+}
+.chain .node.ore { background: var(--brand); color: #fff; border-color: var(--brand); font-weight: 700; }
+.chain .node.hi { background: var(--zebra); font-weight: 700; }
+.chain .arr {
+  flex: 0 0 7mm;
+  align-self: center;
+  height: 1px;
+  background: var(--rule);
+  position: relative;
+}
+.chain .arr::after {
+  content: '';
+  position: absolute; right: 0; top: -3px;
+  border-left: 5px solid var(--rule);
+  border-top: 3.5px solid transparent;
+  border-bottom: 3.5px solid transparent;
+}
+.chain-out { display: grid; grid-template-columns: repeat(5, 1fr); gap: var(--s2); }
+.chain-out .leaf {
+  border-top: 1px solid var(--rule);
+  padding-top: var(--s2);
+  font-size: var(--t-sm);
+  color: var(--ink-2);
+}
+.chain-out .leaf.me {
+  border-top-color: var(--accent);
+  border-top-width: 2px;
+  color: var(--ink);
+  font-weight: 700;
+}
+
+/* ── карточка марки ─────────────────────────────────────────────────────── */
+.grade-card {
+  border-top: 2px solid var(--brand);
+  padding-top: var(--s3);
+  margin-bottom: var(--s5);
+  break-inside: avoid;
+}
+.grade-card h3 {
+  margin: 0 0 2px;
+  font-size: var(--t-lg);
+  letter-spacing: -.01em;
+  color: var(--brand-2);
+}
+.gc-lead { font-size: var(--t-sm); color: var(--ink-2); margin-bottom: var(--s3); }
+.gc-body { display: grid; grid-template-columns: 1fr 1.3fr; gap: var(--s5); }
+.gc-body b { display: block; font-size: var(--t-sm); margin-bottom: var(--s1);
+  font-family: 'PT Sans Narrow', sans-serif; letter-spacing: .08em; text-transform: uppercase; color: var(--ink-3); }
+
+/* ── зоны волоки ────────────────────────────────────────────────────────── */
+.zones { display: grid; grid-template-columns: 82mm 1fr; gap: var(--s5); margin-bottom: var(--s4); align-items: start; }
+.zone { display: grid; grid-template-columns: 9mm 1fr; gap: var(--s3); margin-bottom: var(--s3); break-inside: avoid; }
+.zone .rn {
+  font-family: 'PT Sans Narrow', sans-serif;
+  font-weight: 700;
+  color: #fff; background: var(--brand);
+  width: 9mm; height: 9mm;
+  display: flex; align-items: center; justify-content: center;
+  font-size: var(--t-sm);
+}
+.zone b { display: block; margin-bottom: 2px; }
+.zone p { margin: 0; font-size: var(--t-sm); color: var(--ink-2); text-align: justify; }
+
+/* ── иллюстрация ────────────────────────────────────────────────────────── */
+.fig { margin: 0 0 var(--s4); break-inside: avoid; }
+.fig img { display: block; width: 100%; max-width: 114mm; height: auto; margin: 0 auto; }
+.fig-sm img { max-width: 96mm; }
+.fig-sm figcaption { max-width: 96mm; margin-left: auto; margin-right: auto; }
+.fig figcaption {
+  font-size: var(--t-xs);
+  color: var(--ink-3);
+  border-top: 1px solid var(--rule-2);
+  padding-top: var(--s2);
+  margin-top: var(--s2);
+  text-align: left;
+}
+.zones .fig img { max-width: 100%; }
+
+/* ── таблицы ────────────────────────────────────────────────────────────── */
+.spec-table {
+  width: 100%;
+  border-collapse: collapse;
+  font-family: 'PT Sans Narrow', sans-serif;
+  font-size: var(--t-sm);
+  line-height: 1.3;
+}
+.spec-table thead { display: table-header-group; }
+.spec-table tr { break-inside: avoid; }
+
+.spec-table .plate th {
+  background: var(--brand);
+  color: #fff;
+  text-align: left;
+  font-size: var(--t-base);
+  font-weight: 700;
+  padding: 5px 7px;
+  letter-spacing: .01em;
+}
+.spec-table .head th {
+  background: var(--brand-2);
+  color: #fff;
+  font-weight: 700;
+  padding: 5px 7px 6px;
+  vertical-align: bottom;
+  border-right: 1px solid rgba(255,255,255,.18);
+}
+.spec-table .head th:last-child { border-right: 0; }
+.spec-table .head .u {
+  display: block;
+  font-weight: 400;
+  font-size: var(--t-xs);
+  opacity: .78;
+  letter-spacing: .04em;
+}
+
+.spec-table td {
+  padding: 3px 7px;
+  border-bottom: 1px solid var(--rule-2);
+  vertical-align: top;
+}
+.spec-table tr.z td { background: var(--zebra); }
+
+.spec-table .item { width: 30mm; white-space: nowrap; }
+.spec-table td.item { font-variant-numeric: tabular-nums; }
+.spec-table .spec { width: 24mm; text-align: right; white-space: nowrap; }
+.spec-table .ang  { width: 22mm; text-align: right; white-space: nowrap; }
+.spec-table .num  { text-align: right; white-space: nowrap; }
+.spec-table th.num, .spec-table th.spec, .spec-table th.ang { text-align: right; }
+.spec-table .holes { text-align: left; }
+
+/* ряд диаметров: моноширинные колонки, чтобы значения читались столбиком */
+.spec-table td.holes .v {
+  display: inline-block;
+  min-width: 11.4mm;
+  text-align: right;
+  padding-right: 2.2mm;
+  font-variant-numeric: tabular-nums;
+}
+.spec-table .empty { color: var(--ink-3); }
+
+.grade .ser { width: 12mm; text-align: center; font-weight: 700; vertical-align: middle; }
+.grade .s-GK { background: #e8eef2 !important; }
+.grade .s-GU { background: #f4ece6 !important; }
+.grade .s-GF { background: #eceef0 !important; }
+.grade .app { font-size: var(--t-xs); line-height: 1.32; }
+.grade .item { width: 20mm; }
+.grade .num { width: 19mm; }
+.new {
+  display: inline-block;
+  margin-left: 4px;
+  background: var(--accent); color: #fff;
+  font-size: 5.5pt; letter-spacing: .06em; text-transform: uppercase;
+  padding: 1px 3px; vertical-align: 1px;
+}
+.flag { border-bottom: 2px dotted var(--todo-line); }
+
+.narrow-table { width: 74mm; margin-top: var(--s5); }
+.plate-solo {
+  background: var(--brand); color: #fff;
+  font-size: var(--t-base); font-weight: 700;
+  padding: 5px 7px;
+}
+.two-col { display: grid; grid-template-columns: 1fr 1fr; gap: var(--s4); align-items: start; }
+.two-col .spec-table td { padding: 2.6px 7px; }
+
+/* ── пробелы, ожидающие данных клиента ──────────────────────────────────── */
+.placeholder-block {
+  background: var(--todo-bg);
+  border-left: 3px solid var(--todo-line);
+  padding: var(--s3) var(--s4);
+  margin: var(--s4) 0;
+  break-inside: avoid;
+}
+.placeholder-block p:last-child { margin-bottom: 0; }
+.todo {
+  color: var(--todo-ink);
+  font-size: var(--t-sm);
+  font-style: italic;
+}
+li .todo, dd .todo { font-style: italic; }
+
+/* ── задняя обложка ─────────────────────────────────────────────────────── */
+.back {
+  height: 297mm;
+  padding: 22mm 20mm 18mm;
+  display: flex;
+  flex-direction: column;
+  background: var(--brand);
+  color: #fff;
+}
+.back-logo { color: #fff; }
+.back-logo svg { width: 62mm; height: auto; display: block; }
+.back-body { margin-top: auto; }
+.back-body h2 { margin: 0 0 2px; font-size: var(--t-xl); font-weight: 700; }
+.back-city {
+  font-family: 'PT Sans Narrow', sans-serif;
+  letter-spacing: .18em; text-transform: uppercase;
+  opacity: .72; margin-bottom: var(--s5);
+}
+.req {
+  display: grid;
+  grid-template-columns: 46mm 1fr;
+  gap: var(--s2) var(--s4);
+  border-top: 1px solid rgba(255,255,255,.28);
+  padding-top: var(--s4);
+}
+.req dt { margin: 0; font-weight: 400; opacity: .7; font-size: var(--t-sm); }
+.req dd { margin: 0; color: #fff; }
+.back .todo { color: #ffd9a0; }
+.back-foot {
+  margin-top: auto;
+  padding-top: var(--s5);
+  font-family: 'PT Sans Narrow', sans-serif;
+  font-size: var(--t-sm);
+  letter-spacing: .08em;
+  opacity: .6;
+}
+
+/* ── печать ─────────────────────────────────────────────────────────────── */
+@media print {
+  .cover, .back { -webkit-print-color-adjust: exact; print-color-adjust: exact; }
+  body { -webkit-print-color-adjust: exact; print-color-adjust: exact; }
+}
+@media (prefers-reduced-motion: reduce) {
+  *, *::before, *::after { animation: none !important; transition: none !important; }
+}
+
+.toc-line b.nofolio { font-size: var(--t-xs); color: var(--ink-3); font-weight: 400; }
+
+.sec-head + .grade-card { border-top: 0; padding-top: 0; }
+
+/* Шапка может переноситься, иначе длинный заголовок распирает колонку
+   и отнимает место у ряда диаметров. Значения в ячейках — по-прежнему в строку. */
+.spec-table th.ang, .spec-table th.spec, .spec-table th.num { white-space: normal; }
+
+/* ── микрофотография в карточке марки ───────────────────────────────────── */
+.gc-body { grid-template-columns: 32mm 1fr 1.25fr; }
+.gc-img {
+  width: 32mm; height: 32mm;
+  object-fit: cover;
+  display: block;
+  border: 1px solid var(--rule);
+}
+
+/* ── графики по сплавам ─────────────────────────────────────────────────── */
+.charts { display: grid; grid-template-columns: 1fr 1fr; gap: var(--s5); margin-bottom: var(--s3); }
+.charts h3 { margin: 0 0 var(--s2); font-size: var(--t-base); }
+.charts img { display: block; width: 100%; height: auto; }
+.legend {
+  display: flex; flex-wrap: wrap; align-items: center;
+  gap: var(--s2) var(--s5);
+  font-size: var(--t-sm);
+  border-top: 1px solid var(--rule-2);
+  padding-top: var(--s2);
+}
+.legend span { display: inline-flex; align-items: center; gap: 6px; }
+.legend em { color: var(--ink-3); font-style: normal; margin-left: auto; }
+.sw { width: 16px; height: 5px; display: inline-block; }
+.sw-fine  { background: #ecdc23; }
+.sw-sub   { background: #d8232a; }
+.sw-ultra { background: #2aa0d8; }
+
+/* ── диаграмма «марка → диапазон Ø» ─────────────────────────────────────── */
+.dia { font-size: var(--t-sm); }
+.dia-head, .dia-row {
+  display: grid;
+  grid-template-columns: 20mm 62mm 18mm 1fr;
+  gap: var(--s3);
+  align-items: center;
+  padding: 4px var(--s2);
+}
+.dia-head {
+  background: var(--brand-2); color: #fff; font-weight: 700;
+  font-family: 'PT Sans Narrow', sans-serif;
+  align-items: end; padding-bottom: 14px;
+}
+.dia-row { border-bottom: 1px solid var(--rule-2); break-inside: avoid; }
+.dia-row.z { background: var(--zebra); }
+.dia-g { font-family: 'PT Sans Narrow', sans-serif; font-weight: 700; }
+.dia-n { font-family: 'PT Sans Narrow', sans-serif; text-align: right; font-variant-numeric: tabular-nums; }
+.dia-u { font-size: var(--t-xs); color: var(--ink-2); line-height: 1.3; }
+.dia-track { position: relative; height: 9px; background: #fff; border-left: 1px solid var(--rule); }
+.dia-row .dia-track { background: linear-gradient(90deg, var(--rule-2) 0 100%); }
+.dia-track i { position: absolute; top: 0; bottom: 0; background: var(--brand); display: block; }
+.dia-axis { position: absolute; left: 0; right: 0; bottom: -12px; display: block; }
+.dia-axis span {
+  position: absolute; transform: translateX(-50%);
+  font-size: var(--t-xs); font-weight: 400; opacity: .85;
+}
+
+/* шапка диаграммы: шкала внутри плашки, подписи белые */
+.dia-head .dia-track {
+  position: relative;
+  height: 12px;
+  background: none;
+  border-left: 0;
+}
+.dia-head .dia-g, .dia-head .dia-n, .dia-head .dia-u { color: #fff; }
+.dia-head .dia-u { font-size: var(--t-xs); }
+.dia-axis { position: absolute; left: 0; right: 0; top: 0; bottom: auto; }
+.dia-axis span { color: #fff; opacity: .9; }
+
+
+</style></head>
+<body class="preview">
+
+<!-- ОБЛОЖКА -->
+<section class="sheet cover">
+  <div class="cover-logo"><svg class="logo-ph" viewBox="0 0 240 44" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Место под логотип ЛАВИТЕК">
+       <rect x="1" y="1" width="238" height="42" rx="3" fill="none" stroke="currentColor"
+             stroke-width="1.5" stroke-dasharray="5 4"/>
+       <text x="120" y="21" text-anchor="middle" font-family="PT Sans, sans-serif"
+             font-size="15" font-weight="700" letter-spacing="2.5" fill="currentColor">ЛАВИТЕК</text>
+       <text x="120" y="34" text-anchor="middle" font-family="PT Sans, sans-serif"
+             font-size="7.5" letter-spacing="0.8" fill="currentColor" opacity=".75">место под логотип — input/logo.svg</text>
+     </svg></div>
+  <div class="cover-mid">
+    <p class="cover-kicker">Каталог продукции</p>
+    <h1>Твердосплавные<br>волоки</h1>
+    <p class="cover-sub">фильеры для волочения проволоки, прутка, трубы и профиля</p>
+  </div>
+  <div class="cover-grid">
+    <span>GT01</span><span>GS11</span><span>GS2</span><span>GV</span><span>GW</span>
+    <span>GY01</span><span>G22</span><span>G23</span><span>GP01</span><span>оправки</span>
+  </div>
+  <div class="cover-foot"><span>ООО «ЛАВИТЕК»</span><span>Екатеринбург</span></div>
+</section>
+<!-- СОДЕРЖАНИЕ -->
+<section class="sheet toc-sheet">
+     <header class="sec-head"><span class="kicker"></span><h2>Содержание</h2></header>
+     
+<div class="toc">
+  <div class="toc-group"><span class="toc-tag">А</span><div>
+    <div class="toc-line"><span>О компании</span><b>2</b></div>
+    <div class="toc-line"><span>Цепочка переделов</span><b>2</b></div>
+    <div class="toc-line"><span>Линейка твердосплавных волок</span><b>3</b></div>
+    <div class="toc-line"><span>Решения для волочения</span><b>4</b></div>
+    <div class="toc-line"><span>Марки твёрдого сплава</span><b>5</b></div>
+    <div class="toc-line"><span>Характеристики марок</span><b>6</b></div>
+    <div class="toc-line"><span>Кобальт, зернистость и область применения</span><b>7</b></div>
+    <div class="toc-line"><span>Геометрия волоки: зоны I–V</span><b>8</b></div>
+  </div></div>
+  <div class="toc-group b"><span class="toc-tag">Б</span><div>
+    <div class="toc-line"><span>GT01 — волоки мокрого волочения проволоки</span><b>9</b></div>
+    <div class="toc-line"><span>Волоки мокрого волочения металлокорда</span><b>10</b></div>
+    <div class="toc-line"><span>GS11 — волоки для проволоки и прутка</span><b>11</b></div>
+    <div class="toc-line"><span>GS2 — волоки скоростного волочения</span><b>12</b></div>
+    <div class="toc-line"><span>GV — волоки для проволоки и прутка</span><b>14</b></div>
+    <div class="toc-line"><span>GW — волоки для проволоки и прутка</span><b>16</b></div>
+    <div class="toc-line"><span>GY01 — напорные волоки</span><b>18</b></div>
+    <div class="toc-line"><span>G22 — волоки для волочения труб</span><b>19</b></div>
+    <div class="toc-line"><span>G23 — редуцирование трубы и стенки</span><b>21</b></div>
+    <div class="toc-line"><span>GP01 — заготовки волок для профиля</span><b>22</b></div>
+    <div class="toc-line"><span>Оправки для волочения труб</span><b>23</b></div>
+  </div></div>
+  <div class="toc-group c"><span class="toc-tag">В</span><div>
+    <div class="toc-line"><span>Оснастка для волочения</span><b>24</b></div>
+    <div class="toc-line"><span>Реквизиты</span><b class="nofolio">задняя обложка</b></div>
+  </div></div>
+</div>
+   </section>
+
+<!-- О КОМПАНИИ -->
+<section class="sheet ">
+     <header class="sec-head"><span class="kicker">Общие сведения</span><h2>О компании</h2></header>
+     
+<div class="placeholder-block">
+  <p><span class="todo">[[НУЖНО ОТ КЛИЕНТА: описание ООО «ЛАВИТЕК» — 3–5 предложений: с какого года работает, на чём специализируется, регион поставок, наличие складской программы. Без цифр достижений, если их нечем подтвердить]]</span></p>
+</div>
+<h3>Цепочка переделов твёрдого сплава</h3>
+<p class="lead">Ресурс волоки задаётся не финишной шлифовкой, а качеством порошка и спекания.
+Ниже — путь от вольфрамовой руды до готовой волоки: на каждом переделе закладываются
+зернистость, пористость и содержание кобальта, из которых потом складывается стойкость.</p>
+<div class="chain">
+  <div class="node ore">Вольфрамовая руда</div><div class="arr"></div><div class="node ">Паравольфрамат аммония (APT)</div><div class="arr"></div><div class="node hi">Вольфрамовый порошок</div><div class="arr"></div><div class="node hi">Порошок карбида вольфрама</div><div class="arr"></div><div class="node ">Готовая к прессованию смесь</div><div class="arr"></div><div class="node hi">Твёрдый сплав</div>
+</div>
+<div class="chain-out">
+  <div class="leaf">Режущий инструмент</div><div class="leaf">Прецизионные износостойкие детали</div><div class="leaf me">Волоки</div><div class="leaf">Пластины из твёрдого сплава</div><div class="leaf">Сплавы для строительного инструмента</div>
+</div>
+<p class="note">Схема описывает производство твёрдого сплава как таковое и не относится
+к конкретному предприятию.</p>
+
+   </section>
+
+<!-- ЛИНЕЙКА -->
+<section class="sheet ">
+     <header class="sec-head"><span class="kicker">Общие сведения</span><h2>Линейка твердосплавных волок</h2></header>
+     
+<div class="placeholder-block">
+  <p><span class="todo">[[НУЖНО ОТ КЛИЕНТА: вводный абзац о поставках ЛАВИТЕК — 2–3 предложения]]</span></p>
+</div>
+<div class="cols-2">
+  <div class="card">
+    <h3>Подбор марки сплава под условия волочения</h3>
+    <dl>
+      <dt>Серия GK</dt><dd>сухое волочение высокоуглеродистой проволоки, металлокорда, проволоки для распиловки</dd>
+      <dt>Серия GU</dt><dd>мокрое волочение металлокорда и проволоки для распиловки</dd>
+      <dt>Серия GF</dt><dd>прессование металлических профилей и прутка</dd>
+    </dl>
+  </div>
+  <div class="card">
+    <h3>Номенклатура</h3>
+    <ul class="tick">
+      <li>стандартные микроволоки</li>
+      <li>стандартные волоки среднего и крупного размера</li>
+      <li>волоки для проволоки, трубы и профиля по чертежу заказчика</li>
+    </ul>
+    <p class="note">В исходных данных поставщика число стандартных типоразмеров указано
+    противоречиво (в одной версии «несколько сотен», в другой «200»), поэтому цифра
+    здесь не приводится.</p>
+  </div>
+  <div class="card">
+    <h3>Что обеспечивает ресурс волоки</h3>
+    <ul class="tick">
+      <li>качество исходного сырья</li>
+      <li>система контроля качества на производстве</li>
+      <li><span class="todo">[[НУЖНО ОТ КЛИЕНТА: два пункта исходника — «R&amp;D-команда» и «производственное оборудование» — относятся к заводу-изготовителю. Либо убрать, либо заменить на реальные компетенции ЛАВИТЕК]]</span></li>
+    </ul>
+  </div>
+  <div class="card">
+    <h3>Что даёт правильный подбор</h3>
+    <ul class="tick">
+      <li>увеличение ресурса инструмента</li>
+      <li>стабильность размера на выходе</li>
+      <li>рост производительности участка</li>
+    </ul>
+  </div>
+</div>
+
+   </section>
+
+<!-- РЕШЕНИЯ -->
+<section class="sheet wide">
+     <header class="sec-head"><span class="kicker">Общие сведения</span><h2>Решения для волочения</h2></header>
+     
+<p class="lead">Четыре вида обработки, под которые подбирается инструмент. Проволока идёт
+слева направо: обдирка, сухое волочение, мокрое волочение, деформирующая обработка.</p>
+<figure class="fig"><img src="img/sol-scheme.png" alt="Последовательность обработки на волочильной линии"><figcaption>Последовательность обработки на волочильной линии</figcaption></figure>
+<div class="proc">
+  <div class="proc-item"><b>Окалиноудаление обдиркой</b><span>снятие окалины перед волочением</span></div>
+  <div class="proc-item"><b>Сухое волочение</b><span>порошковая смазка</span></div>
+  <div class="proc-item"><b>Мокрое волочение</b><span>жидкая смазочно-охлаждающая среда</span></div>
+  <div class="proc-item"><b>Деформирующая обработка</b><span>придание сечению заданной формы</span></div>
+</div>
+<h3>Группы изделий</h3>
+<figure class="fig"><img src="img/sol-photos.png" alt="01 — ролик окалиноудаления · 02 — волока среднего и крупного размера · 03 — напорная волока · 04 — волока мокрого волочения · 05 — деформатор"><figcaption>01 — ролик окалиноудаления · 02 — волока среднего и крупного размера · 03 — напорная волока · 04 — волока мокрого волочения · 05 — деформатор</figcaption></figure>
+<ol class="numbered">
+  <li><b>Ролики окалиноудаления</b> — подготовка поверхности заготовки</li>
+  <li><b>Волоки среднего и крупного размера</b> — серии GS11, GV, GW, G22, G23</li>
+  <li><b>Напорные волоки</b> — серия GY01</li>
+  <li><b>Волоки мокрого волочения</b> — серии GT01, GS2</li>
+  <li><b>Деформаторы</b> — оснастка волочильных линий</li>
+</ol>
+
+   </section>
+
+<!-- МАРКИ -->
+<section class="sheet wide">
+     <header class="sec-head"><span class="kicker">Общие сведения</span><h2>Марки твёрдого сплава</h2></header>
+     
+  <table class="spec-table grade">
+    <thead>
+      <tr class="plate"><th colspan="7">Марки твёрдого сплава</th></tr>
+      <tr class="head">
+        <th class="ser">Серия</th>
+        <th class="item">Марка</th>
+        <th class="num">Твёрдость<span class="u">HRA</span></th>
+        <th class="num">Плотность<span class="u">г/см³</span></th>
+        <th class="num">Предел прочности при изгибе<span class="u">Н/мм²</span></th>
+        <th class="num">Зернистость<span class="u">мкм</span></th>
+        <th class="app">Рекомендуемое применение</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td class="ser s-GK">GK</td>
+        <td class="item">GK05</td>
+        <td class="num">91,5–92,5</td>
+        <td class="num">14,85–15,05</td>
+        <td class="num">2720</td>
+        <td class="num">1,5</td>
+        <td class="app">Повышенная износостойкость, высокая твёрдость. Сухое волочение металлокорда, высокоуглеродистой стали и цветных металлов.</td>
+      </tr>
+      <tr class="z">
+        <td class="ser s-GK"></td>
+        <td class="item">GK05A</td>
+        <td class="num">92,0–93,0</td>
+        <td class="num">14,80–15,00</td>
+        <td class="num">2450</td>
+        <td class="num">1,0</td>
+        <td class="app">Высокая износостойкость и прочность. Мокрое волочение металлокорда и высокоуглеродистой стали; сухое волочение металлокорда, высокоуглеродистой стали и сварочной проволоки; подложка под CVD-покрытие.</td>
+      </tr>
+      <tr>
+        <td class="ser s-GK"></td>
+        <td class="item">GK05C</td>
+        <td class="num">91,6–92,6</td>
+        <td class="num">14,85–15,05</td>
+        <td class="num">2800</td>
+        <td class="num">1,3</td>
+        <td class="app">Марка для подложек под CVD-покрытие. Волочение средне- и низкоуглеродистой стальной проволоки.</td>
+      </tr>
+      <tr class="z">
+        <td class="ser s-GK"></td>
+        <td class="item">GK10H<span class="new">новая</span></td>
+        <td class="num">90,5–91,5</td>
+        <td class="num">14,85–15,05</td>
+        <td class="num">2300</td>
+        <td class="num">2,0</td>
+        <td class="app">Марка для подложек под CVD-покрытие. Волочение средне- и высокоуглеродистой стальной проволоки.</td>
+      </tr>
+      <tr>
+        <td class="ser s-GK"></td>
+        <td class="item">GK10X</td>
+        <td class="num">91,8–92,8</td>
+        <td class="num">14,90–15,10</td>
+        <td class="num">1560</td>
+        <td class="num">1,0</td>
+        <td class="app">Высокая теплостойкость и прочность. Сухое волочение проволоки повышенных требований.</td>
+      </tr>
+      <tr class="z">
+        <td class="ser s-GK"></td>
+        <td class="item">GK30H</td>
+        <td class="num">89,7–90,7</td>
+        <td class="num">14,65–14,85</td>
+        <td class="num">2800</td>
+        <td class="num">2,0</td>
+        <td class="app">Высокая износостойкость, повышенная твёрдость. Холодное волочение прутка, трубы и крупногабаритного профиля.</td>
+      </tr>
+      <tr>
+        <td class="ser s-GU">GU</td>
+        <td class="item">GU10</td>
+        <td class="num">92,5–93,5</td>
+        <td class="num">14,80–15,00</td>
+        <td class="num">2700</td>
+        <td class="num">0,8</td>
+        <td class="app">Высокая твёрдость и износостойкость. Мокрое волочение высокоуглеродистой стали и сварочной проволоки; сухое волочение высокоуглеродистой стали, сварочной проволоки и цветных металлов.</td>
+      </tr>
+      <tr class="z">
+        <td class="ser s-GU"></td>
+        <td class="item">GU20</td>
+        <td class="num">91,3–92,1</td>
+        <td class="num">14,30–14,50</td>
+        <td class="num">3500</td>
+        <td class="num">0,8</td>
+        <td class="app">Высокая вязкость, повышенная твёрдость. Износостойкая оснастка волочильных участков.</td>
+      </tr>
+      <tr>
+        <td class="ser s-GU"></td>
+        <td class="item">GU10UF</td>
+        <td class="num">93,5–94,5</td>
+        <td class="num">14,65–14,85</td>
+        <td class="num">3500</td>
+        <td class="num">0,4</td>
+        <td class="app">Очень высокая твёрдость, максимальная износостойкость. Мокрое волочение металлокорда, проволоки для распиловки, высокоуглеродистой стали и сварочной проволоки.</td>
+      </tr>
+      <tr class="z">
+        <td class="ser s-GF">GF</td>
+        <td class="item">GF40H<span class="new">новая</span></td>
+        <td class="num">88,2–89,2</td>
+        <td class="num">13,95–14,15</td>
+        <td class="num">3000</td>
+        <td class="num"><span class="flag" title="разделитель диапазона не читается в исходнике, см. TODO-01/02">1,0 ? 2,0</span></td>
+        <td class="app">Резьбовые сердечники. Высокая износостойкость и вязкость.</td>
+      </tr>
+      <tr>
+        <td class="ser s-GF"></td>
+        <td class="item">GF50H<span class="new">новая</span></td>
+        <td class="num">89,0–89,8</td>
+        <td class="num">14,10–14,30</td>
+        <td class="num">3200</td>
+        <td class="num"><span class="flag" title="разделитель диапазона не читается в исходнике, см. TODO-01/02">1,5 ? 3,0</span></td>
+        <td class="app">Профильный и прессовый инструмент. Стойкость к сколам, износостойкость.</td>
+      </tr></tbody>
+  </table>
+<p class="note">Обозначения марок приведены в системе завода-изготовителя и не заменяются
+российскими аналогами. Сопоставление с ВК6 / ВК8 в каталоге не приводится: в исходных
+данных нет содержания кобальта, без которого такое сопоставление было бы догадкой.</p>
+<p class="note flag-note">Знаком «?» отмечен разделитель диапазона зернистости у марок
+GF40H и GF50H: в исходном файле он не читается. Значения требуют сверки с бумажным
+оригиналом (TODO-01, TODO-02).</p>
+
+   </section>
+
+<!-- ХАРАКТЕРИСТИКИ МАРОК -->
+<section class="sheet ">
+     <header class="sec-head"><span class="kicker">Общие сведения</span><h2>Характеристики марок</h2></header>
+     
+<div class="grade-card">
+  <h3>GU10UF</h3>
+  <p class="gc-lead">Ультрамелкозернистый сплав. Мокрое волочение.</p>
+  <div class="gc-body">
+    <img class="gc-img" src="img/micro-gu10uf.png" alt="Микроструктура сплава GU10UF">
+    <div><b>Применение</b><ul class="tick"><li>металлокорд</li><li>алмазная струна</li><li>высокопрочная стальная проволока</li></ul></div>
+    <div><b>Особенности состава</b><ul class="tick"><li>теплостойкость</li><li>коррозионная стойкость</li><li>стойкость к сколам</li></ul></div>
+  </div>
+</div>
+<div class="grade-card">
+  <h3>GK10X</h3>
+  <p class="gc-lead">Сплав повышенных характеристик. Сухое волочение.</p>
+  <div class="gc-body">
+    <img class="gc-img" src="img/micro-gk10x.png" alt="Микроструктура сплава GK10X">
+    <div><b>Применение</b><ul class="tick"><li>стальной канат</li><li>канатная прядь</li><li>труба и фасонный профиль</li></ul></div>
+    <div><b>Что даёт</b><ul class="tick"><li>рост высокотемпературной износостойкости волоки</li><li>рост производительности</li><li>пригодность для проволоки повышенных требований</li><li>рост производительности при изготовлении волок</li></ul></div>
+  </div>
+</div>
+<div class="grade-card">
+  <h3>GK10H</h3>
+  <p class="gc-lead">Подложка под алмазное CVD-покрытие.</p>
+  <div class="gc-body">
+    <img class="gc-img" src="img/micro-gk10h.png" alt="Микроструктура сплава GK10H">
+    <div><b>Применение</b><ul class="tick"><li>средне- и высокоуглеродистая стальная проволока</li><li>фасонная труба и проволока</li></ul></div>
+    <div><b>Что даёт</b><ul class="tick"><li>высокая адгезия покрытия к подложке</li><li>увеличенный ресурс волоки</li></ul></div>
+  </div>
+</div>
+<p class="note">Микрофотографии структуры — завода-изготовителя, приведены в масштабе оригинала.
+Видно, во что превращается зернистость из таблицы марок: у GU10UF зерно 0,4 мкм, у GK10H — 2,0 мкм.</p>
+
+   </section>
+
+<!-- СПЛАВЫ: КОБАЛЬТ, ЗЕРНИСТОСТЬ, ДИАМЕТР -->
+<section class="sheet wide">
+     <header class="sec-head"><span class="kicker">Общие сведения</span><h2>Кобальт, зернистость и область применения</h2></header>
+     
+<p class="lead">Твёрдость и прочность твёрдого сплава задаются двумя параметрами: долей
+кобальта-связки и размером зерна карбида вольфрама. Они тянут в разные стороны — с ростом
+кобальта прочность растёт, а твёрдость падает.</p>
+<div class="charts">
+  <div>
+    <h3>Твёрдость по Роквеллу, HRA</h3>
+    <img src="img/chart-hra.png" alt="Зависимость твёрдости HRA от содержания кобальта">
+  </div>
+  <div>
+    <h3>Предел прочности при изгибе, МПа</h3>
+    <img src="img/chart-trs.png" alt="Зависимость предела прочности при изгибе от содержания кобальта">
+  </div>
+</div>
+<div class="legend">
+  <span><i class="sw sw-fine"></i>мелко- и среднезернистый</span>
+  <span><i class="sw sw-sub"></i>субмикронный</span>
+  <span><i class="sw sw-ultra"></i>ультрамелкозернистый</span>
+  <em>по горизонтали — содержание кобальта Co, %</em>
+</div>
+
+<h3>Марка и диаметр отверстия</h3>
+
+  <div class="dia">
+    <div class="dia-head">
+      <span class="dia-g">Марка</span>
+      <span class="dia-track"><span class="dia-axis"><span style="left:0.00%">0</span><span style="left:20.00%">5</span><span style="left:40.00%">10</span><span style="left:60.00%">15</span><span style="left:80.00%">20</span><span style="left:100.00%">25</span></span></span>
+      <span class="dia-n">Ø, мм</span>
+      <span class="dia-u">Применение</span>
+    </div>
+    
+    <div class="dia-row">
+      <span class="dia-g">GU10UF</span>
+      <span class="dia-track"><i style="left:0.00%;width:8.00%"></i></span>
+      <span class="dia-n">0,0–2,0</span>
+      <span class="dia-u">мокрое волочение: высокоуглеродистая сталь, металлокорд, сварочная проволока, проволока для распиловки</span>
+    </div>
+    <div class="dia-row z">
+      <span class="dia-g">GU10</span>
+      <span class="dia-track"><i style="left:2.00%;width:18.00%"></i></span>
+      <span class="dia-n">0,5–5,0</span>
+      <span class="dia-u">мокрое волочение омеднённой и оцинкованной высокоуглеродистой проволоки</span>
+    </div>
+    <div class="dia-row">
+      <span class="dia-g">GU20</span>
+      <span class="dia-track"><i style="left:2.00%;width:30.00%"></i></span>
+      <span class="dia-n">0,5–8,0</span>
+      <span class="dia-u">сухое волочение: металлокорд, сварочная проволока, высокоуглеродистая сталь, цветные металлы</span>
+    </div>
+    <div class="dia-row z">
+      <span class="dia-g">GK05A</span>
+      <span class="dia-track"><i style="left:2.00%;width:38.00%"></i></span>
+      <span class="dia-n">0,5–10,0</span>
+      <span class="dia-u">мокрое волочение металлокорда и высокоуглеродистой проволоки; сухое волочение металлокорда и высокоуглеродистой стали</span>
+    </div>
+    <div class="dia-row">
+      <span class="dia-g">GK05</span>
+      <span class="dia-track"><i style="left:6.00%;width:54.00%"></i></span>
+      <span class="dia-n">1,5–15,0</span>
+      <span class="dia-u">сухое волочение: металлокорд, сварочная проволока, высокоуглеродистая проволока</span>
+    </div>
+    <div class="dia-row z">
+      <span class="dia-g">GK30H</span>
+      <span class="dia-track"><i style="left:40.00%;width:58.00%"></i></span>
+      <span class="dia-n">10,0–24,5</span>
+      <span class="dia-u">холодное волочение прутка, трубы и крупногабаритного профиля</span>
+    </div>
+  </div>
+<p class="note">Диапазоны сняты с диаграммы исходного каталога измерением по шкале
+(<code>scripts/measure-bars.mjs</code>) и округлены до 0,5 мм. В оригинале границы полос
+размыты — это ориентир для подбора, а не предельные значения. Точный типоразмер —
+по таблицам разделов.</p>
+
+   </section>
+
+<!-- ГЕОМЕТРИЯ -->
+<section class="sheet ">
+     <header class="sec-head"><span class="kicker">Общие сведения</span><h2>Геометрия волоки: зоны I–V</h2></header>
+     
+<div class="zones">
+  <figure class="fig"><img src="img/zones.png" alt="Разрез волоки: пять функциональных зон канала"><figcaption>Разрез волоки: пять функциональных зон канала</figcaption></figure>
+  <div class="zone-list">
+    <div class="zone"><span class="rn">I</span><div><b>Входная зона</b>
+      <p>Материал входит в волоку. Переход выполняется по радиусу, чтобы волока не оставляла задиров на металле.</p></div></div>
+    <div class="zone"><span class="rn">II</span><div><b>Смазочная зона</b>
+      <p>Удерживает смазку и подаёт её на металл, обеспечивая устойчивый ход волочения.</p></div></div>
+  </div>
+</div>
+<div class="zone"><span class="rn">III</span><div><b>Рабочая зона</b>
+  <p>Зона пластической деформации металла. Ключевые размеры — длина и угол. Чем короче зона,
+  тем выше давление металла на рабочий конус: растёт напряжение волочения, ускоряется износ
+  волоки, ухудшается результат. Длину подбирают по материалу, диаметру и условиям смазки:
+  для мягких металлов короче, чем для твёрдых; для проволоки малого диаметра короче, чем для
+  большого; при мокром волочении короче, чем при сухом. С ростом угла рабочего конуса
+  повышаются предел прочности и твёрдость протянутого металла, но снижаются показатели на
+  изгиб и кручение. Для стали угол берут меньше, для цветных металлов и их сплавов — больше.</p></div></div>
+<div class="zone"><span class="rn">IV</span><div><b>Калибрующая зона</b>
+  <p>Здесь металл получает окончательный размер. Длину калибрующей зоны выбирают по твёрдости материала,
+  сечению и условиям смазки. Слишком длинная зона увеличивает трение, волока греется,
+  ресурс падает; одновременно растут напряжение волочения, усадка, обрывность и расход
+  электроэнергии. Слишком короткая зона не удерживает размер: при выработке рабочего конуса
+  размер изделия уходит. Как правило, для мягких металлов зона короче, чем для твёрдых;
+  для материала большого диаметра короче, чем для малого; при мокром волочении короче,
+  чем при сухом.</p></div></div>
+<div class="zone"><span class="rn">V</span><div><b>Выходной конус</b>
+  <p>Последний участок, который проходит металл. Защищает калибрующую зону от выкрашивания,
+  поэтому делать его слишком коротким нельзя — иначе выходной торец волоки скалывается.
+  Выходной конус не даёт протянутому металлу задирать выход калибрующей зоны и портить поверхность
+  проволоки. При перешлифовке острую кромку на стыке выходного конуса и калибрующей зоны обязательно
+  скругляют, чтобы проволока не получала задиров при проходе.</p></div></div>
+
+   </section>
+
+<!-- GT01 -->
+<section class="sheet ">
+     <header class="sec-head"><span class="kicker">Твердосплавные волоки</span><h2>GT01 — волоки мокрого волочения проволоки</h2></header>
+     <figure class="fig"><img src="img/gt01.png" alt="GT01: ∅D — наружный диаметр обоймы, ∅D′ — диаметр вставки, ∅d — диаметр отверстия, H — высота обоймы, H′ — высота вставки, 2α — угол рабочего конуса"><figcaption>GT01: ∅D — наружный диаметр обоймы, ∅D′ — диаметр вставки, ∅d — диаметр отверстия, H — высота обоймы, H′ — высота вставки, 2α — угол рабочего конуса</figcaption></figure>
+  <table class="spec-table">
+    <thead>
+      <tr class="plate"><th colspan="4">Волоки GT01 для мокрого волочения металлической проволоки</th></tr>
+      <tr class="head">
+        <th class="item">Обозначение изделия</th>
+        <th class="spec">Размеры D×H<span class="u">мм</span></th>
+        <th class="holes">Диаметр отверстия d<span class="u">мм</span></th>
+        <th class="ang">Угол рабочего конуса 2α<span class="u">град.</span></th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td class="item">GT01-0281510-d</td>
+        <td class="spec">обойма 9×7: 28×15</td>
+        <td class="holes"><span class="v">0,10</span><span class="v">0,11</span><span class="v">0,12</span><span class="v">0,14</span><span class="v">0,16</span><span class="v">0,18</span><span class="v">0,20</span><span class="v">0,22</span><span class="v">0,24</span><span class="v">0,26</span><span class="v">0,28</span><span class="v">0,30</span><span class="v">0,35</span><span class="v">0,40</span><span class="v">0,45</span><span class="v">0,50</span><span class="v">0,55</span><span class="v">0,60</span><span class="v">0,65</span><span class="v">0,70</span><span class="v">0,75</span><span class="v">0,80</span><span class="v">0,85</span><span class="v">0,09</span><span class="v">0,95</span><span class="v">1,00</span><span class="v">1,10</span><span class="v">1,120</span><span class="v">1,30</span><span class="v">1,40</span><span class="v">1,50</span><span class="v">1,60</span><span class="v">1,80</span></td>
+        <td class="ang">10,5</td>
+      </tr>
+      <tr class="z">
+        <td class="item">GT01-0251409-d</td>
+        <td class="spec">обойма 9×7: 25×14</td>
+        <td class="holes"><span class="v">0,10</span><span class="v">0,12</span><span class="v">0,14</span><span class="v">0,16</span><span class="v">0,18</span><span class="v">0,20</span><span class="v">0,22</span><span class="v">0,24</span><span class="v">0,26</span><span class="v">0,28</span><span class="v">0,30</span><span class="v">0,35</span><span class="v">0,40</span><span class="v">0,45</span><span class="v">0,50</span><span class="v">0,55</span><span class="v">0,60</span><span class="v">0,65</span><span class="v">0,70</span><span class="v">0,75</span><span class="v">0,80</span><span class="v">0,85</span><span class="v">0,90</span><span class="v">0,95</span><span class="v">1,00</span><span class="v">1,10</span><span class="v">1,20</span><span class="v">1,30</span><span class="v">1,40</span><span class="v">1,50</span><span class="v">1,60</span><span class="v">1,80</span></td>
+        <td class="ang">9,5</td>
+      </tr></tbody>
+  </table><p class="note">Волочение металлокорда для шин. Высокая точность размера,
+     полный ряд диаметров отверстия 0,1–1,8 мм.</p>
+   </section>
+
+<!-- металлокорд -->
+<section class="sheet ">
+     <header class="sec-head"><span class="kicker">Твердосплавные волоки</span><h2>Волоки мокрого волочения металлокорда</h2></header>
+     
+<div class="cols-2">
+  <div class="card"><h3>Материал</h3>
+    <p>Марка на основе ультрамелкозернистого карбида вольфрама, очень высокая твёрдость.
+    Однородная металлографическая структура обеспечивает износостойкость и вязкость.</p></div>
+  <div class="card"><h3>Применение</h3>
+    <p>Мокрое волочение металлокорда, проволоки для распиловки, проволоки для рукавов
+    высокого давления, низко- и высокоуглеродистой стальной проволоки.</p></div>
+</div>
+<h3>Особенности</h3>
+<p>Профиль отверстия волок для металлокорда отличается точностью диаметра и качеством
+исполнения: сокращается время перешлифовки и растёт выход годного при перешлифовке.</p>
+<dl class="wide-dl">
+  <dt>Изготовление вставки</dt>
+  <dd>на специализированном оборудовании, со строгим контролем профиля и диаметра отверстия</dd>
+  <dt>Сборка в обойму</dt>
+  <dd>автоматическая линия горячей запрессовки со встроенным контролем: брак отбраковывается
+      на линии, качество сборки стабильно</dd>
+</dl>
+<p class="note">С этой полосы снято изображение патента китайского завода-изготовителя и
+упоминание о том, что технологический процесс запатентован: это права другого предприятия.</p>
+
+   </section>
+
+<!-- GS11 -->
+<section class="sheet ">
+     <header class="sec-head"><span class="kicker">Твердосплавные волоки</span><h2>GS11 — волоки для проволоки и прутка</h2></header>
+     <figure class="fig"><img src="img/gs11.png" alt="GS11: ∅D — наружный диаметр, ∅d — диаметр отверстия, 2α — угол рабочего конуса, 2β — угол смазочного конуса, 2Y — угол выходного конуса, R — радиус входа, h — калибрующая зона, h1 — выходной конус, h2 — рабочая зона, H — высота, a×b° — фаска"><figcaption>GS11: ∅D — наружный диаметр, ∅d — диаметр отверстия, 2α — угол рабочего конуса, 2β — угол смазочного конуса, 2Y — угол выходного конуса, R — радиус входа, h — калибрующая зона, h1 — выходной конус, h2 — рабочая зона, H — высота, a×b° — фаска</figcaption></figure>
+  <table class="spec-table">
+    <thead>
+      <tr class="plate"><th colspan="4">Волоки GS11 для проволоки и прутка</th></tr>
+      <tr class="head">
+        <th class="item">Обозначение изделия</th>
+        <th class="spec">Размеры D×H<span class="u">мм</span></th>
+        <th class="holes">Диаметр отверстия d<span class="u">мм</span></th>
+        <th class="ang">Угол рабочего конуса 2α<span class="u">град.</span></th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td class="item">GS11-0121013-d</td>
+        <td class="spec">12×10</td>
+        <td class="holes"><span class="v">0,4</span><span class="v">0,6</span><span class="v">0,8</span><span class="v">1,0</span><span class="v">1,2</span><span class="v">1,4</span><span class="v">1,6</span><span class="v">1,8</span><span class="v">2,0</span></td>
+        <td class="ang">13</td>
+      </tr>
+      <tr class="z">
+        <td class="item">GS11-0161314-d</td>
+        <td class="spec">16×13</td>
+        <td class="holes"><span class="v">1,6</span><span class="v">1,8</span><span class="v">2,0</span><span class="v">2,2</span><span class="v">2,4</span><span class="v">2,6</span><span class="v">2,8</span><span class="v">3,0</span><span class="v">3,2</span><span class="v">3,4</span><span class="v">3,6</span></td>
+        <td class="ang">14</td>
+      </tr>
+      <tr>
+        <td class="item">GS11-0201613-d</td>
+        <td class="spec">20×16</td>
+        <td class="holes"><span class="v">0,9</span><span class="v">1,3</span><span class="v">2,0</span></td>
+        <td class="ang">13</td>
+      </tr>
+      <tr class="z">
+        <td class="item">GS11-0201815-d</td>
+        <td class="spec">20×18</td>
+        <td class="holes"><span class="v">3,0</span><span class="v">3,2</span><span class="v">3,4</span><span class="v">3,6</span><span class="v">3,8</span><span class="v">4,0</span><span class="v">4,2</span><span class="v">4,4</span><span class="v">4,6</span><span class="v">4,8</span><span class="v">5,0</span></td>
+        <td class="ang">15</td>
+      </tr>
+      <tr>
+        <td class="item">GS11-0211813-d</td>
+        <td class="spec">21,5×18</td>
+        <td class="holes"><span class="v">5</span></td>
+        <td class="ang">10</td>
+      </tr>
+      <tr class="z">
+        <td class="item">GS11-0222015-d</td>
+        <td class="spec">22×20</td>
+        <td class="holes"><span class="v">4,0</span><span class="v">4,2</span><span class="v">4,4</span><span class="v">4,6</span><span class="v">4,8</span><span class="v">5,0</span><span class="v">5,2</span><span class="v">5,4</span><span class="v">5,6</span><span class="v">5,8</span><span class="v">6,0</span><span class="v">6,2</span><span class="v">6,4</span><span class="v">6,6</span><span class="v">6,8</span><span class="v">7,0</span></td>
+        <td class="ang">15</td>
+      </tr>
+      <tr>
+        <td class="item">GS11-0252215-d</td>
+        <td class="spec">25×22</td>
+        <td class="holes"><span class="v">5,0</span><span class="v">5,2</span><span class="v">5,4</span><span class="v">5,6</span><span class="v">5,8</span><span class="v">6,0</span><span class="v">6,5</span><span class="v">6,8</span><span class="v">7,0</span><span class="v">7,5</span><span class="v">8,0</span><span class="v">8,5</span><span class="v">9,0</span></td>
+        <td class="ang">15</td>
+      </tr></tbody>
+  </table>
+   </section>
+
+<!-- GS2 -->
+<section class="sheet ">
+     <header class="sec-head"><span class="kicker">Твердосплавные волоки</span><h2>GS2 — волоки скоростного волочения проволоки</h2></header>
+     <figure class="fig"><img src="img/gs2.png" alt="GS2: дополнительно ∅D1 — диаметр вставки, R1 и R2 — радиусы сопряжения, 1,5×45° — фаска"><figcaption>GS2: дополнительно ∅D1 — диаметр вставки, R1 и R2 — радиусы сопряжения, 1,5×45° — фаска</figcaption></figure>
+  <table class="spec-table">
+    <thead>
+      <tr class="plate"><th colspan="4">Волоки GS2 для скоростного волочения проволоки</th></tr>
+      <tr class="head">
+        <th class="item">Обозначение изделия</th>
+        <th class="spec">Размеры D×H<span class="u">мм</span></th>
+        <th class="holes">Диаметр отверстия d<span class="u">мм</span></th>
+        <th class="ang">Угол рабочего конуса 2α<span class="u">град.</span></th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td class="item">GS2-0121312-d</td>
+        <td class="spec">12,88×13</td>
+        <td class="holes"><span class="v">0,6</span><span class="v">0,75</span><span class="v">0,95</span><span class="v">1,15</span></td>
+        <td class="ang">12</td>
+      </tr>
+      <tr class="z">
+        <td class="item">GS2-0151213-d</td>
+        <td class="spec">15×12</td>
+        <td class="holes"><span class="v">0,4</span><span class="v">0,45</span><span class="v">0,5</span><span class="v">0,6</span><span class="v">0,7</span><span class="v">0,8</span><span class="v">0,9</span><span class="v">1,0</span><span class="v">1,1</span><span class="v">1,2</span><span class="v">1,3</span><span class="v">1,4</span><span class="v">1,5</span><span class="v">1,6</span><span class="v">1,7</span><span class="v">1,8</span></td>
+        <td class="ang">12 или 13</td>
+      </tr>
+      <tr>
+        <td class="item">GS2-0151316-d</td>
+        <td class="spec">15×13</td>
+        <td class="holes"><span class="v">1,0</span></td>
+        <td class="ang">16</td>
+      </tr>
+      <tr class="z">
+        <td class="item">GS2-0151312-d</td>
+        <td class="spec">15,73×13</td>
+        <td class="holes"><span class="v">0,35</span><span class="v">0,40</span><span class="v">0,45</span><span class="v">0,50</span><span class="v">0,55</span><span class="v">0,60</span><span class="v">0,65</span><span class="v">0,70</span><span class="v">0,75</span><span class="v">0,80</span><span class="v">0,85</span><span class="v">0,90</span><span class="v">0,95</span><span class="v">1,00</span><span class="v">1,05</span><span class="v">1,10</span><span class="v">1,20</span><span class="v">1,30</span><span class="v">1,40</span><span class="v">1,50</span><span class="v">1,60</span><span class="v">1,70</span><span class="v">1,80</span><span class="v">1,90</span><span class="v">3,20</span><span class="v">2,20</span><span class="v">2,30</span><span class="v">2,40</span><span class="v">2,50</span></td>
+        <td class="ang">12</td>
+      </tr>
+      <tr>
+        <td class="item">GS2-0151314-d</td>
+        <td class="spec">15,73×13</td>
+        <td class="holes"><span class="v">2,60</span><span class="v">2,70</span><span class="v">2,80</span><span class="v">2,9</span><span class="v">3,0</span><span class="v">3,1</span><span class="v">3,2</span><span class="v">3,3</span><span class="v">3,4</span><span class="v">3,5</span><span class="v">3,6</span><span class="v">3,7</span><span class="v">3,8</span><span class="v">3,9</span><span class="v">4,0</span><span class="v">4,1</span><span class="v">4,2</span><span class="v">4,3</span><span class="v">4,4</span><span class="v">4,5</span><span class="v">4,6</span><span class="v">4,7</span><span class="v">4,8</span><span class="v">4,9</span><span class="v">5,0</span><span class="v">5,1</span><span class="v">5,2</span><span class="v">5,3</span><span class="v">5,4</span><span class="v">5,5</span><span class="v">5,6</span><span class="v">5,8</span></td>
+        <td class="ang">14</td>
+      </tr>
+      <tr class="z">
+        <td class="item">GS2-0161213-d</td>
+        <td class="spec">16×12</td>
+        <td class="holes"><span class="v">1,1</span><span class="v">1,3</span><span class="v">1,5</span><span class="v">1,6</span><span class="v">1,7</span><span class="v">1,8</span><span class="v">2,0</span><span class="v">2,2</span><span class="v">2,4</span></td>
+        <td class="ang">13</td>
+      </tr>
+      <tr>
+        <td class="item">GS2-0161310-d</td>
+        <td class="spec">16×13</td>
+        <td class="holes"><span class="v">0,65</span><span class="v">0,9</span></td>
+        <td class="ang">12 или 9,5</td>
+      </tr>
+      <tr class="z">
+        <td class="item">GS2-0161410-d</td>
+        <td class="spec">16×14</td>
+        <td class="holes"><span class="v">0,6</span><span class="v">0,7</span><span class="v">0,8</span><span class="v">1,0</span><span class="v">1,2</span><span class="v">1,4</span><span class="v">1,6</span><span class="v">1,8</span><span class="v">2,0</span><span class="v">2,2</span><span class="v">2,4</span><span class="v">2,6</span></td>
+        <td class="ang">10,5</td>
+      </tr>
+      <tr>
+        <td class="item">GS2-0181509-d</td>
+        <td class="spec">18×15</td>
+        <td class="holes"><span class="v">0,6</span><span class="v">1,3</span></td>
+        <td class="ang">9,5</td>
+      </tr>
+      <tr class="z">
+        <td class="item">GS2-0191613-d</td>
+        <td class="spec">19×16</td>
+        <td class="holes"><span class="v">1,8</span><span class="v">2,3</span><span class="v">2,7</span><span class="v">3,3</span><span class="v">3,7</span></td>
+        <td class="ang">13</td>
+      </tr>
+      <tr>
+        <td class="item">GS2-0201613-d</td>
+        <td class="spec">20×16</td>
+        <td class="holes"><span class="v">0,9</span><span class="v">1,2</span><span class="v">1,3</span><span class="v">1,4</span><span class="v">1,5</span><span class="v">1,6</span><span class="v">1,7</span><span class="v">1,8</span><span class="v">1,9</span><span class="v">2,0</span><span class="v">2,1</span><span class="v">2,2</span><span class="v">2,3</span><span class="v">2,4</span><span class="v">2,5</span><span class="v">2,6</span><span class="v">2,7</span><span class="v">2,8</span><span class="v">3,0</span><span class="v">3,1</span><span class="v">3,2</span><span class="v">3,3</span><span class="v">3,4</span><span class="v">3,5</span><span class="v">3,6</span><span class="v">3,7</span><span class="v">3,8</span><span class="v">3,9</span><span class="v">4,0</span><span class="v">4,1</span><span class="v">4,2</span><span class="v">4,3</span><span class="v">4,4</span><span class="v">4,5</span><span class="v">4,6</span><span class="v">4,8</span><span class="v">4,9</span><span class="v">5,0</span><span class="v">5,5</span><span class="v">5,6</span><span class="v">5,7</span></td>
+        <td class="ang">13</td>
+      </tr>
+      <tr class="z">
+        <td class="item">GS2-0201709-d</td>
+        <td class="spec">20×17</td>
+        <td class="holes"><span class="v">1,15</span><span class="v">1,2</span><span class="v">1,3</span></td>
+        <td class="ang">9</td>
+      </tr>
+      <tr>
+        <td class="item">GS2-0201710-d</td>
+        <td class="spec">20×17</td>
+        <td class="holes"><span class="v">1,0</span><span class="v">1,6</span><span class="v">2,1</span></td>
+        <td class="ang">10</td>
+      </tr>
+      <tr class="z">
+        <td class="item">GS2-0201710-d</td>
+        <td class="spec">20×17</td>
+        <td class="holes"><span class="v">0,6</span><span class="v">0,8</span><span class="v">0,9</span><span class="v">1,0</span><span class="v">1,2</span><span class="v">1,8</span><span class="v">4,7</span><span class="v">5,7</span><span class="v">5,8</span></td>
+        <td class="ang">10,5</td>
+      </tr>
+      <tr>
+        <td class="item">GS2-0201713-d</td>
+        <td class="spec">20×17</td>
+        <td class="holes"><span class="v">1,4</span><span class="v">1,6</span><span class="v">2,0</span><span class="v">2,3</span><span class="v">2,6</span><span class="v">2,8</span><span class="v">3,0</span><span class="v">3,2</span><span class="v">3,5</span><span class="v">3,6</span><span class="v">3,8</span><span class="v">4,1</span><span class="v">4,2</span><span class="v">4,4</span><span class="v">4,5</span><span class="v">4,8</span><span class="v">5,0</span><span class="v">5,2</span><span class="v">5,7</span><span class="v">5,8</span></td>
+        <td class="ang">13</td>
+      </tr>
+      <tr class="z">
+        <td class="item">GS2-0221815-d</td>
+        <td class="spec">22×18</td>
+        <td class="holes"><span class="v">3,2</span><span class="v">4,2</span><span class="v">4,4</span><span class="v">4,6</span><span class="v">4,8</span><span class="v">5,0</span><span class="v">5,2</span></td>
+        <td class="ang">13 или 15</td>
+      </tr>
+      <tr>
+        <td class="item">GS2-0252015-d</td>
+        <td class="spec">25×20</td>
+        <td class="holes"><span class="v">4,8</span><span class="v">5,0</span><span class="v">5,2</span><span class="v">5,4</span><span class="v">5,6</span><span class="v">5,8</span><span class="v">6,0</span></td>
+        <td class="ang">15</td>
+      </tr>
+      <tr class="z">
+        <td class="item">GS2-0252016-d</td>
+        <td class="spec">25×20</td>
+        <td class="holes"><span class="v">6,2</span><span class="v">6,4</span><span class="v">6,6</span></td>
+        <td class="ang">16</td>
+      </tr>
+      <tr>
+        <td class="item">GS2-0282013-d</td>
+        <td class="spec">28×20</td>
+        <td class="holes"><span class="v">4,0</span><span class="v">4,5</span><span class="v">5,6</span><span class="v">6,3</span></td>
+        <td class="ang">13</td>
+      </tr>
+      <tr class="z">
+        <td class="item">GS2-0301920-d</td>
+        <td class="spec">30×19</td>
+        <td class="holes"><span class="v">7,75</span><span class="v">7,95</span></td>
+        <td class="ang">20</td>
+      </tr>
+      <tr>
+        <td class="item">GS2-0302016-d</td>
+        <td class="spec">30×20</td>
+        <td class="holes"><span class="v">6,0</span><span class="v">6,4</span><span class="v">6,7</span><span class="v">7,0</span><span class="v">7,4</span><span class="v">7,8</span><span class="v">8,0</span><span class="v">8,4</span><span class="v">8,8</span></td>
+        <td class="ang">16</td>
+      </tr>
+      <tr class="z">
+        <td class="item">GS2-0302112-d</td>
+        <td class="spec">30×21</td>
+        <td class="holes"><span class="v">5,7</span><span class="v">6,0</span><span class="v">6,5</span><span class="v">7,0</span><span class="v">7,5</span><span class="v">8,0</span></td>
+        <td class="ang">12</td>
+      </tr>
+      <tr>
+        <td class="item">GS2-0302116-d</td>
+        <td class="spec">30×21</td>
+        <td class="holes"><span class="v">7,0</span><span class="v">7,8</span><span class="v">9,5</span><span class="v">10,6</span></td>
+        <td class="ang">16</td>
+      </tr>
+      <tr class="z">
+        <td class="item">GS2-0352516-d</td>
+        <td class="spec">35×25</td>
+        <td class="holes"><span class="v">9,0</span><span class="v">9,5</span><span class="v">9,8</span><span class="v">10,5</span><span class="v">11,5</span><span class="v">12,0</span></td>
+        <td class="ang">16</td>
+      </tr></tbody>
+  </table>
+   </section>
+
+<!-- GV -->
+<section class="sheet ">
+     <header class="sec-head"><span class="kicker">Твердосплавные волоки</span><h2>GV — волоки для проволоки и прутка</h2></header>
+     <figure class="fig"><img src="img/gv.png" alt="GV: ∅D — наружный диаметр, ∅D1 — диаметр вставки, ∅d — диаметр отверстия, 2α — угол рабочего конуса, 2Y — угол выходного конуса, R — радиус входа, 1,5×45° — фаска"><figcaption>GV: ∅D — наружный диаметр, ∅D1 — диаметр вставки, ∅d — диаметр отверстия, 2α — угол рабочего конуса, 2Y — угол выходного конуса, R — радиус входа, 1,5×45° — фаска</figcaption></figure>
+  <table class="spec-table">
+    <thead>
+      <tr class="plate"><th colspan="4">Волоки GV для проволоки и прутка</th></tr>
+      <tr class="head">
+        <th class="item">Обозначение изделия</th>
+        <th class="spec">Размеры D×H<span class="u">мм</span></th>
+        <th class="holes">Диаметр отверстия d<span class="u">мм</span></th>
+        <th class="ang">Угол рабочего конуса 2α<span class="u">град.</span></th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td class="item">GV-0151312-d</td>
+        <td class="spec">15×13</td>
+        <td class="holes"><span class="v">0,6</span><span class="v">0,7</span><span class="v">0,8</span><span class="v">0,9</span><span class="v">1,0</span><span class="v">1,1</span><span class="v">1,2</span><span class="v">1,3</span><span class="v">1,4</span><span class="v">1,5</span><span class="v">1,6</span><span class="v">1,7</span><span class="v">1,8</span><span class="v">1,9</span><span class="v">2,0</span><span class="v">2,1</span><span class="v">2,3</span><span class="v">2,4</span><span class="v">2,5</span><span class="v">2,6</span><span class="v">2,7</span><span class="v">2,8</span><span class="v">3,0</span><span class="v">3,3</span><span class="v">3,6</span></td>
+        <td class="ang">12 или 18</td>
+      </tr>
+      <tr class="z">
+        <td class="item">GV-0161314-D</td>
+        <td class="spec">16×13</td>
+        <td class="holes"><span class="v">0,4</span><span class="v">0,8</span><span class="v">1,2</span><span class="v">1,25</span><span class="v">1,3</span><span class="v">1,35</span><span class="v">1,4</span><span class="v">1,45</span><span class="v">1,5</span><span class="v">1,55</span><span class="v">1,6</span><span class="v">1,65</span><span class="v">1,7</span><span class="v">1,75</span><span class="v">1,78</span><span class="v">1,8</span><span class="v">1,85</span><span class="v">1,9</span><span class="v">1,95</span><span class="v">2,0</span><span class="v">2,1</span><span class="v">2,03</span><span class="v">2,05</span><span class="v">2,15</span><span class="v">2,2</span><span class="v">2,25</span><span class="v">2,3</span><span class="v">2,34</span><span class="v">2,35</span><span class="v">2,4</span><span class="v">2,45</span><span class="v">2,5</span><span class="v">2,55</span><span class="v">2,6</span><span class="v">2,65</span><span class="v">2,7</span><span class="v">2,8</span><span class="v">2,9</span></td>
+        <td class="ang">14 или 10 или 8</td>
+      </tr>
+      <tr>
+        <td class="item">GV-0171512-d</td>
+        <td class="spec">17×15</td>
+        <td class="holes"><span class="v">0,8</span><span class="v">1,0</span><span class="v">1,5</span><span class="v">2,0</span><span class="v">2,5</span><span class="v">3,0</span></td>
+        <td class="ang">12 или 14</td>
+      </tr>
+      <tr class="z">
+        <td class="item">GV-0171514-d</td>
+        <td class="spec">17,7×15</td>
+        <td class="holes"><span class="v">0,6</span><span class="v">0,7</span><span class="v">0,8</span><span class="v">0,9</span><span class="v">1,1</span><span class="v">1,3</span><span class="v">1,5</span><span class="v">1,7</span><span class="v">1,9</span><span class="v">2,1</span><span class="v">2,3</span><span class="v">2,4</span><span class="v">2,7</span><span class="v">2,9</span><span class="v">3,1</span><span class="v">3,3</span><span class="v">3,5</span><span class="v">3,7</span><span class="v">3,9</span><span class="v">4,1</span><span class="v">4,3</span><span class="v">4,5</span><span class="v">4,7</span><span class="v">4,9</span><span class="v">5,1</span><span class="v">5,3</span><span class="v">5,5</span><span class="v">5,7</span><span class="v">5,9</span></td>
+        <td class="ang">14</td>
+      </tr>
+      <tr>
+        <td class="item">GV-0181814-d</td>
+        <td class="spec">18,7×18,1</td>
+        <td class="holes"><span class="v">3,9</span><span class="v">4,5</span><span class="v">4,9</span><span class="v">6,0</span></td>
+        <td class="ang">14</td>
+      </tr>
+      <tr class="z">
+        <td class="item">GV-181513-d</td>
+        <td class="spec">18,9×15,3</td>
+        <td class="holes"><span class="v">1,5</span><span class="v">1,8</span><span class="v">2,0</span><span class="v">2,3</span><span class="v">2,5</span><span class="v">2,8</span><span class="v">3,0</span><span class="v">3,3</span><span class="v">3,6</span><span class="v">3,9</span><span class="v">4,2</span><span class="v">4,5</span><span class="v">4,7</span><span class="v">4,9</span><span class="v">5,2</span><span class="v">5,4</span><span class="v">5,6</span><span class="v">5,7</span><span class="v">6,0</span></td>
+        <td class="ang">13,5 (13 или 14)</td>
+      </tr>
+      <tr>
+        <td class="item">GV-0201412-d</td>
+        <td class="spec">20×14</td>
+        <td class="holes"><span class="v">2,05</span><span class="v">2,10</span><span class="v">2,15</span><span class="v">2,20</span><span class="v">2,25</span><span class="v">2,30</span><span class="v">2,35</span><span class="v">2,40</span><span class="v">2,45</span><span class="v">2,50</span><span class="v">2,55</span><span class="v">2,60</span><span class="v">2,65</span><span class="v">2,70</span><span class="v">2,75</span><span class="v">2,80</span><span class="v">2,85</span><span class="v">2,90</span><span class="v">2,90</span><span class="v">3,00</span><span class="v">3,4</span></td>
+        <td class="ang">12</td>
+      </tr>
+      <tr class="z">
+        <td class="item">GV-0201414-d</td>
+        <td class="spec">20×14</td>
+        <td class="holes"><span class="v">1,1</span><span class="v">1,6</span><span class="v">2,0</span><span class="v">3,05</span><span class="v">3,10</span><span class="v">3,15</span><span class="v">3,20</span><span class="v">3,25</span><span class="v">3,30</span><span class="v">3,35</span><span class="v">3,40</span><span class="v">3,45</span><span class="v">3,50</span><span class="v">3,55</span><span class="v">3,8</span><span class="v">4,0</span><span class="v">4,2</span><span class="v">4,7</span><span class="v">4,8</span><span class="v">5,0</span><span class="v">5,2</span></td>
+        <td class="ang">14</td>
+      </tr>
+      <tr>
+        <td class="item">GV-0201524-d</td>
+        <td class="spec">20×15</td>
+        <td class="holes"><span class="v">3,0</span><span class="v">3,3</span><span class="v">3,5</span><span class="v">3,8</span><span class="v">4,0</span><span class="v">4,3</span><span class="v">4,5</span><span class="v">4,8</span><span class="v">5,2</span><span class="v">5,5</span><span class="v">5,7</span><span class="v">6,0</span></td>
+        <td class="ang">24</td>
+      </tr>
+      <tr class="z">
+        <td class="item">GV-0201710-d</td>
+        <td class="spec">20×15</td>
+        <td class="holes"><span class="v">1,0</span><span class="v">1,2</span><span class="v">1,7</span></td>
+        <td class="ang">10,5</td>
+      </tr>
+      <tr>
+        <td class="item">GV-0201612-d</td>
+        <td class="spec">20,4×16</td>
+        <td class="holes"><span class="v">1,5</span><span class="v">1,8</span><span class="v">2,0</span><span class="v">2,3</span><span class="v">2,5</span><span class="v">2,8</span><span class="v">3,0</span><span class="v">3,3</span><span class="v">3,5</span><span class="v">3,8</span><span class="v">4,0</span><span class="v">4,2</span><span class="v">4,5</span><span class="v">4,9</span><span class="v">5,2</span><span class="v">5,4</span><span class="v">5,7</span><span class="v">6,0</span></td>
+        <td class="ang">12</td>
+      </tr>
+      <tr class="z">
+        <td class="item">GV-0221816-d</td>
+        <td class="spec">22×18</td>
+        <td class="holes"><span class="v">1,6</span><span class="v">2,1</span><span class="v">2,4</span><span class="v">2,6</span><span class="v">2,7</span><span class="v">2,8</span><span class="v">3,0</span><span class="v">3,1</span><span class="v">3,15</span><span class="v">3,2</span><span class="v">3,3</span><span class="v">3,35</span><span class="v">3,4</span><span class="v">3,45</span><span class="v">3,5</span><span class="v">3,55</span><span class="v">3,6</span><span class="v">3,65</span><span class="v">3,7</span><span class="v">3,75</span><span class="v">3,8</span><span class="v">3,9</span><span class="v">3,95</span><span class="v">4,0</span><span class="v">4,05</span><span class="v">4,1</span><span class="v">4,15</span><span class="v">4,2</span><span class="v">4,25</span><span class="v">4,3</span><span class="v">4,35</span><span class="v">4,4</span><span class="v">4,45</span><span class="v">4,5</span><span class="v">4,6</span><span class="v">4,65</span><span class="v">4,7</span><span class="v">4,75</span><span class="v">4,8</span><span class="v">4,85</span><span class="v">4,9</span><span class="v">4,95</span><span class="v">5,0</span><span class="v">5,05</span><span class="v">5,1</span><span class="v">5,15</span><span class="v">5,2</span><span class="v">5,25</span><span class="v">5,3</span><span class="v">5,35</span><span class="v">5,4</span><span class="v">5,45</span><span class="v">5,5</span><span class="v">5,55</span><span class="v">5,6</span><span class="v">5,65</span><span class="v">5,7</span><span class="v">5,75</span><span class="v">5,8</span><span class="v">5,85</span><span class="v">5,9</span><span class="v">5,95</span><span class="v">6,0</span><span class="v">6,1</span><span class="v">6,2</span><span class="v">6,3</span><span class="v">6,4</span><span class="v">6,5</span><span class="v">6,6</span><span class="v">6,7</span><span class="v">6,8</span><span class="v">6,9</span></td>
+        <td class="ang">14 или 16</td>
+      </tr>
+      <tr>
+        <td class="item">GV-0221820-d</td>
+        <td class="spec">22×18</td>
+        <td class="holes"><span class="v">3,0</span><span class="v">3,18</span><span class="v">3,4</span><span class="v">3,5</span><span class="v">3,6</span><span class="v">3,7</span><span class="v">3,8</span><span class="v">3,93</span><span class="v">4,0</span><span class="v">4,2</span><span class="v">4,5</span><span class="v">4,78</span><span class="v">5,0</span></td>
+        <td class="ang">20</td>
+      </tr>
+      <tr class="z">
+        <td class="item">GV-02218224-d</td>
+        <td class="spec">22×18</td>
+        <td class="holes"><span class="v">5,4</span><span class="v">5,8</span><span class="v">6,0</span><span class="v">6,35</span><span class="v">6,4</span></td>
+        <td class="ang">24</td>
+      </tr>
+      <tr>
+        <td class="item">GV-0231522-d</td>
+        <td class="spec">23×16</td>
+        <td class="holes"><span class="v">6,5</span><span class="v">8,5</span></td>
+        <td class="ang">22</td>
+      </tr>
+      <tr class="z">
+        <td class="item">GV-0231516-d</td>
+        <td class="spec">23,8×15,8</td>
+        <td class="holes"><span class="v">5,7</span><span class="v">6,0</span><span class="v">6,2</span><span class="v">6,5</span><span class="v">6,8</span><span class="v">7,0</span><span class="v">7,3</span><span class="v">7,5</span><span class="v">7,7</span><span class="v">8,2</span><span class="v">8,6</span></td>
+        <td class="ang">16</td>
+      </tr>
+      <tr>
+        <td class="item">GV-0241825-D</td>
+        <td class="spec">24×18</td>
+        <td class="holes"><span class="v">10,5</span></td>
+        <td class="ang">25</td>
+      </tr>
+      <tr class="z">
+        <td class="item">GV-0251716-d</td>
+        <td class="spec">25×17,9</td>
+        <td class="holes"><span class="v">5,8</span><span class="v">6,0</span><span class="v">6,3</span><span class="v">6,5</span><span class="v">6,7</span><span class="v">7,0</span><span class="v">7,3</span><span class="v">7,7</span><span class="v">8,2</span><span class="v">8,8</span><span class="v">9,2</span><span class="v">9,5</span></td>
+        <td class="ang">16</td>
+      </tr>
+      <tr>
+        <td class="item">GV-0282013-d</td>
+        <td class="spec">28×20</td>
+        <td class="holes"><span class="v">5,5</span><span class="v">6,2</span><span class="v">6,5</span><span class="v">7,0</span><span class="v">8,0</span><span class="v">8,8</span></td>
+        <td class="ang">13</td>
+      </tr>
+      <tr class="z">
+        <td class="item">GV-0282414-d</td>
+        <td class="spec">28,7×24</td>
+        <td class="holes"><span class="v">3,5</span><span class="v">4,0</span><span class="v">5,8</span><span class="v">6,0</span><span class="v">6,3</span><span class="v">6,6</span><span class="v">6,9</span><span class="v">7,2</span><span class="v">7,4</span><span class="v">7,5</span><span class="v">7,8</span><span class="v">8,1</span><span class="v">8,4</span><span class="v">8,7</span><span class="v">9,0</span><span class="v">9,3</span><span class="v">9,6</span><span class="v">9,9</span><span class="v">10,2</span><span class="v">10,5</span><span class="v">10,8</span><span class="v">11,1</span><span class="v">11,4</span><span class="v">11,7</span><span class="v">12,0</span></td>
+        <td class="ang">14</td>
+      </tr>
+      <tr>
+        <td class="item">GV-0282418-d</td>
+        <td class="spec">28,7×24</td>
+        <td class="holes"><span class="v">7,95</span><span class="v">8,5</span><span class="v">11,95</span><span class="v">12</span></td>
+        <td class="ang">18</td>
+      </tr>
+      <tr class="z">
+        <td class="item">GV-0301824-d</td>
+        <td class="spec">30×18</td>
+        <td class="holes"><span class="v">7,7</span><span class="v">8,0</span><span class="v">8,2</span><span class="v">8,5</span><span class="v">8,7</span><span class="v">9,0</span><span class="v">9,2</span><span class="v">9,5</span><span class="v">9,7</span><span class="v">11,0</span><span class="v">12,0</span></td>
+        <td class="ang">24</td>
+      </tr>
+      <tr>
+        <td class="item">GV-0302216-d</td>
+        <td class="spec">30×22</td>
+        <td class="holes"><span class="v">3,8</span><span class="v">4,0</span><span class="v">4,8</span></td>
+        <td class="ang">16</td>
+      </tr>
+      <tr class="z">
+        <td class="item">GV-0332020-d</td>
+        <td class="spec">33,8×20,8</td>
+        <td class="holes"><span class="v">10,5</span><span class="v">11,5</span><span class="v">12,5</span><span class="v">13,5</span><span class="v">14,5</span><span class="v">15,5</span></td>
+        <td class="ang">20</td>
+      </tr></tbody>
+  </table>
+   </section>
+
+<!-- GW -->
+<section class="sheet ">
+     <header class="sec-head"><span class="kicker">Твердосплавные волоки</span><h2>GW — волоки для проволоки и прутка</h2></header>
+     <figure class="fig"><img src="img/gw.png" alt="GW: ∅D — наружный диаметр, ∅d — диаметр отверстия, 2α — угол рабочего конуса, 2Y — угол выходного конуса, R — радиус входа, h, h1 — калибрующая зона и выходной конус, H — высота"><figcaption>GW: ∅D — наружный диаметр, ∅d — диаметр отверстия, 2α — угол рабочего конуса, 2Y — угол выходного конуса, R — радиус входа, h, h1 — калибрующая зона и выходной конус, H — высота</figcaption></figure>
+  <table class="spec-table">
+    <thead>
+      <tr class="plate"><th colspan="4">Волоки GW для проволоки и прутка</th></tr>
+      <tr class="head">
+        <th class="item">Обозначение изделия</th>
+        <th class="spec">Размеры D×H<span class="u">мм</span></th>
+        <th class="holes">Диаметр отверстия d<span class="u">мм</span></th>
+        <th class="ang">Угол рабочего конуса 2α<span class="u">град.</span></th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td class="item">GW-0100810-d</td>
+        <td class="spec">10×8</td>
+        <td class="holes"><span class="v">0,44</span><span class="v">0,48</span><span class="v">0,52</span><span class="v">0,56</span><span class="v">0,62</span><span class="v">0,67</span></td>
+        <td class="ang">10</td>
+      </tr>
+      <tr class="z">
+        <td class="item">GW-0120810-d</td>
+        <td class="spec">12×8</td>
+        <td class="holes"><span class="v">0,3</span><span class="v">0,35</span><span class="v">0,4</span><span class="v">0,45</span><span class="v">0,5</span><span class="v">0,6</span><span class="v">0,7</span><span class="v">0,8</span><span class="v">0,9</span><span class="v">1,0</span><span class="v">1,1.</span><span class="v">1,2</span><span class="v">1,3</span><span class="v">1,4</span><span class="v">1,5</span><span class="v">1,6</span><span class="v">1,7</span><span class="v">1,8</span><span class="v">1,9</span><span class="v">2,0</span><span class="v">2,2</span><span class="v">2,3</span><span class="v">2,4</span></td>
+        <td class="ang">10,5 или 18</td>
+      </tr>
+      <tr>
+        <td class="item">GW-0121311-d</td>
+        <td class="spec">13×13</td>
+        <td class="holes"><span class="v">0,6</span><span class="v">0,67</span><span class="v">0,7</span><span class="v">0,72</span><span class="v">0,8</span><span class="v">0,9</span><span class="v">1,0</span><span class="v">1,2</span></td>
+        <td class="ang">11</td>
+      </tr>
+      <tr class="z">
+        <td class="item">GW-0151012-d</td>
+        <td class="spec">15×10</td>
+        <td class="holes"><span class="v">1,2</span><span class="v">1,6</span><span class="v">1,8</span><span class="v">2,0</span><span class="v">2,2</span><span class="v">2,4</span><span class="v">2,6</span><span class="v">2,8</span><span class="v">3,0</span><span class="v">3,2</span><span class="v">3,4</span><span class="v">3,6</span><span class="v">3,8</span><span class="v">4,2</span><span class="v">4,7</span><span class="v">4,9</span></td>
+        <td class="ang">12</td>
+      </tr>
+      <tr>
+        <td class="item">GW-0151312-d</td>
+        <td class="spec">15×13</td>
+        <td class="holes"><span class="v">1,2</span><span class="v">1,6</span><span class="v">1,8</span><span class="v">2,2</span><span class="v">2,4</span><span class="v">2,5</span><span class="v">2,6</span><span class="v">2,7</span><span class="v">2,8</span><span class="v">2,9</span><span class="v">3,0</span></td>
+        <td class="ang">12</td>
+      </tr>
+      <tr class="z">
+        <td class="item">GW-0191712-d</td>
+        <td class="spec">19,3×17</td>
+        <td class="holes"><span class="v">2,0</span><span class="v">2,1</span><span class="v">2,2</span><span class="v">2,3</span><span class="v">2,4</span><span class="v">2,5</span><span class="v">2,6</span><span class="v">2,7</span><span class="v">2,8</span><span class="v">2,9</span><span class="v">3,0</span></td>
+        <td class="ang">12</td>
+      </tr>
+      <tr>
+        <td class="item">GW-0191714-d</td>
+        <td class="spec">19,3×17</td>
+        <td class="holes"><span class="v">3,1</span><span class="v">3,2</span><span class="v">3,3</span><span class="v">3,4</span><span class="v">3,5</span><span class="v">3,6</span><span class="v">3,7</span><span class="v">3,8</span><span class="v">3,9</span><span class="v">4,0</span><span class="v">4,1</span><span class="v">4,2</span><span class="v">4,3</span><span class="v">4,4</span><span class="v">4,5</span><span class="v">4,6</span><span class="v">4,7</span><span class="v">4,8</span><span class="v">4,9</span><span class="v">5,0</span><span class="v">5,1</span><span class="v">5,2</span><span class="v">5,3</span><span class="v">5,4</span><span class="v">5,5</span><span class="v">5,6</span><span class="v">5,7</span><span class="v">5,8</span><span class="v">5,9</span><span class="v">6,0</span><span class="v">6,1</span><span class="v">6,2</span><span class="v">6,3</span><span class="v">6,4</span><span class="v">6,5</span><span class="v">6,6</span><span class="v">6,7</span><span class="v">.6,8</span><span class="v">6,9</span><span class="v">7,0</span><span class="v">7,1</span><span class="v">7,2</span><span class="v">7,3</span><span class="v">7,4</span><span class="v">7,35</span><span class="v">7,6</span><span class="v">7,7</span><span class="v">7,8</span><span class="v">7,9</span><span class="v">8,0</span></td>
+        <td class="ang">14</td>
+      </tr>
+      <tr class="z">
+        <td class="item">GW-0201618-d</td>
+        <td class="spec">20×16</td>
+        <td class="holes"><span class="v">2,8</span></td>
+        <td class="ang">18</td>
+      </tr>
+      <tr>
+        <td class="item">GW-0201710-d</td>
+        <td class="spec">20×17</td>
+        <td class="holes"><span class="v">4,7</span><span class="v">5,2</span></td>
+        <td class="ang">10</td>
+      </tr>
+      <tr class="z">
+        <td class="item">GW-0201709-d</td>
+        <td class="spec">20×17</td>
+        <td class="holes"><span class="v">5</span></td>
+        <td class="ang">9</td>
+      </tr>
+      <tr>
+        <td class="item">GW-0201816-d</td>
+        <td class="spec">20×18</td>
+        <td class="holes"><span class="v">6,7</span></td>
+        <td class="ang">16</td>
+      </tr>
+      <tr class="z">
+        <td class="item">GW-0242014-d</td>
+        <td class="spec">24,8×20</td>
+        <td class="holes"><span class="v">5,1</span><span class="v">5,4</span><span class="v">5,7</span><span class="v">6,0</span><span class="v">6,3</span><span class="v">6,6</span><span class="v">7,0</span><span class="v">7,2</span><span class="v">7,5</span><span class="v">7,8</span><span class="v">8,1</span><span class="v">8,4</span><span class="v">8,7</span><span class="v">9,0</span><span class="v">9,3</span><span class="v">9,6</span><span class="v">9,9</span><span class="v">10,2</span><span class="v">10,5</span><span class="v">10,8</span><span class="v">11,1</span></td>
+        <td class="ang">14</td>
+      </tr>
+      <tr>
+        <td class="item">GW-0251816-d</td>
+        <td class="spec">25×18</td>
+        <td class="holes"><span class="v">5,4</span><span class="v">5,9</span><span class="v">6,3</span><span class="v">7,0</span><span class="v">7,7</span></td>
+        <td class="ang">16</td>
+      </tr>
+      <tr class="z">
+        <td class="item">GW-0251824-d</td>
+        <td class="spec">25×18</td>
+        <td class="holes"><span class="v">5,7</span><span class="v">6,0</span><span class="v">6,2</span><span class="v">6,5</span><span class="v">6,7</span><span class="v">7,0</span><span class="v">7,2</span><span class="v">7,5</span><span class="v">7,7</span></td>
+        <td class="ang">26</td>
+      </tr>
+      <tr>
+        <td class="item">GW-0271813-d</td>
+        <td class="spec">27×18</td>
+        <td class="holes"><span class="v">4,7</span><span class="v">5,7</span><span class="v">6,2</span><span class="v">6,7</span><span class="v">7,0</span><span class="v">7,3</span><span class="v">7,7</span><span class="v">8,2</span><span class="v">8,6</span><span class="v">9,2</span><span class="v">9,6</span><span class="v">10,2</span></td>
+        <td class="ang">10 или 13</td>
+      </tr>
+      <tr class="z">
+        <td class="item">GW-0271822-d</td>
+        <td class="spec">27,3×18</td>
+        <td class="holes"><span class="v">10,2</span></td>
+        <td class="ang">22</td>
+      </tr>
+      <tr>
+        <td class="item">GW-0282013-d</td>
+        <td class="spec">28×20</td>
+        <td class="holes"><span class="v">5,5</span><span class="v">6,0</span><span class="v">6,2</span><span class="v">6,5</span><span class="v">6,7</span><span class="v">7,0</span><span class="v">8,0</span><span class="v">8,8</span></td>
+        <td class="ang">12 или 13</td>
+      </tr>
+      <tr class="z">
+        <td class="item">GW-0282113-d</td>
+        <td class="spec">28×21</td>
+        <td class="holes"><span class="v">7,0</span><span class="v">7,5</span><span class="v">8,0</span><span class="v">8,5</span><span class="v">8,8</span><span class="v">9,2</span><span class="v">9,5</span></td>
+        <td class="ang">13</td>
+      </tr>
+      <tr>
+        <td class="item">GW-0302124-d</td>
+        <td class="spec">30×21</td>
+        <td class="holes"><span class="v">8,0</span><span class="v">9,7</span><span class="v">10,0</span><span class="v">10,5</span><span class="v">11,0</span><span class="v">11,5</span></td>
+        <td class="ang">24</td>
+      </tr>
+      <tr class="z">
+        <td class="item">GW-0302216-d</td>
+        <td class="spec">30×22</td>
+        <td class="holes"><span class="v">5,9</span><span class="v">8,0</span><span class="v">9,0</span></td>
+        <td class="ang">16</td>
+      </tr>
+      <tr>
+        <td class="item">GW-0302414-d</td>
+        <td class="spec">30×24</td>
+        <td class="holes"><span class="v">7,2</span><span class="v">7,8</span><span class="v">8,4</span><span class="v">9,0</span><span class="v">9,9</span><span class="v">10,8</span></td>
+        <td class="ang">14</td>
+      </tr>
+      <tr class="z">
+        <td class="item">GW-0332414-d</td>
+        <td class="spec">33×24</td>
+        <td class="holes"><span class="v">8,6</span><span class="v">9,9</span><span class="v">10,5</span><span class="v">11</span></td>
+        <td class="ang">13 или 14</td>
+      </tr>
+      <tr>
+        <td class="item">GW-0332020-d</td>
+        <td class="spec">33,8×20,8</td>
+        <td class="holes"><span class="v">9,5</span><span class="v">10,5</span><span class="v">11,5</span><span class="v">12,5</span><span class="v">13,5</span><span class="v">14,5</span><span class="v">15,5</span></td>
+        <td class="ang">20</td>
+      </tr>
+      <tr class="z">
+        <td class="item">GW-0342414-d</td>
+        <td class="spec">34,9×24</td>
+        <td class="holes"><span class="v">4,0</span><span class="v">5,1</span><span class="v">10,1</span><span class="v">10,4</span><span class="v">10,7</span><span class="v">11,0</span><span class="v">11,3</span><span class="v">11,7</span><span class="v">12,2</span><span class="v">12,7</span><span class="v">13,2</span><span class="v">13,6</span><span class="v">14,0</span><span class="v">14,3</span><span class="v">14,7</span><span class="v">15,0</span><span class="v">15,3</span><span class="v">15,7</span><span class="v">16,2</span><span class="v">16,7</span><span class="v">17,0</span><span class="v">17,4</span></td>
+        <td class="ang">12 или 14</td>
+      </tr>
+      <tr>
+        <td class="item">GW-0352024-d</td>
+        <td class="spec">35×20</td>
+        <td class="holes"><span class="v">12,5</span><span class="v">13,0</span><span class="v">13,5</span><span class="v">14,5</span><span class="v">15,5</span></td>
+        <td class="ang">24</td>
+      </tr>
+      <tr class="z">
+        <td class="item">GW-0352224-d</td>
+        <td class="spec">35×22</td>
+        <td class="holes"><span class="v">11,5</span><span class="v">12,0</span><span class="v">12,5</span><span class="v">13,0</span><span class="v">13,5</span><span class="v">14,0</span><span class="v">14,5</span><span class="v">15</span><span class="v">15,5</span></td>
+        <td class="ang">24</td>
+      </tr>
+      <tr>
+        <td class="item">GW-0372420-d</td>
+        <td class="spec">37,9×24</td>
+        <td class="holes"><span class="v">11,5</span><span class="v">12,5</span><span class="v">13,5</span><span class="v">14,5</span><span class="v">15,5</span><span class="v">16,5</span><span class="v">17,5</span></td>
+        <td class="ang">20</td>
+      </tr>
+      <tr class="z">
+        <td class="item">GW-0382413-d</td>
+        <td class="spec">38×24</td>
+        <td class="holes"><span class="v">9,3</span><span class="v">9,6</span><span class="v">10,5</span><span class="v">11,0</span></td>
+        <td class="ang">13</td>
+      </tr></tbody>
+  </table>
+   </section>
+
+<!-- GY01 -->
+<section class="sheet ">
+     <header class="sec-head"><span class="kicker">Твердосплавные волоки</span><h2>GY01 — напорные волоки</h2></header>
+     <figure class="fig"><img src="img/gy01.png" alt="GY01: ∅12,63 — наружный диаметр, 11,5 — высота, ∅d — диаметр отверстия, 2α — угол рабочего конуса, h — калибрующая зона, 60° и 4,8° — углы наружного контура"><figcaption>GY01: ∅12,63 — наружный диаметр, 11,5 — высота, ∅d — диаметр отверстия, 2α — угол рабочего конуса, h — калибрующая зона, 60° и 4,8° — углы наружного контура</figcaption></figure>
+  <table class="spec-table">
+    <thead>
+      <tr class="plate"><th colspan="4">Напорные волоки GY01</th></tr>
+      <tr class="head">
+        <th class="item">Обозначение изделия</th>
+        <th class="spec">Размеры D×H<span class="u">мм</span></th>
+        <th class="holes">Диаметр отверстия d<span class="u">мм</span></th>
+        <th class="ang">Угол рабочего конуса 2α<span class="u">град.</span></th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td class="item">GY01-0121111-d</td>
+        <td class="spec">12,66×11,5</td>
+        <td class="holes"><span class="v">0,40</span><span class="v">0,45</span><span class="v">0,50</span><span class="v">0,55</span><span class="v">0,60</span><span class="v">0,65</span><span class="v">0,70</span><span class="v">0,75</span><span class="v">0,80</span><span class="v">0,85</span><span class="v">0,95</span><span class="v">1,00</span><span class="v">1,10</span><span class="v">1,20</span><span class="v">1,30</span><span class="v">1,40</span><span class="v">1,50</span><span class="v">1,60</span><span class="v">1,70</span><span class="v">1,80</span><span class="v">1,90</span><span class="v">2,00</span><span class="v">2,10</span><span class="v">2,20</span><span class="v">2,30</span><span class="v">2,40</span><span class="v">2,50</span></td>
+        <td class="ang">11,5°</td>
+      </tr>
+      <tr class="z">
+        <td class="item">GY01-0121113-d</td>
+        <td class="spec">12,66×11,5</td>
+        <td class="holes"><span class="v">2,60</span><span class="v">2,70</span><span class="v">2,80</span><span class="v">2,90</span><span class="v">3,00</span><span class="v">3,10</span><span class="v">3,20</span><span class="v">3,30</span><span class="v">3,40</span><span class="v">3,50</span><span class="v">3,60</span><span class="v">3,70</span><span class="v">3,80</span><span class="v">3,90</span><span class="v">4,00</span><span class="v">4,10</span><span class="v">4,20</span><span class="v">4,30</span><span class="v">4,40</span><span class="v">4,50</span><span class="v">4,60</span><span class="v">4,70</span><span class="v">4,80</span><span class="v">4,90</span><span class="v">5,00</span><span class="v">5,10</span><span class="v">5,20</span><span class="v">5,30</span><span class="v">5,40</span><span class="v">5,50</span><span class="v">5,60</span><span class="v">5,70</span><span class="v">5,80</span><span class="v">5,90</span><span class="v">6,00</span></td>
+        <td class="ang">13,5°</td>
+      </tr>
+      <tr>
+        <td class="item">GY01-0171711-d</td>
+        <td class="spec">17,77×17,8</td>
+        <td class="holes"><span class="v">5,8</span><span class="v">6,4</span><span class="v">7,0</span></td>
+        <td class="ang">11°</td>
+      </tr></tbody>
+  </table>
+  <table class="spec-table narrow-table">
+    <thead>
+      <tr class="plate"><th colspan="2">Допуски на диаметр отверстия</th></tr>
+      <tr class="head">
+        <th class="num">Диаметр отверстия d<span class="u">мм</span></th>
+        <th class="num">Допуск<span class="u">мм</span></th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td class="num">&lt; 0,50</td>
+        <td class="num">0 / - 0,06</td>
+      </tr>
+      <tr class="z">
+        <td class="num">0,50–1,30</td>
+        <td class="num">0 / - 0,10</td>
+      </tr>
+      <tr>
+        <td class="num">1,40–3,00</td>
+        <td class="num">0 / - 0,15</td>
+      </tr>
+      <tr class="z">
+        <td class="num">&gt; 3,00</td>
+        <td class="num">0 / - 0,20</td>
+      </tr></tbody>
+  </table>
+   </section>
+
+<!-- G22 -->
+<section class="sheet ">
+     <header class="sec-head"><span class="kicker">Твердосплавные волоки</span><h2>G22 — волоки для волочения труб</h2></header>
+     <figure class="fig"><img src="img/g22.png" alt="G22: ∅D — наружный диаметр, ∅d — диаметр отверстия, 2α — угол рабочего конуса, 2Y — угол выходного конуса, R — радиус входа, h, h1 — калибрующая зона и выходной конус, H — высота, a×b° — фаска"><figcaption>G22: ∅D — наружный диаметр, ∅d — диаметр отверстия, 2α — угол рабочего конуса, 2Y — угол выходного конуса, R — радиус входа, h, h1 — калибрующая зона и выходной конус, H — высота, a×b° — фаска</figcaption></figure>
+  <table class="spec-table">
+    <thead>
+      <tr class="plate"><th colspan="4">Волоки G22 для волочения труб</th></tr>
+      <tr class="head">
+        <th class="item">Обозначение изделия</th>
+        <th class="spec">Размеры D×H<span class="u">мм</span></th>
+        <th class="holes">Диаметр отверстия d<span class="u">мм</span></th>
+        <th class="ang">Угол рабочего конуса 2α<span class="u">град.</span></th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td class="item">G22-0282414-d</td>
+        <td class="spec">28,7×24</td>
+        <td class="holes"><span class="v">5,8</span><span class="v">6,0</span><span class="v">6,3</span><span class="v">6,6</span><span class="v">6,9</span><span class="v">7,2</span><span class="v">7,4</span><span class="v">7,5</span><span class="v">7,8</span><span class="v">8,1</span><span class="v">8,4</span><span class="v">8,7</span><span class="v">9,0</span><span class="v">9,3</span><span class="v">9,6</span><span class="v">9,9</span><span class="v">10,2</span><span class="v">10,5</span><span class="v">10,8</span><span class="v">11,1</span><span class="v">11,4</span><span class="v">11,7</span><span class="v">12,0</span></td>
+        <td class="ang">14</td>
+      </tr>
+      <tr class="z">
+        <td class="item">G22-0302124-d</td>
+        <td class="spec">30×21</td>
+        <td class="holes"><span class="v">8,0</span><span class="v">9,7</span><span class="v">10</span><span class="v">10,5</span><span class="v">11</span><span class="v">11,5</span></td>
+        <td class="ang">24</td>
+      </tr>
+      <tr>
+        <td class="item">G22-0332414-d</td>
+        <td class="spec">33×24</td>
+        <td class="holes"><span class="v">8,6</span><span class="v">9,9</span><span class="v">10,5</span><span class="v">11</span></td>
+        <td class="ang">13 или 14</td>
+      </tr>
+      <tr class="z">
+        <td class="item">G22-0332420-d</td>
+        <td class="spec">33,8×20,8</td>
+        <td class="holes"><span class="v">8,2</span><span class="v">9,5</span><span class="v">10,5</span><span class="v">11,5</span><span class="v">12,5</span><span class="v">13,5</span><span class="v">14,5</span></td>
+        <td class="ang">16 или 20</td>
+      </tr>
+      <tr>
+        <td class="item">G22-0342414-d</td>
+        <td class="spec">34,9×24</td>
+        <td class="holes"><span class="v">4,0</span><span class="v">5,1</span><span class="v">10,1</span><span class="v">10,4</span><span class="v">10,7</span><span class="v">11,0</span><span class="v">11,3</span><span class="v">11,7</span><span class="v">12,2</span><span class="v">12,7</span><span class="v">13,2</span><span class="v">13,6</span><span class="v">14,0</span><span class="v">14,3</span><span class="v">14,7</span><span class="v">15,0</span><span class="v">15,3</span><span class="v">15,7</span><span class="v">16,2</span><span class="v">16,7</span><span class="v">17,0</span><span class="v">17,4</span></td>
+        <td class="ang">12 или 14</td>
+      </tr>
+      <tr class="z">
+        <td class="item">G22-0352024-d</td>
+        <td class="spec">35×20</td>
+        <td class="holes"><span class="v">12,5</span><span class="v">13,5</span><span class="v">14,5</span><span class="v">15,5</span></td>
+        <td class="ang">24</td>
+      </tr>
+      <tr>
+        <td class="item">G22-0352224-d</td>
+        <td class="spec">35×22</td>
+        <td class="holes"><span class="v">11,5</span><span class="v">12,0</span><span class="v">12,5</span><span class="v">13,0</span><span class="v">13,5</span><span class="v">14,0</span><span class="v">14,5</span><span class="v">15,0</span><span class="v">15,5</span></td>
+        <td class="ang">24</td>
+      </tr>
+      <tr class="z">
+        <td class="item">G22-0372413-d</td>
+        <td class="spec">37,9×24</td>
+        <td class="holes"><span class="v">9,3</span><span class="v">9,6</span><span class="v">10,5</span><span class="v">11,0</span></td>
+        <td class="ang">13</td>
+      </tr>
+      <tr>
+        <td class="item">G22-0372420-d</td>
+        <td class="spec">37,9×24</td>
+        <td class="holes"><span class="v">11,5</span><span class="v">12,5</span><span class="v">13,5</span><span class="v">14,5</span><span class="v">15,5</span><span class="v">16,5</span><span class="v">17,5</span></td>
+        <td class="ang">20</td>
+      </tr>
+      <tr class="z">
+        <td class="item">G22-0392416-d</td>
+        <td class="spec">39,9×24</td>
+        <td class="holes"><span class="v">17</span><span class="v">17,5</span><span class="v">18</span><span class="v">18,5</span><span class="v">19</span><span class="v">20</span><span class="v">21</span></td>
+        <td class="ang">16</td>
+      </tr>
+      <tr>
+        <td class="item">G22-0392730-d</td>
+        <td class="spec">39,9×27</td>
+        <td class="holes"><span class="v">15,7</span><span class="v">18,1</span></td>
+        <td class="ang">30</td>
+      </tr>
+      <tr class="z">
+        <td class="item">G22-0402224-d</td>
+        <td class="spec">40×22</td>
+        <td class="holes"><span class="v">15,5</span><span class="v">16,5</span><span class="v">17,5</span><span class="v">18,5</span></td>
+        <td class="ang">24</td>
+      </tr>
+      <tr>
+        <td class="item">G22-0402524-d</td>
+        <td class="spec">40×25</td>
+        <td class="holes"><span class="v">15,5</span><span class="v">16,5</span><span class="v">17,5</span><span class="v">18,5</span><span class="v">19,5</span><span class="v">11,85</span><span class="v">12,85</span><span class="v">13,85</span><span class="v">17,5</span><span class="v">18,8</span></td>
+        <td class="ang">24 или 30 или 27</td>
+      </tr>
+      <tr class="z">
+        <td class="item">G22-0402730-d</td>
+        <td class="spec">40×27</td>
+        <td class="holes"><span class="v">17,7</span><span class="v">18,1</span></td>
+        <td class="ang">30</td>
+      </tr>
+      <tr>
+        <td class="item">G22-0424315-d</td>
+        <td class="spec">42×43</td>
+        <td class="holes"><span class="v">14,5</span><span class="v">14,65</span><span class="v">17,95</span></td>
+        <td class="ang">15</td>
+      </tr>
+      <tr class="z">
+        <td class="item">G22-0432220-d</td>
+        <td class="spec">43,9×22,7</td>
+        <td class="holes"><span class="v">17,0</span><span class="v">18,0</span><span class="v">19,0</span><span class="v">20,0</span><span class="v">21,0</span></td>
+        <td class="ang">20</td>
+      </tr>
+      <tr>
+        <td class="item">G22-0442618-d</td>
+        <td class="spec">44,8×26,5</td>
+        <td class="holes"><span class="v">21</span><span class="v">22</span><span class="v">23</span><span class="v">24</span><span class="v">25</span><span class="v">22,1</span></td>
+        <td class="ang">18 или 30</td>
+      </tr>
+      <tr class="z">
+        <td class="item">G22-0452424-d</td>
+        <td class="spec">45×24</td>
+        <td class="holes"><span class="v">19,5</span><span class="v">20,5</span><span class="v">21,5</span><span class="v">22,5</span></td>
+        <td class="ang">24</td>
+      </tr>
+      <tr>
+        <td class="item">G22-0452730-d</td>
+        <td class="spec">45×27</td>
+        <td class="holes"><span class="v">18,7</span></td>
+        <td class="ang">30</td>
+      </tr>
+      <tr class="z">
+        <td class="item">G22-0453530-d</td>
+        <td class="spec">45×35</td>
+        <td class="holes"><span class="v">15,5</span></td>
+        <td class="ang">30</td>
+      </tr>
+      <tr>
+        <td class="item">G22-0472519-d</td>
+        <td class="spec">47,8×25</td>
+        <td class="holes"><span class="v">17,5</span><span class="v">18,5</span><span class="v">19,5</span><span class="v">20,5</span><span class="v">21,5</span><span class="v">22,5</span><span class="v">23,5</span><span class="v">24,5</span></td>
+        <td class="ang">19</td>
+      </tr>
+      <tr class="z">
+        <td class="item">G22-0483024-d</td>
+        <td class="spec">48×30</td>
+        <td class="holes"><span class="v">17,0</span><span class="v">23</span><span class="v">20,5</span></td>
+        <td class="ang"><span class="flag" title="в исходнике два числа слитно, разделитель не читается">24 ? 19</span></td>
+      </tr>
+      <tr>
+        <td class="item">G22-0493030-d</td>
+        <td class="spec">49,8×30</td>
+        <td class="holes"><span class="v">22,14</span></td>
+        <td class="ang">30</td>
+      </tr>
+      <tr class="z">
+        <td class="item">G22-0502418-d</td>
+        <td class="spec">50×24</td>
+        <td class="holes"><span class="v">21,7</span></td>
+        <td class="ang">18</td>
+      </tr>
+      <tr>
+        <td class="item">G22-0502824-d</td>
+        <td class="spec">50×28</td>
+        <td class="holes"><span class="v">23,5</span><span class="v">24,5</span><span class="v">25,5</span></td>
+        <td class="ang">24</td>
+      </tr>
+      <tr class="z">
+        <td class="item">G22-0503030-d</td>
+        <td class="spec">50×30</td>
+        <td class="holes"><span class="v">21,6</span></td>
+        <td class="ang"><span class="empty" title="в оригинале ячейка пустая">—</span></td>
+      </tr>
+      <tr>
+        <td class="item">G22-0503730-d</td>
+        <td class="spec">50×37</td>
+        <td class="holes"><span class="v">18,57</span><span class="v">19,50</span><span class="v">21,5</span></td>
+        <td class="ang">30</td>
+      </tr>
+      <tr class="z">
+        <td class="item">G22-0504025-d</td>
+        <td class="spec">50×40</td>
+        <td class="holes"><span class="v">17,98</span></td>
+        <td class="ang">25</td>
+      </tr>
+      <tr>
+        <td class="item">G22-0505115-d</td>
+        <td class="spec">50×51</td>
+        <td class="holes"><span class="v">21,5</span><span class="v">24,48</span><span class="v">24,57</span></td>
+        <td class="ang">15</td>
+      </tr>
+      <tr class="z">
+        <td class="item">G22-0553024-d</td>
+        <td class="spec">55×27</td>
+        <td class="holes"><span class="v">24</span><span class="v">25</span><span class="v">25,5</span><span class="v">26</span><span class="v">26,5</span><span class="v">27,5</span><span class="v">28,5</span><span class="v">29,5</span></td>
+        <td class="ang"><span class="flag" title="в исходнике два числа слитно, разделитель не читается">19 ? 24</span></td>
+      </tr>
+      <tr>
+        <td class="item">G22-0553030-d</td>
+        <td class="spec">55×30</td>
+        <td class="holes"><span class="v">24,6</span><span class="v">25,05</span><span class="v">25,10</span></td>
+        <td class="ang">30</td>
+      </tr>
+      <tr class="z">
+        <td class="item">G22-0553212-d</td>
+        <td class="spec">55×32</td>
+        <td class="holes"><span class="v">27</span></td>
+        <td class="ang">12</td>
+      </tr>
+      <tr>
+        <td class="item">G22-0553830-d</td>
+        <td class="spec">55×38</td>
+        <td class="holes"><span class="v">23,5</span><span class="v">24,88</span><span class="v">25,02</span><span class="v">26,5</span></td>
+        <td class="ang">30</td>
+      </tr>
+      <tr class="z">
+        <td class="item">G22-0555215-d</td>
+        <td class="spec">55×52</td>
+        <td class="holes"><span class="v">28,5</span></td>
+        <td class="ang">15</td>
+      </tr>
+      <tr>
+        <td class="item">G22-0572919-d</td>
+        <td class="spec">57×29</td>
+        <td class="holes"><span class="v">25</span><span class="v">27</span><span class="v">28</span><span class="v">29</span></td>
+        <td class="ang">19</td>
+      </tr>
+      <tr class="z">
+        <td class="item">G22-0583424-d</td>
+        <td class="spec">58×34</td>
+        <td class="holes"><span class="v">26</span><span class="v">28</span><span class="v">30</span></td>
+        <td class="ang">24</td>
+      </tr>
+      <tr>
+        <td class="item">G22-0602718-d</td>
+        <td class="spec">60×27</td>
+        <td class="holes"><span class="v">27,65</span><span class="v">27,90</span></td>
+        <td class="ang">18</td>
+      </tr>
+      <tr class="z">
+        <td class="item">G22-0602930-d</td>
+        <td class="spec">60×29,5</td>
+        <td class="holes"><span class="v">28,15</span><span class="v">30,10</span></td>
+        <td class="ang">30</td>
+      </tr>
+      <tr>
+        <td class="item">G22-0603024-d</td>
+        <td class="spec">60×30</td>
+        <td class="holes"><span class="v">27,2</span><span class="v">27,8</span><span class="v">28,5</span><span class="v">29,5</span><span class="v">29,5</span><span class="v">29,7</span><span class="v">30,1</span><span class="v">30,5</span><span class="v">31,5</span><span class="v">32,5</span><span class="v">33,5</span><span class="v">34,5</span></td>
+        <td class="ang">24 или 30</td>
+      </tr>
+      <tr class="z">
+        <td class="item">G22-0604224-d</td>
+        <td class="spec">60×42</td>
+        <td class="holes"><span class="v">25</span><span class="v">29</span></td>
+        <td class="ang">24 или 30</td>
+      </tr>
+      <tr>
+        <td class="item">G22-0605215-d</td>
+        <td class="spec">60×52</td>
+        <td class="holes"><span class="v">29,53</span></td>
+        <td class="ang">15</td>
+      </tr>
+      <tr class="z">
+        <td class="item">G22-0653030-d</td>
+        <td class="spec">65×30</td>
+        <td class="holes"><span class="v">31,3</span><span class="v">31,7</span><span class="v">34,14</span><span class="v">33,5</span></td>
+        <td class="ang">30</td>
+      </tr>
+      <tr>
+        <td class="item">G22-0655215-d</td>
+        <td class="spec">65×52</td>
+        <td class="holes"><span class="v">34,55</span></td>
+        <td class="ang">15</td>
+      </tr>
+      <tr class="z">
+        <td class="item">G22-0703030-d</td>
+        <td class="spec">70×30</td>
+        <td class="holes"><span class="v">29,5</span><span class="v">36,35</span><span class="v">33,75</span><span class="v">34</span></td>
+        <td class="ang">30 или 18</td>
+      </tr>
+      <tr>
+        <td class="item">G22-0703624-d</td>
+        <td class="spec">70×36</td>
+        <td class="holes"><span class="v">36</span></td>
+        <td class="ang">24</td>
+      </tr>
+      <tr class="z">
+        <td class="item">G22-0704030-d</td>
+        <td class="spec">70×40</td>
+        <td class="holes"><span class="v">31,47</span></td>
+        <td class="ang">30</td>
+      </tr>
+      <tr>
+        <td class="item">G22-0705215-d</td>
+        <td class="spec">70×52</td>
+        <td class="holes"><span class="v">37,5</span></td>
+        <td class="ang">15</td>
+      </tr>
+      <tr class="z">
+        <td class="item">G22-0752626-d</td>
+        <td class="spec">75×26</td>
+        <td class="holes"><span class="v">56,1</span><span class="v">56,6</span></td>
+        <td class="ang">26</td>
+      </tr>
+      <tr>
+        <td class="item">G22-0752930-d</td>
+        <td class="spec">75×29,5</td>
+        <td class="holes"><span class="v">35,30</span><span class="v">35,90</span><span class="v">36,3</span><span class="v">37,3</span></td>
+        <td class="ang">18</td>
+      </tr>
+      <tr class="z">
+        <td class="item">G22-0754230-d</td>
+        <td class="spec">75×42</td>
+        <td class="holes"><span class="v">39,05</span></td>
+        <td class="ang">30</td>
+      </tr>
+      <tr>
+        <td class="item">G22-0802626-d</td>
+        <td class="spec">80×26</td>
+        <td class="holes"><span class="v">63,1</span></td>
+        <td class="ang">26</td>
+      </tr>
+      <tr class="z">
+        <td class="item">G22-0804230-d</td>
+        <td class="spec">80×42</td>
+        <td class="holes"><span class="v">44,12</span><span class="v">44,48</span></td>
+        <td class="ang">30</td>
+      </tr>
+      <tr>
+        <td class="item">G22-0853330-d</td>
+        <td class="spec">85×33</td>
+        <td class="holes"><span class="v">49,5</span></td>
+        <td class="ang">30</td>
+      </tr>
+      <tr class="z">
+        <td class="item">G22-0964830-d</td>
+        <td class="spec">96×48</td>
+        <td class="holes"><span class="v">54,55</span><span class="v">55,40</span></td>
+        <td class="ang">30</td>
+      </tr>
+      <tr>
+        <td class="item">G22-1003330-d</td>
+        <td class="spec">100×33</td>
+        <td class="holes"><span class="v">59,70</span></td>
+        <td class="ang">30</td>
+      </tr>
+      <tr class="z">
+        <td class="item">G22-1004830-d</td>
+        <td class="spec">100×48</td>
+        <td class="holes"><span class="v">59,5</span><span class="v">59,5</span></td>
+        <td class="ang">30</td>
+      </tr>
+      <tr>
+        <td class="item">G22-1053026-d</td>
+        <td class="spec">105×30</td>
+        <td class="holes"><span class="v">79,60</span><span class="v"></span></td>
+        <td class="ang">26</td>
+      </tr>
+      <tr class="z">
+        <td class="item">G22-1054830-d</td>
+        <td class="spec">105×48</td>
+        <td class="holes"><span class="v">61,1</span><span class="v">62,45</span><span class="v">63,10</span></td>
+        <td class="ang">30</td>
+      </tr>
+      <tr>
+        <td class="item">G22-1103026-d</td>
+        <td class="spec">110×30</td>
+        <td class="holes"><span class="v">88,6</span></td>
+        <td class="ang">26</td>
+      </tr>
+      <tr class="z">
+        <td class="item">G22-1105030-d</td>
+        <td class="spec">110×50</td>
+        <td class="holes"><span class="v">64,15</span><span class="v">65,90</span><span class="v">67,10</span><span class="v">71,00</span></td>
+        <td class="ang">30</td>
+      </tr></tbody>
+  </table>
+   </section>
+
+<!-- G23 -->
+<section class="sheet ">
+     <header class="sec-head"><span class="kicker">Твердосплавные волоки</span><h2>G23 — редуцирование трубы и уменьшение стенки</h2></header>
+     <figure class="fig"><img src="img/g23.png" alt="G23: ∅D — наружный диаметр, ∅d — диаметр отверстия, 2Y — угол выходного конуса, R — радиус входа, h, h1 — калибрующая зона и выходной конус, H — высота, a×b° — фаска"><figcaption>G23: ∅D — наружный диаметр, ∅d — диаметр отверстия, 2Y — угол выходного конуса, R — радиус входа, h, h1 — калибрующая зона и выходной конус, H — высота, a×b° — фаска</figcaption></figure>
+  <table class="spec-table">
+    <thead>
+      <tr class="plate"><th colspan="4">Волоки G23 для редуцирования труб и уменьшения толщины стенки</th></tr>
+      <tr class="head">
+        <th class="item">Обозначение изделия</th>
+        <th class="spec">Размеры D×H<span class="u">мм</span></th>
+        <th class="holes">Диаметр отверстия d<span class="u">мм</span></th>
+        <th class="ang">Угол рабочего конуса 2α<span class="u">град.</span></th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td class="item">G23-0503000-d</td>
+        <td class="spec">50×30</td>
+        <td class="holes"><span class="v">25,6</span><span class="v">26,7</span></td>
+        <td class="ang">0</td>
+      </tr>
+      <tr class="z">
+        <td class="item">G23-0653500-d</td>
+        <td class="spec">65×35</td>
+        <td class="holes"><span class="v">32,5</span><span class="v">34,1</span><span class="v">35,65</span><span class="v">36,35</span></td>
+        <td class="ang">0</td>
+      </tr>
+      <tr>
+        <td class="item">G23-0703500-d</td>
+        <td class="spec">70×35</td>
+        <td class="holes"><span class="v">38,16</span><span class="v">38,75</span><span class="v">40,2</span><span class="v"></span></td>
+        <td class="ang">0</td>
+      </tr>
+      <tr class="z">
+        <td class="item">G23-0753500-d</td>
+        <td class="spec">75×35</td>
+        <td class="holes"><span class="v">44,85</span><span class="v">45,1</span><span class="v">45,1</span><span class="v">45,2</span><span class="v">46,4</span></td>
+        <td class="ang">0</td>
+      </tr>
+      <tr>
+        <td class="item">G23-0803800-d</td>
+        <td class="spec">80×38</td>
+        <td class="holes"><span class="v">49,6</span><span class="v">49,65</span><span class="v">50,10</span><span class="v">50,55</span></td>
+        <td class="ang">0</td>
+      </tr>
+      <tr class="z">
+        <td class="item">G23-0853800-d</td>
+        <td class="spec">85×38</td>
+        <td class="holes"><span class="v">53,1</span><span class="v">53,2</span><span class="v">56,9</span></td>
+        <td class="ang">0</td>
+      </tr>
+      <tr>
+        <td class="item">G23-0954100-d</td>
+        <td class="spec">95×41</td>
+        <td class="holes"><span class="v">59,6</span><span class="v">59,7</span><span class="v">60,1</span></td>
+        <td class="ang">0</td>
+      </tr>
+      <tr class="z">
+        <td class="item">G23-1054300-d</td>
+        <td class="spec">105×43</td>
+        <td class="holes"><span class="v">70,1</span></td>
+        <td class="ang">0</td>
+      </tr>
+      <tr>
+        <td class="item">G23-1104600-d</td>
+        <td class="spec">110×46</td>
+        <td class="holes"><span class="v">71,7</span><span class="v">74,5</span><span class="v">75,1</span></td>
+        <td class="ang">0</td>
+      </tr>
+      <tr class="z">
+        <td class="item">G23-1604800-d</td>
+        <td class="spec">160×48</td>
+        <td class="holes"><span class="v">119,65</span></td>
+        <td class="ang">0</td>
+      </tr></tbody>
+  </table><p class="note">Угол рабочего конуса у всей серии равен нулю: канал цилиндрический,
+     обжатие задаётся сочетанием волоки и оправки.</p>
+   </section>
+
+<!-- GP01 -->
+<section class="sheet wide">
+     <header class="sec-head"><span class="kicker">Твердосплавные волоки</span><h2>GP01 — заготовки волок для профиля</h2></header>
+     <figure class="fig fig-sm"><img src="img/gp01.png" alt="GP01: ∅D — наружный диаметр, ∅d — диаметр отверстия, H — высота"><figcaption>GP01: ∅D — наружный диаметр, ∅d — диаметр отверстия, H — высота</figcaption></figure>
+  <div class="plate-solo">Заготовки волок GP01 для профиля</div>
+  <div class="two-col">
+    <table class="spec-table"><thead>
+      <tr class="head">
+        <th class="item">Обозначение изделия</th>
+        <th class="spec">Размеры D×H<span class="u">мм</span></th>
+        <th class="ang">Диаметр отверстия d<span class="u">мм</span></th>
+      </tr></thead><tbody>
+      <tr>
+        <td class="item">GP01-0130800-d</td>
+        <td class="spec">13×8</td>
+        <td class="ang">0,6</td>
+      </tr>
+      <tr class="z">
+        <td class="item">GP01-0151000-d</td>
+        <td class="spec">15×10</td>
+        <td class="ang">0,3</td>
+      </tr>
+      <tr>
+        <td class="item">GP01-0160800-d</td>
+        <td class="spec">16×8</td>
+        <td class="ang">0,6</td>
+      </tr>
+      <tr class="z">
+        <td class="item">GP01-0181000-d</td>
+        <td class="spec">18×10</td>
+        <td class="ang">1,0</td>
+      </tr>
+      <tr>
+        <td class="item">GP01-0190800-d</td>
+        <td class="spec">19×8</td>
+        <td class="ang">0,6</td>
+      </tr>
+      <tr class="z">
+        <td class="item">GP01-0200800-d</td>
+        <td class="spec">20×8</td>
+        <td class="ang">0,3</td>
+      </tr>
+      <tr>
+        <td class="item">GP01-0201000-d</td>
+        <td class="spec">20×10</td>
+        <td class="ang">0,3</td>
+      </tr>
+      <tr class="z">
+        <td class="item">GP01-0201200-d</td>
+        <td class="spec">20×12</td>
+        <td class="ang">0,3</td>
+      </tr>
+      <tr>
+        <td class="item">GP01-0221000-d</td>
+        <td class="spec">22×10</td>
+        <td class="ang">1,0</td>
+      </tr>
+      <tr class="z">
+        <td class="item">GP01-0221200-d</td>
+        <td class="spec">22×12</td>
+        <td class="ang">1,0</td>
+      </tr>
+      <tr>
+        <td class="item">GP01-0221500-d</td>
+        <td class="spec">22×15</td>
+        <td class="ang">1,0</td>
+      </tr>
+      <tr class="z">
+        <td class="item">GP01-0251000-d</td>
+        <td class="spec">25×10</td>
+        <td class="ang">0,3 · 1,0</td>
+      </tr>
+      <tr>
+        <td class="item">GP01-0251200-d</td>
+        <td class="spec">25×12</td>
+        <td class="ang">0,3 · 1,0</td>
+      </tr>
+      <tr class="z">
+        <td class="item">GP01-0251400-d</td>
+        <td class="spec">25×14</td>
+        <td class="ang">1,0</td>
+      </tr>
+      <tr>
+        <td class="item">GP01-0251500-d</td>
+        <td class="spec">25×15</td>
+        <td class="ang">0,3</td>
+      </tr>
+      <tr class="z">
+        <td class="item">GP01-0301200-d</td>
+        <td class="spec">30×12</td>
+        <td class="ang">0,3 · 1,0</td>
+      </tr>
+      <tr>
+        <td class="item">GP01-0301500-d</td>
+        <td class="spec">30×15</td>
+        <td class="ang">0,3</td>
+      </tr>
+      <tr class="z">
+        <td class="item">GP01-0301800-d</td>
+        <td class="spec">30×18</td>
+        <td class="ang">0,3</td>
+      </tr>
+      <tr>
+        <td class="item">GP01-0351700-d</td>
+        <td class="spec">35×17</td>
+        <td class="ang">1,0</td>
+      </tr>
+      <tr class="z">
+        <td class="item">GP01-0351800-d</td>
+        <td class="spec">35×18</td>
+        <td class="ang">0,3</td>
+      </tr>
+      <tr>
+        <td class="item">GP01-0352000-d</td>
+        <td class="spec">35×20</td>
+        <td class="ang">0,3 · 1,0</td>
+      </tr>
+      <tr class="z">
+        <td class="item">GP01-0401800-d</td>
+        <td class="spec">40×18</td>
+        <td class="ang">1,0</td>
+      </tr>
+      <tr>
+        <td class="item">GP01-0402000-d</td>
+        <td class="spec">40×20</td>
+        <td class="ang">1,0</td>
+      </tr>
+      <tr class="z">
+        <td class="item">GP01-0402100-d</td>
+        <td class="spec">40×21</td>
+        <td class="ang">1,0</td>
+      </tr>
+      <tr>
+        <td class="item">GP01-0402500-d</td>
+        <td class="spec">40×25</td>
+        <td class="ang">1,0</td>
+      </tr></tbody></table>
+    <table class="spec-table"><thead>
+      <tr class="head">
+        <th class="item">Обозначение изделия</th>
+        <th class="spec">Размеры D×H<span class="u">мм</span></th>
+        <th class="ang">Диаметр отверстия d<span class="u">мм</span></th>
+      </tr></thead><tbody>
+      <tr>
+        <td class="item">GP01-0451800-d</td>
+        <td class="spec">45×18</td>
+        <td class="ang">1,0</td>
+      </tr>
+      <tr class="z">
+        <td class="item">GP01-0452000-d</td>
+        <td class="spec">45×20</td>
+        <td class="ang">1,0</td>
+      </tr>
+      <tr>
+        <td class="item">GP01-0452100-d</td>
+        <td class="spec">45×21</td>
+        <td class="ang">1,0</td>
+      </tr>
+      <tr class="z">
+        <td class="item">GP01-0452200-d</td>
+        <td class="spec">45×22</td>
+        <td class="ang">1,0</td>
+      </tr>
+      <tr>
+        <td class="item">GP01-0502000-d</td>
+        <td class="spec">50×20</td>
+        <td class="ang">1,0</td>
+      </tr>
+      <tr class="z">
+        <td class="item">GP01-0502300-d</td>
+        <td class="spec">50×23</td>
+        <td class="ang">1,0</td>
+      </tr>
+      <tr>
+        <td class="item">GP01-0502500-d</td>
+        <td class="spec">50×25</td>
+        <td class="ang">1,0</td>
+      </tr>
+      <tr class="z">
+        <td class="item">GP01-0552000-d</td>
+        <td class="spec">55×20</td>
+        <td class="ang">2,0</td>
+      </tr>
+      <tr>
+        <td class="item">GP01-0602000-d</td>
+        <td class="spec">60×20</td>
+        <td class="ang">2,0</td>
+      </tr>
+      <tr class="z">
+        <td class="item">GP01-0602500-d</td>
+        <td class="spec">60×25</td>
+        <td class="ang">2,0</td>
+      </tr>
+      <tr>
+        <td class="item">GP01-0603000-d</td>
+        <td class="spec">60×30</td>
+        <td class="ang">2,0</td>
+      </tr>
+      <tr class="z">
+        <td class="item">GP01-0652000-d</td>
+        <td class="spec">65×20</td>
+        <td class="ang">2,0</td>
+      </tr>
+      <tr>
+        <td class="item">GP01-0702000-d</td>
+        <td class="spec">70×20</td>
+        <td class="ang">2,0</td>
+      </tr>
+      <tr class="z">
+        <td class="item">GP01-0702500-d</td>
+        <td class="spec">70×25</td>
+        <td class="ang">2,0</td>
+      </tr>
+      <tr>
+        <td class="item">GP01-0703500-d</td>
+        <td class="spec">70×35</td>
+        <td class="ang">2,0</td>
+      </tr>
+      <tr class="z">
+        <td class="item">GP01-0802500-d</td>
+        <td class="spec">80×25</td>
+        <td class="ang">2,0</td>
+      </tr>
+      <tr>
+        <td class="item">GP01-0803000-d</td>
+        <td class="spec">80×30</td>
+        <td class="ang">2,0</td>
+      </tr>
+      <tr class="z">
+        <td class="item">GP01-0804000-d</td>
+        <td class="spec">80×40</td>
+        <td class="ang">2,0</td>
+      </tr>
+      <tr>
+        <td class="item">GP01-0902800-d</td>
+        <td class="spec">90×28</td>
+        <td class="ang">2,0</td>
+      </tr>
+      <tr class="z">
+        <td class="item">GP01-0903000-d</td>
+        <td class="spec">90×30</td>
+        <td class="ang">2,0</td>
+      </tr>
+      <tr>
+        <td class="item">GP01-0903500-d</td>
+        <td class="spec">90×35</td>
+        <td class="ang">2,0</td>
+      </tr>
+      <tr class="z">
+        <td class="item">GP01-1003000-d</td>
+        <td class="spec">100×30</td>
+        <td class="ang">2,0</td>
+      </tr>
+      <tr>
+        <td class="item">GP01-1003500-d</td>
+        <td class="spec">100×35</td>
+        <td class="ang">2,0</td>
+      </tr>
+      <tr class="z">
+        <td class="item">GP01-1103000-d</td>
+        <td class="spec">110×30</td>
+        <td class="ang">2,0</td>
+      </tr></tbody></table>
+  </div>
+   </section>
+
+<!-- ОПРАВКИ -->
+<section class="sheet ">
+     <header class="sec-head"><span class="kicker">Твердосплавные волоки</span><h2>Оправки для волочения труб</h2></header>
+     <figure class="fig"><img src="img/gx01.png" alt="Оправка: ∅D1, ∅D2, ∅D3 — диаметры ступеней, ∅d — диаметр отверстия, L — общая длина, L1 и L2 — длины участков, 2α — угол рабочего конуса, 1×45° и C×45° — фаски"><figcaption>Оправка: ∅D1, ∅D2, ∅D3 — диаметры ступеней, ∅d — диаметр отверстия, L — общая длина, L1 и L2 — длины участков, 2α — угол рабочего конуса, 1×45° и C×45° — фаски</figcaption></figure>
+  <table class="spec-table">
+    <thead>
+      <tr class="plate"><th colspan="4">Оправки для волочения труб</th></tr>
+      <tr class="head">
+        <th class="item">Обозначение изделия</th>
+        <th class="holes">D1/D2×L<span class="u">мм</span></th>
+        <th class="ang">Диаметр отверстия d<span class="u">мм</span></th>
+        <th class="ang">Угол рабочего конуса 2α<span class="u">град.</span></th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td class="item">GX01-D1D2L22-4.7</td>
+        <td class="holes"><span class="v">13,5/14,5×18</span></td>
+        <td class="ang">4,7</td>
+        <td class="ang">22</td>
+      </tr>
+      <tr class="z">
+        <td class="item">GX01-D1D2L22-7.0</td>
+        <td class="holes"><span class="v">14,5/16,5×28</span></td>
+        <td class="ang">7,0</td>
+        <td class="ang">22</td>
+      </tr>
+      <tr>
+        <td class="item">GX01-D1D2L22-10.0</td>
+        <td class="holes"><span class="v">20/22×32</span><span class="v">20/23×32</span><span class="v">22/26×35</span><span class="v">20/24,5×35</span></td>
+        <td class="ang">10,0</td>
+        <td class="ang">22</td>
+      </tr>
+      <tr class="z">
+        <td class="item">GX01-D1D2L22-12.0</td>
+        <td class="holes"><span class="v">24/26×35</span><span class="v">25,5/27×35</span><span class="v">25/29,5×50</span><span class="v">26/27×50</span><span class="v">26/29×50</span><span class="v">26/30,5×50</span><span class="v">26,5/29,5×50</span><span class="v">27,6/30,8×50</span><span class="v">28,5/31,5×50</span><span class="v">27,6/30,8×50"</span></td>
+        <td class="ang">12</td>
+        <td class="ang">22</td>
+      </tr>
+      <tr>
+        <td class="item">GX01-D1D2L22-16.0</td>
+        <td class="holes"><span class="v">29,5/32,5×50</span><span class="v">29,5/34×50</span><span class="v">29,5/30,8×50</span><span class="v">31,5/34,5×50</span><span class="v">32/36×50</span><span class="v">34,5/40,5×50</span><span class="v">35/39×45</span><span class="v">36/40×49,4</span></td>
+        <td class="ang">16</td>
+        <td class="ang">22</td>
+      </tr></tbody>
+  </table>
+   </section>
+
+<!-- ОСНАСТКА -->
+<section class="sheet ">
+     <header class="sec-head"><span class="kicker">Приложение</span><h2>Оснастка для волочения</h2></header>
+     
+<p class="lead">Поставляем стандартные и изготовленные по чертежу износостойкие детали
+для волочильных участков.</p>
+<div class="proc">
+  <div class="proc-item"><b>Ролики окалиноудаления</b><span>подготовка поверхности заготовки</span></div>
+  <div class="proc-item"><b>Деформаторы</b><span>придание сечению заданной формы</span></div>
+  <div class="proc-item"><b>Обдирочные волоки</b><span>снятие поверхностного слоя</span></div>
+  <div class="proc-item"><b>Правильные ролики</b><span>правка проволоки и прутка</span></div>
+</div>
+<p>Эти детали работают на воздухе, к ним предъявляются повышенные требования по
+износостойкости и вязкости. Марка сплава подбирается под условия работы и требования
+участка. Изготовление по чертежу заказчика.</p>
+<figure class="fig"><img src="img/photo-accessories.png" alt="Ролики окалиноудаления, деформаторы, обдирочные волоки и правильные ролики"><figcaption>Ролики окалиноудаления, деформаторы, обдирочные волоки и правильные ролики</figcaption></figure>
+
+   </section>
+<!-- ЗАДНЯЯ ОБЛОЖКА -->
+<section class="sheet back">
+  <div class="back-logo"><svg class="logo-ph" viewBox="0 0 240 44" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Место под логотип ЛАВИТЕК">
+       <rect x="1" y="1" width="238" height="42" rx="3" fill="none" stroke="currentColor"
+             stroke-width="1.5" stroke-dasharray="5 4"/>
+       <text x="120" y="21" text-anchor="middle" font-family="PT Sans, sans-serif"
+             font-size="15" font-weight="700" letter-spacing="2.5" fill="currentColor">ЛАВИТЕК</text>
+       <text x="120" y="34" text-anchor="middle" font-family="PT Sans, sans-serif"
+             font-size="7.5" letter-spacing="0.8" fill="currentColor" opacity=".75">место под логотип — input/logo.svg</text>
+     </svg></div>
+  <div class="back-body">
+    <h2>ООО «ЛАВИТЕК»</h2>
+    <p class="back-city">Екатеринбург</p>
+    <dl class="req">
+      <dt>Юридический адрес</dt><dd><span class="todo">[[НУЖНО ОТ КЛИЕНТА: юридический адрес]]</span></dd>
+      <dt>ИНН / ОГРН</dt><dd><span class="todo">[[НУЖНО ОТ КЛИЕНТА: ИНН, ОГРН]]</span></dd>
+      <dt>Телефон</dt><dd><span class="todo">[[НУЖНО ОТ КЛИЕНТА: телефон]]</span></dd>
+      <dt>Электронная почта</dt><dd><span class="todo">[[НУЖНО ОТ КЛИЕНТА: e-mail]]</span></dd>
+      <dt>Сайт</dt><dd><span class="todo">[[НУЖНО ОТ КЛИЕНТА: адрес сайта]]</span></dd>
+    </dl>
+  </div>
+  <div class="back-foot">Каталог твердосплавных волок · редакция от __.__.____</div>
+</section>
+</body></html>

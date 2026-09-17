@@ -1,0 +1,297 @@
+/* Оболочка страницы: контейнер, шапка, навигация, подвал. */
+
+.lv-wrap {
+  width: 100%;
+  max-width: var(--page);
+  margin-inline: auto;
+  padding-inline: var(--gutter);
+}
+
+.lv-wrap--wide { max-width: var(--page-wide); }
+
+/* ── Шапка ───────────────────────────────────────────────── */
+
+.lv-header {
+  position: sticky;
+  top: 0;
+  z-index: 40;
+  background: color-mix(in oklch, var(--paper) 92%, transparent);
+  backdrop-filter: blur(8px);
+  border-bottom: 1px solid var(--rule);
+}
+
+.lv-header__bar {
+  display: flex;
+  align-items: center;
+  gap: var(--s-5);
+  min-height: 4.5rem;
+}
+
+.lv-logo {
+  display: inline-flex;
+  align-items: center;
+  gap: var(--s-3);
+  color: var(--ink);
+  text-decoration: none;
+}
+.lv-logo__mark { width: 1.75rem; height: 1.75rem; flex: none; }
+.lv-logo__words { display: flex; flex-direction: column; line-height: 1; }
+.lv-logo__name {
+  font-family: var(--font-display);
+  font-weight: 600;
+  font-size: var(--t-md);
+  letter-spacing: var(--tr-tight);
+}
+.lv-logo__sub {
+  margin-top: 3px;
+  font-size: var(--t-3xs);
+  letter-spacing: var(--tr-caps);
+  text-transform: uppercase;
+  color: var(--ink-faint);
+}
+
+.lv-nav {
+  display: flex;
+  align-items: center;
+  gap: var(--s-5);
+  margin-inline-start: auto;
+}
+
+.lv-nav__link {
+  color: var(--ink-soft);
+  text-decoration: none;
+  font-size: var(--t-sm);
+  padding-block: var(--s-2);
+  border-bottom: 2px solid transparent;
+  transition: color var(--out) var(--ease), border-color var(--out) var(--ease);
+}
+.lv-nav__link:hover { color: var(--ink); }
+.lv-nav__link[aria-current='page'] {
+  color: var(--ink);
+  border-bottom-color: var(--signal);
+}
+
+.lv-header__phone {
+  font-family: var(--font-display);
+  font-size: var(--t-sm);
+  font-weight: 500;
+  color: var(--ink);
+  text-decoration: none;
+  white-space: nowrap;
+}
+.lv-header__phone:hover { color: var(--signal); }
+
+.lv-burger {
+  display: none;
+  align-items: center;
+  justify-content: center;
+  width: var(--tap);
+  height: var(--tap);
+  margin-inline-start: auto;
+  background: none;
+  border: 1px solid var(--rule-strong);
+  border-radius: var(--r-1);
+  cursor: pointer;
+}
+.lv-burger__lines { display: block; width: 18px; height: 10px; position: relative; }
+.lv-burger__lines::before,
+.lv-burger__lines::after {
+  content: '';
+  position: absolute;
+  left: 0;
+  width: 100%;
+  height: 1.5px;
+  background: var(--ink);
+  transition: transform var(--out) var(--ease);
+}
+.lv-burger__lines::before { top: 0; }
+.lv-burger__lines::after { bottom: 0; }
+.lv-burger[aria-expanded='true'] .lv-burger__lines::before { transform: translateY(4px) rotate(45deg); }
+.lv-burger[aria-expanded='true'] .lv-burger__lines::after { transform: translateY(-4px) rotate(-45deg); }
+
+/* Панель каталога: открывается из шапки, устроена как оглавление, не как меню. */
+.lv-mega {
+  border-top: 1px solid var(--rule);
+  background: var(--paper-raised);
+  padding-block: var(--s-6);
+}
+.lv-mega__grid {
+  display: grid;
+  gap: var(--s-5);
+  grid-template-columns: repeat(auto-fit, minmax(15rem, 1fr));
+}
+.lv-mega__dir {
+  display: block;
+  color: var(--ink);
+  text-decoration: none;
+  font-family: var(--font-display);
+  font-weight: 600;
+  font-size: var(--t-base);
+  padding-bottom: var(--s-2);
+  border-bottom: 1px solid var(--rule);
+  margin-bottom: var(--s-3);
+}
+.lv-mega__dir:hover { color: var(--signal); }
+.lv-mega__list { list-style: none; display: grid; gap: var(--s-2); }
+.lv-mega__item {
+  color: var(--ink-soft);
+  text-decoration: none;
+  font-size: var(--t-sm);
+}
+.lv-mega__item:hover { color: var(--tech); }
+
+@media (max-width: 60rem) {
+  .lv-nav { display: none; }
+  .lv-burger { display: inline-flex; }
+  .lv-header__phone { margin-inline-start: auto; }
+  .lv-drawer .lv-nav {
+    display: flex;
+    flex-direction: column;
+    align-items: stretch;
+    gap: 0;
+    margin: 0;
+  }
+  .lv-drawer .lv-nav__link {
+    min-height: var(--tap);
+    display: flex;
+    align-items: center;
+    border-bottom: 1px solid var(--rule);
+    font-size: var(--t-base);
+  }
+}
+
+.lv-drawer {
+  border-top: 1px solid var(--rule);
+  background: var(--paper-raised);
+  padding-block: var(--s-4) var(--s-6);
+}
+
+/* ── Хлебные крошки ──────────────────────────────────────── */
+
+.lv-crumbs {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: var(--s-2);
+  list-style: none;
+  font-size: var(--t-2xs);
+  color: var(--ink-faint);
+  padding-block: var(--s-4);
+}
+.lv-crumbs a { color: var(--ink-faint); text-decoration: none; }
+.lv-crumbs a:hover { color: var(--tech); text-decoration: underline; }
+.lv-crumbs li::after { content: '/'; margin-inline-start: var(--s-2); color: var(--rule-strong); }
+.lv-crumbs li:last-child::after { content: none; }
+.lv-crumbs li[aria-current='page'] { color: var(--ink-soft); }
+
+/* ── Подвал ──────────────────────────────────────────────── */
+
+.lv-footer {
+  background: var(--graphite-deep);
+  color: var(--ink-invert-soft);
+  padding-block: var(--s-9) var(--s-6);
+  margin-top: var(--section-y);
+}
+.lv-footer a { color: var(--ink-invert-soft); text-decoration: none; }
+.lv-footer a:hover { color: var(--ink-invert); }
+
+.lv-footer__grid {
+  display: grid;
+  gap: var(--s-7) var(--s-6);
+  grid-template-columns: repeat(auto-fit, minmax(13rem, 1fr));
+  padding-bottom: var(--s-7);
+  border-bottom: 1px solid var(--rule-invert-soft);
+}
+.lv-footer__title {
+  font-family: var(--font-display);
+  font-size: var(--t-2xs);
+  letter-spacing: var(--tr-caps);
+  text-transform: uppercase;
+  color: var(--ink-invert);
+  margin-bottom: var(--s-4);
+}
+.lv-footer__list { list-style: none; display: grid; gap: var(--s-2); font-size: var(--t-sm); }
+.lv-footer__bottom {
+  padding-top: var(--s-6);
+  display: grid;
+  gap: var(--s-4);
+  font-size: var(--t-2xs);
+  color: var(--ink-invert-soft);
+}
+.lv-footer__legal { max-width: 62ch; line-height: var(--lh-normal); }
+.lv-footer .lv-logo { color: var(--ink-invert); }
+.lv-footer .lv-logo__sub { color: var(--ink-invert-soft); }
+
+/*
+  Ссылки подвала и телефон в шапке — самостоятельные цели нажатия.
+  На мобильном палец не попадает в строку высотой 17px, поэтому
+  раздвигаем их до 44px по вертикали.
+*/
+.lv-footer__list a,
+.lv-footer__list li {
+  display: inline-flex;
+  align-items: center;
+  min-height: var(--tap);
+}
+.lv-footer__list { gap: 0; }
+
+.lv-header__phone {
+  display: inline-flex;
+  align-items: center;
+  min-height: var(--tap);
+}
+
+.lv-burger { flex: none; width: var(--tap); height: var(--tap); }
+
+/* Хлебные крошки: на мобильном это тоже навигация, а не подпись. */
+@media (max-width: 60rem) {
+  .lv-crumbs a {
+    display: inline-flex;
+    align-items: center;
+    min-height: var(--tap);
+  }
+}
+
+/* ── Три мира в шапке ────────────────────────────────────────
+   Пункт первого уровня — не ссылка, а раскрытие мира. Подсветка
+   «здесь» показывает, в каком мире находится текущая страница. */
+
+.lv-nav__toggle {
+  display: inline-flex;
+  align-items: center;
+  gap: var(--s-2);
+  background: none;
+  border: 0;
+  border-bottom: 2px solid transparent;
+  cursor: pointer;
+  font-family: var(--font-text);
+}
+.lv-nav__toggle[data-here] {
+  color: var(--ink);
+  border-bottom-color: var(--signal);
+}
+.lv-nav__chev {
+  width: 7px;
+  height: 7px;
+  border-right: 1.5px solid currentColor;
+  border-bottom: 1.5px solid currentColor;
+  transform: translateY(-2px) rotate(45deg);
+  transition: transform var(--out) var(--ease);
+}
+.lv-nav__toggle[aria-expanded='true'] .lv-nav__chev {
+  transform: translateY(1px) rotate(-135deg);
+}
+
+/* Панель каталога широкая, панели справочника и работы — узкие. */
+.lv-mega__grid { grid-template-columns: repeat(auto-fit, minmax(15rem, 18rem)); }
+.lv-mega__grid[data-wide] { grid-template-columns: repeat(auto-fit, minmax(15rem, 1fr)); }
+
+.lv-drawer__world {
+  font-family: var(--font-display);
+  font-size: var(--t-2xs);
+  letter-spacing: var(--tr-caps);
+  text-transform: uppercase;
+  color: var(--ink-faint);
+  padding-top: var(--s-5);
+  padding-bottom: var(--s-2);
+}

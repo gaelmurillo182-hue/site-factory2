@@ -1,0 +1,360 @@
+@import url("https://fonts.googleapis.com/css2?family=Manrope:wght@400..800&family=Prata&display=swap");
+
+/* ============================================================
+   AVANA — дизайн-токены
+   Направление: «Тёплый графит»
+   Бьюти-редакция, а не «сайт салона». Тёмный тёплый фон —
+   паспарту для крупных планов работ. Тепло, не клиника.
+   Единственный источник значений для всех компонентов.
+   Захардкоженные hex/px в компонентах запрещены.
+
+   Все контрасты ниже посчитаны по WCAG 2.1 (относительная
+   яркость sRGB). Минимум для текста — 4.5:1.
+   ============================================================ */
+
+:root {
+  /* ---------- 1. ЦВЕТ ----------------------------------------
+     Порядок: hex-фолбэк, затем OKLCH-переопределение ниже.
+     Браузеры без OKLCH получают hex, остальные — OKLCH.
+  ------------------------------------------------------------ */
+
+  /* Ядро палитры — «Загар по чёрному».
+     Сознательный уход от связки «беж + латунь + эспрессо»: это самый
+     затёртый набор для премиум-бьюти, на нём бренд перестаёт читаться.
+     Здесь темнота глубже и чище, светлое — нейтральная бумага, а не крем,
+     акцент — насыщенный загар вместо мутной латуни. Контраст резче,
+     макро тёплой кожи получает настоящее паспарту. */
+  --color-graphite: #16130f; /* почти чёрный с тёплым уклоном — основной фон */
+  --color-graphite-deep: #0c0a08; /* дно — шапка, футер, шапка таблицы */
+  --color-graphite-raised: #211d18; /* приподнятая поверхность — панель, карточка */
+  --color-ivory: #f5f3ef; /* нейтральная бумага, не крем — светлые секции и текст */
+  --color-ivory-dim: #e7e3dc; /* бумага на тон глубже — вторая светлая секция */
+  --color-bronze: #e3a155; /* загар — акцент, ссылки, заливка CTA */
+  /* Тёмный загар — акцент НА светлом. Затемнён до 4,73:1 на самом светлом
+     из светлых фонов (--bg-light-dim), чтобы годиться и для мелких
+     надзаголовков, а не только для текста от 18px. */
+  --color-bronze-deep: #8f5220;
+  --color-ink: #1a1714; /* тёплый тёмный — текст на светлых секциях */
+
+  /* Служебные оттенки (выведены из ядра, не новые цвета) */
+  --color-linen: #dad5cc; /* спокойный светлый — чипы, мелкие лейблы на тёмном */
+  --color-linen-muted: #b5aea3; /* вторичный текст на тёмном */
+  --color-ink-muted: #57524a; /* вторичный текст на светлом */
+  --color-umber: #342e27; /* разделители на тёмном */
+  --color-umber-light: #443d34; /* бордюр по умолчанию на тёмном */
+
+  /* Второй акцент — приглушённый бордо от цветных ресниц.
+     Точечно, максимум в одном месте (плашка «АКЦИЯ»). */
+  --color-bordeaux: #8a3a47;
+
+  /* Семантические роли — фон */
+  --bg-page: var(--color-graphite);
+  --bg-deep: var(--color-graphite-deep); /* шапка, футер */
+  --bg-elevated: var(--color-graphite-raised); /* панель поверх фона */
+  --bg-light: var(--color-ivory); /* светлая секция */
+  --bg-light-dim: var(--color-ivory-dim); /* вторая светлая секция */
+  --bg-accent: var(--color-bronze); /* заливка CTA */
+  --bg-accent-deep: var(--color-bronze-deep); /* заливка акцента на светлом фоне */
+
+  /* Семантические роли — текст.
+     Контрасты к --bg-page (#16130F):
+       ivory        16.6:1
+       linen        13.4:1
+       linen-muted   8.2:1
+       bronze        8.3:1
+     К --bg-elevated (#211D18): ivory 14.2:1 · linen-muted 7.0:1 · bronze 7.1:1
+     К --bg-deep (#0C0A08):     ivory 18.2:1 · linen-muted 9.0:1 · bronze 9.1:1 */
+  --text-primary: var(--color-ivory);
+  --text-secondary: var(--color-linen-muted);
+  --text-quiet: var(--color-linen);
+  --text-accent: var(--color-bronze);
+
+  /* Текст на светлых секциях.
+     К --bg-light (#F5F3EF):     ink 16.0:1 · ink-muted 6.9:1 · bronze-deep 5.6:1
+     К --bg-light-dim (#E7E3DC): ink 13.5:1 · ink-muted 5.8:1 · bronze-deep 4.7:1
+     Все три проходят AA на обоих фонах при любом кегле. */
+  --text-on-light: var(--color-ink);
+  --text-on-light-secondary: var(--color-ink-muted);
+  --text-accent-on-light: var(--color-bronze-deep);
+
+  /* Текст на залитых плашках */
+  --text-on-accent: var(--color-graphite-deep); /* графит на бронзе: 7.58:1 */
+  --text-on-accent-deep: var(--color-ivory); /* ivory на тёмной бронзе: 5.35:1 */
+  --text-on-bordeaux: var(--color-ivory); /* ivory на бордо: 6.61:1 */
+
+  /* Линии и бордюры */
+  --line-hairline: 1px;
+  --line-rule: 2px; /* редакционная линейка под заголовком секции */
+  --border-color: var(--color-umber-light);
+  --border-color-quiet: var(--color-umber);
+  --border-color-accent: var(--color-bronze);
+  --border-color-on-light: #d8d3ca;
+
+  /* Фокус — бронза, видна и на тёмном, и на светлом */
+  --focus-ring: var(--color-bronze);
+  --focus-ring-width: 2px;
+  --focus-ring-offset: 3px;
+
+  /* --- Прайс: ~180 позиций, таблицы --------------------------
+     Строка по умолчанию прозрачна, чётная — на тон светлее.
+     Контраст ivory к строке-альт 14.76:1, к hover 12.74:1. */
+  --table-head-bg: var(--color-graphite-deep);
+  --table-head-text: var(--color-linen-muted);
+  --table-row-bg: transparent;
+  --table-row-bg-alt: #1d1a15;
+  --table-row-bg-hover: #2a251e;
+  --table-divider: var(--color-umber);
+  --table-divider-strong: var(--color-umber-light);
+  --table-price-text: var(--color-ivory);
+  --table-duration-text: var(--color-linen-muted);
+  /* Светлый вариант той же таблицы */
+  --table-row-bg-alt-light: #eeebe5;
+  --table-divider-light: #d8d3ca;
+
+  /* --- Три уровня мастера ------------------------------------
+     Мастер / Топ-мастер / Владелица.
+     Различаются линией и цветом лейбла, не «золотыми рамками».
+     Контрасты лейблов к --bg-page: base 8.06:1 · top 7.07:1 · owner 15.33:1 */
+  --tier-base-line: var(--color-umber-light);
+  --tier-base-text: var(--color-linen-muted);
+  --tier-base-surface: transparent;
+
+  --tier-top-line: var(--color-bronze-deep);
+  --tier-top-text: var(--color-bronze);
+  --tier-top-surface: #211d18;
+
+  --tier-owner-line: var(--color-bronze);
+  --tier-owner-text: var(--color-ivory);
+  --tier-owner-surface: var(--color-graphite-raised);
+  --tier-owner-line-width: 2px; /* единственный уровень с утолщённой линией */
+
+  /* --- Галерея работ: оверлей под подпись поверх фото ---------
+     Худший случай (белое фото под градиентом): ivory даёт 12.0:1. */
+  --overlay-photo: linear-gradient(
+    to top,
+    rgba(12, 10, 8, 0.88) 0%,
+    rgba(12, 10, 8, 0.55) 38%,
+    rgba(12, 10, 8, 0) 68%
+  );
+  --overlay-photo-flat: rgba(12, 10, 8, 0.62); /* ровное затемнение под текст по центру */
+  --overlay-photo-hover: rgba(12, 10, 8, 0.34); /* лёгкое затемнение при наведении */
+  --overlay-scrim: rgba(12, 10, 8, 0.82); /* подложка модалки / лайтбокса */
+
+  /* Растушёвка фотографии в hero: слева текст лежит на плотном фоне,
+     справа кадр открыт. Ступени от --bg-page (#1E1815) к прозрачному. */
+  --hero-scrim-mid: rgba(22, 19, 15, 0.9);
+  --hero-scrim-soft: rgba(22, 19, 15, 0.42);
+  --hero-scrim-clear: rgba(22, 19, 15, 0);
+  --photo-ratio: 1 / 1; /* работы квадратные */
+  --photo-tint: rgba(227, 161, 85, 0.06); /* тёплая плёнка поверх фото, чтобы держать общий тон */
+
+  /* --- Бейджи ------------------------------------------------
+     ХИТ — бронзовая заливка с графитовым текстом (7.58:1)
+     АКЦИЯ — бордо с ivory (6.61:1), единственное место второго акцента
+     −10% ПЕРВЫЙ ВИЗИТ — контурный, бронзовый текст (7.07:1)
+     БЕСПЛАТНО — тихий контурный чип (11.51:1) */
+  --badge-hit-bg: var(--color-bronze);
+  --badge-hit-text: var(--color-graphite-deep);
+  --badge-hit-border: transparent;
+
+  --badge-sale-bg: var(--color-bordeaux);
+  --badge-sale-text: var(--color-ivory);
+  --badge-sale-border: transparent;
+
+  --badge-first-bg: transparent;
+  --badge-first-text: var(--color-bronze);
+  --badge-first-border: var(--color-bronze-deep);
+
+  --badge-free-bg: transparent;
+  --badge-free-text: var(--color-linen);
+  --badge-free-border: var(--color-umber-light);
+
+  --badge-padding-y: var(--space-0-5);
+  --badge-padding-x: var(--space-1);
+
+  /* ---------- 2. ТИПОГРАФИКА --------------------------------
+     Дисплей: Prata (елизаветинская антиква, кириллица, ТОЛЬКО вес 400).
+     Насыщенности у Prata нет — иерархия строится размером,
+     трекингом и длиной строки, не жирностью.
+     Текст: Manrope (кириллица, 400–800).
+     Шкала — мажорная терция, опорные точки clamp: 390px … 1920px.
+  ------------------------------------------------------------ */
+
+  --font-display: "Prata", "Times New Roman", Georgia, serif;
+  --font-text: "Manrope", "Segoe UI", system-ui, sans-serif;
+  --font-numeric: "Manrope", "Segoe UI", system-ui, sans-serif; /* цены — табличные цифры */
+
+  /* Размеры */
+  --text-caption: clamp(0.75rem, 0.734rem + 0.065vw, 0.8125rem); /* 12 → 13 */
+  --text-small: clamp(0.875rem, 0.859rem + 0.065vw, 0.9375rem); /* 14 → 15 */
+  --text-body: clamp(1rem, 0.968rem + 0.13vw, 1.125rem); /* 16 → 18 */
+  --text-body-lg: clamp(1.125rem, 1.077rem + 0.196vw, 1.3125rem); /* 18 → 21 */
+  --text-h4: clamp(1.25rem, 1.154rem + 0.392vw, 1.625rem); /* 20 → 26 */
+  --text-h3: clamp(1.5rem, 1.341rem + 0.654vw, 2.125rem); /* 24 → 34 */
+  --text-h2: clamp(2rem, 1.681rem + 1.307vw, 3.25rem); /* 32 → 52 */
+  --text-h1: clamp(2.5rem, 1.672rem + 3.4vw, 5.75rem); /* 40 → 92 */
+  --text-display: clamp(3rem, 1.662rem + 5.49vw, 8.25rem); /* 48 → 132, только hero */
+
+  /* Интерлиньяж */
+  --leading-display: 1.02; /* Prata на крупном кегле — почти вплотную */
+  --leading-heading: 1.14;
+  --leading-subhead: 1.32;
+  --leading-body: 1.62;
+  --leading-loose: 1.78; /* длинные описания услуг */
+  --leading-table: 1.4; /* строка прайса */
+
+  /* Насыщенность — только для Manrope. Prata всегда 400. */
+  --weight-display: 400; /* Prata, других весов нет */
+  --weight-regular: 400;
+  --weight-medium: 500;
+  --weight-semibold: 600;
+  --weight-bold: 700;
+  --weight-extrabold: 800; /* только цены и крупные числа */
+
+  /* Трекинг */
+  --tracking-display: -0.015em; /* Prata крупно — слегка стянуть */
+  --tracking-heading: -0.005em;
+  --tracking-display-airy: 0.04em; /* Prata мелко (надзаголовок-подпись) — разредить */
+  --tracking-body: 0em;
+  --tracking-caps: 0.16em; /* лейблы, надзаголовки секций, шапка таблицы */
+  --tracking-numeric: 0.01em; /* цены */
+
+  /* Ширины строки */
+  --measure-narrow: 32ch; /* подписи под фото */
+  --measure-base: 58ch; /* основной текст */
+  --measure-wide: 72ch;
+  --measure-display: 18ch; /* заголовок Prata — не длиннее */
+
+  /* ---------- 3. СЕТКА И ОТСТУПЫ ----------------------------
+     Шаг сетки — 8px. Все отступы кратны шагу.
+     Единственное исключение — --space-0-5 (4px) для
+     оптической подгонки бордюров, бейджей и иконок.
+  ------------------------------------------------------------ */
+
+  --grid-step: 0.5rem; /* 8px */
+
+  --space-0: 0;
+  --space-0-5: 0.25rem; /* 4 — только оптика */
+  --space-1: 0.5rem; /* 8 */
+  --space-2: 1rem; /* 16 */
+  --space-3: 1.5rem; /* 24 */
+  --space-4: 2rem; /* 32 */
+  --space-5: 2.5rem; /* 40 */
+  --space-6: 3rem; /* 48 */
+  --space-7: 3.5rem; /* 56 */
+  --space-8: 4rem; /* 64 */
+  --space-9: 4.5rem; /* 72 */
+  --space-10: 5rem; /* 80 */
+  --space-11: 5.5rem; /* 88 */
+  --space-12: 6rem; /* 96 */
+  --space-13: 6.5rem; /* 104 */
+  --space-14: 7rem; /* 112 */
+  --space-15: 7.5rem; /* 120 */
+  --space-16: 8rem; /* 128 */
+  --space-17: 8.5rem; /* 136 */
+  --space-18: 9rem; /* 144 */
+  --space-19: 9.5rem; /* 152 */
+  --space-20: 10rem; /* 160 */
+
+  /* Композиционные отступы */
+  --gutter: var(--space-2); /* 16 на мобильном */
+  --section-y: var(--space-9); /* 72 на мобильном */
+  --container-max: 85rem; /* 1360 */
+  --container-text: 42rem; /* 672 — редакционная колонка */
+  --container-wide: 100rem; /* 1600 — полосные фотоблоки */
+  --columns: 12;
+
+  /* Прайс и списки */
+  --row-min-height: var(--space-6); /* 48 — палец попадает */
+  --row-padding-y: var(--space-2); /* 16 */
+  --row-padding-x: var(--space-2); /* 16 */
+  --tier-column-min: 6.5rem; /* 104 — колонка цены одного уровня */
+
+  /* ---------- 4. РАДИУСЫ -------------------------------------
+     Направление редакционное и сдержанное: скруглений мало,
+     основная геометрия — прямой угол.
+  ------------------------------------------------------------ */
+
+  --radius-none: 0;
+  --radius-sm: 2px; /* инпуты, ячейки, бейджи */
+  --radius-md: 4px; /* панели, медиа */
+  --radius-lg: 8px; /* крупные светлые блоки — редко */
+  --radius-full: 999px; /* только круглые кнопки-иконки и аватары мастеров */
+
+  /* ---------- 5. ТЕНИ ----------------------------------------
+     Тёплые, уходящие в коричневый. Ни одной серой или чёрной.
+     На тёмном фоне тень почти не читается — работает как
+     мягкое углубление под приподнятой панелью.
+  ------------------------------------------------------------ */
+
+  --shadow-sm: 0 1px 2px rgba(12, 10, 8, 0.44);
+  --shadow-md: 0 8px 24px -10px rgba(12, 10, 8, 0.62);
+  --shadow-lg: 0 24px 64px -24px rgba(12, 10, 8, 0.72);
+  --shadow-photo: 0 20px 48px -24px rgba(26, 23, 20, 0.55); /* под фото на светлой секции */
+  --shadow-accent: 0 12px 32px -14px rgba(154, 90, 34, 0.55); /* тёплое свечение под CTA */
+  --shadow-inset-line: inset 0 -1px 0 var(--table-divider); /* линейка строки прайса */
+
+  /* ---------- 6. ДВИЖЕНИЕ ------------------------------------
+     Выход быстрее входа. Анимируем только transform/opacity.
+  ------------------------------------------------------------ */
+
+  --duration-instant: 80ms;
+  --duration-fast: 150ms; /* выход, hover-out */
+  --duration-base: 250ms; /* вход, hover-in */
+  --duration-slow: 420ms; /* появление секций, раскрытие группы прайса */
+  --duration-scroll: 760ms; /* длинные скролл-сцены, смена фото */
+
+  --ease-out: cubic-bezier(0.22, 1, 0.36, 1);
+  --ease-in: cubic-bezier(0.55, 0, 1, 0.45);
+  --ease-inout: cubic-bezier(0.65, 0, 0.35, 1);
+  --ease-soft: cubic-bezier(0.33, 0.72, 0.28, 1); /* мягкий проявляющийся свет */
+
+  --transition-fast: var(--duration-fast) var(--ease-in);
+  --transition-base: var(--duration-base) var(--ease-out);
+
+  /* ---------- 7. СЛОИ ----------------------------------------- */
+
+  --z-base: 0;
+  --z-photo-caption: 5;
+  --z-sticky: 10; /* липкая шапка таблицы прайса */
+  --z-header: 100;
+  --z-overlay: 200;
+  --z-modal: 300; /* лайтбокс галереи */
+}
+
+/* Раскрытие композиции на планшете и десктопе */
+@media (min-width: 48rem) {
+  :root {
+    --gutter: var(--space-4); /* 32 */
+    --section-y: var(--space-14); /* 112 */
+    --row-padding-x: var(--space-3); /* 24 */
+  }
+}
+
+@media (min-width: 80rem) {
+  :root {
+    --gutter: var(--space-6); /* 48 */
+    --section-y: var(--space-20); /* 160 */
+    --row-padding-y: var(--space-3); /* 24 */
+  }
+}
+
+/* ---------- Уважение к prefers-reduced-motion --------------- */
+@media (prefers-reduced-motion: reduce) {
+  :root {
+    --duration-instant: 1ms;
+    --duration-fast: 1ms;
+    --duration-base: 1ms;
+    --duration-slow: 1ms;
+    --duration-scroll: 1ms;
+  }
+
+  *,
+  *::before,
+  *::after {
+    animation-duration: 1ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 1ms !important;
+    scroll-behavior: auto !important;
+  }
+}

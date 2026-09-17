@@ -1,0 +1,159 @@
+/* Базовый слой: сброс, типографика по умолчанию, доступность. */
+
+*, *::before, *::after { box-sizing: border-box; }
+
+html {
+  -webkit-text-size-adjust: 100%;
+  scroll-behavior: smooth;
+}
+
+body {
+  margin: 0;
+  background: var(--paper);
+  color: var(--ink);
+  font-family: var(--font-text);
+  font-size: var(--t-base);
+  line-height: var(--lh-normal);
+  font-weight: 400;
+  font-synthesis-weight: none;
+  -webkit-font-smoothing: antialiased;
+  text-rendering: optimizeLegibility;
+}
+
+h1, h2, h3, h4 {
+  font-family: var(--font-display);
+  font-weight: 600;
+  line-height: var(--lh-snug);
+  letter-spacing: var(--tr-tight);
+  margin: 0;
+  text-wrap: balance;
+}
+
+h1 { font-size: var(--t-4xl); line-height: var(--lh-tight); }
+h2 { font-size: var(--t-3xl); }
+h3 { font-size: var(--t-xl); }
+h4 { font-size: var(--t-md); letter-spacing: var(--tr-flat); }
+
+p { margin: 0; text-wrap: pretty; }
+ul, ol { margin: 0; padding: 0; }
+
+a {
+  color: var(--tech);
+  text-decoration-thickness: 1px;
+  text-underline-offset: 0.18em;
+  transition: color var(--out) var(--ease);
+}
+a:hover { color: var(--tech-hover); }
+
+button { font: inherit; color: inherit; }
+
+img, svg, canvas { display: block; max-width: 100%; }
+img { height: auto; }
+
+/* Числа и обозначения — всегда табличные: колонки в таблицах не пляшут. */
+table, .num, td, th { font-variant-numeric: tabular-nums; }
+
+:where(a, button, input, textarea, select, [tabindex]):focus-visible {
+  outline: var(--focus);
+  outline-offset: 2px;
+  border-radius: var(--r-1);
+}
+
+::selection {
+  background: var(--signal-quiet);
+  color: var(--ink);
+}
+
+/*
+  Ссылка «к содержимому» — первая в табуляции, видима только с клавиатуры.
+*/
+.skip-link {
+  position: absolute;
+  left: var(--s-4);
+  top: var(--s-4);
+  z-index: 100;
+  padding: var(--s-2) var(--s-4);
+  background: var(--graphite);
+  color: var(--ink-invert);
+  transform: translateY(-200%);
+}
+.skip-link:focus-visible { transform: translateY(0); }
+
+/*
+  Движение. Анимируем только transform и opacity.
+  При запросе на снижение анимации — выключаем всё, включая плавный скролл.
+*/
+@media (prefers-reduced-motion: reduce) {
+  html { scroll-behavior: auto; }
+  *, *::before, *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+    scroll-behavior: auto !important;
+  }
+}
+
+/*
+  Появление блоков при прокрутке. Вход 250ms, выхода нет — блок появляется
+  один раз. Стартовое смещение маленькое: это акцент, а не аттракцион.
+*/
+[data-reveal] {
+  transition: opacity var(--in) var(--ease), transform var(--in) var(--ease);
+}
+[data-reveal='out'] {
+  opacity: 0;
+  transform: translateY(12px);
+}
+[data-reveal='in'] {
+  opacity: 1;
+  transform: none;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  [data-reveal='out'] { opacity: 1; transform: none; }
+}
+
+/*
+  Якорные переходы: шапка липкая, и без запаса заголовок целевой секции
+  оказывается под ней.
+*/
+:target,
+[id] { scroll-margin-top: 5.5rem; }
+
+/* Не ждать 300ms на двойной тап и не подсвечивать тап синим прямоугольником. */
+html {
+  -webkit-tap-highlight-color: transparent;
+  touch-action: manipulation;
+}
+
+/*
+  Длинные русские слова и горизонтальный скролл.
+
+  «Внешнеэкономическая», «Твердосплавные», «шероховатость» шире, чем колонка
+  на 390px. Элемент грида или флекса по умолчанию не сжимается уже своего
+  min-content, то есть уже самого длинного слова, и распирает страницу —
+  на 25 маршрутах из 38 это давало скролл вбок.
+
+  Лечится в два хода: разрешаем переносить слово по слогам и снимаем
+  автоматический минимум с колонок.
+*/
+/*
+  Переносить по слогам заголовки не даём: «шеро-ховатость» в дисплейном кегле
+  читается хуже, чем короткая строка. Разрешаем только разрыв слова, которое
+  физически не помещается, — и подбираем кегль так, чтобы до этого не доходило.
+*/
+h1, h2, h3, h4 {
+  overflow-wrap: break-word;
+}
+
+.lv-split > *,
+.lv-cols-2 > *,
+.lv-itemhero > *,
+.lv-head,
+.lv-head__row,
+.lv-head__row > *,
+.lv-figures > *,
+.lv-steps > li,
+.lv-steps > li > * {
+  min-width: 0;
+}

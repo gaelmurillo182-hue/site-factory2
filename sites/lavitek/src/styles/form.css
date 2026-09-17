@@ -1,0 +1,99 @@
+/* Форма запроса и уведомление о cookie. */
+
+.lv-form { display: grid; gap: var(--s-5); max-width: 40rem; }
+
+.lv-field { display: grid; gap: var(--s-2); }
+
+.lv-field__label {
+  font-family: var(--font-display);
+  font-size: var(--t-2xs);
+  letter-spacing: var(--tr-wide);
+  text-transform: uppercase;
+  color: var(--ink-faint);
+}
+.lv-sec--dark .lv-field__label { color: var(--ink-invert-soft); }
+.lv-field__req { color: var(--signal); }
+.lv-sec--dark .lv-field__req { color: var(--signal-on-dark); }
+
+.lv-input,
+.lv-textarea {
+  width: 100%;
+  min-height: var(--tap);
+  padding: var(--s-3) var(--s-4);
+  font: inherit;
+  font-size: var(--t-base);
+  color: var(--ink);
+  background: var(--paper-raised);
+  border: 1px solid var(--rule-strong);
+  border-radius: var(--r-1);
+  transition: border-color var(--out) var(--ease);
+}
+.lv-textarea { min-height: 8rem; resize: vertical; line-height: var(--lh-normal); }
+.lv-input:hover,
+.lv-textarea:hover { border-color: var(--ink-faint); }
+.lv-input::placeholder,
+.lv-textarea::placeholder { color: var(--ink-faint); }
+
+.lv-consent {
+  display: grid;
+  grid-template-columns: 1.25rem minmax(0, 1fr);
+  gap: var(--s-3);
+  align-items: start;
+  font-size: var(--t-xs);
+  color: var(--ink-soft);
+  line-height: var(--lh-normal);
+}
+.lv-consent input[type='checkbox'] {
+  width: 1.25rem;
+  height: 1.25rem;
+  margin: 0.15rem 0 0;
+  accent-color: var(--signal);
+  flex: none;
+}
+.lv-sec--dark .lv-consent { color: var(--ink-invert-soft); }
+
+.lv-fineprint {
+  font-size: var(--t-xs);
+  line-height: var(--lh-normal);
+  color: var(--ink-soft);
+  max-width: var(--measure);
+}
+.lv-sec--dark .lv-fineprint { color: var(--ink-invert-soft); }
+
+.lv-formnote {
+  padding: var(--s-4);
+  border: 1px solid var(--rule);
+  background: var(--paper-sunk);
+  font-size: var(--t-xs);
+  color: var(--ink-soft);
+}
+.lv-sec--dark .lv-formnote {
+  border-color: var(--rule-invert);
+  background: var(--graphite-raised);
+  color: var(--ink-invert-soft);
+}
+
+/* ── Уведомление о cookie ────────────────────────────────── */
+
+.lv-cookie {
+  position: fixed;
+  inset-inline: var(--s-4);
+  bottom: max(var(--s-4), env(safe-area-inset-bottom));
+  z-index: 50;
+  max-width: 34rem;
+  margin-inline: auto;
+  padding: var(--s-5);
+  background: var(--paper-raised);
+  border: 1px solid var(--rule-strong);
+  box-shadow: var(--shadow-2);
+  display: grid;
+  gap: var(--s-4);
+  font-size: var(--t-xs);
+  color: var(--ink-soft);
+}
+.lv-cookie__actions { display: flex; flex-wrap: wrap; gap: var(--s-3); }
+.lv-cookie .lv-btn { font-size: var(--t-xs); padding-inline: var(--s-4); }
+
+@media (min-width: 48rem) {
+  .lv-cookie { inset-inline: auto var(--s-5); bottom: max(var(--s-5), env(safe-area-inset-bottom)); margin-inline: 0; }
+}

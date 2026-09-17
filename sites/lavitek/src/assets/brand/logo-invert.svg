@@ -1,0 +1,10 @@
+<!-- Полный логотип: знак и надпись. Для тёмного фона.
+     Шрифт переведён в кривые не был: подрядчику нужен Geologica (SIL OFL). -->
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 240 48" width="240" height="48">
+  <path fill="#f7f6f4" fill-rule="evenodd"
+        d="M4 8h32v32H4V8zm10.7 0L18.7 20.7v6.6L14.7 40h10.5l-4-12.7v-6.6L25.3 8H14.7z"/>
+  <text x="48" y="27" font-family="Geologica, sans-serif" font-size="21" font-weight="600"
+        letter-spacing="-0.4" fill="#f7f6f4">Лавитек</text>
+  <text x="48" y="39" font-family="Commissioner, sans-serif" font-size="9"
+        letter-spacing="1.1" fill="#b9bec6">ТВЕРДЫЕ СПЛАВЫ</text>
+</svg>

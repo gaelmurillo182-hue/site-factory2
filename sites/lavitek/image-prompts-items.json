@@ -1,0 +1,160 @@
+{
+  "_комментарий": "Кадры для страниц позиций каталога. По одному на позицию, 19 штук. Граница честности та же: фактура и атмосфера, никакого «нашего производства», склада и конкретных изделий Лавитек с размерами. Каждый кадр на сайте подписан как иллюстративный.",
+  "_палитра": "графит, холодная сталь, тёплая бумага, сурик как единственный тёплый акцент, патина изредка. Низкая насыщенность.",
+  "_куда": "public/texture/items/",
+
+  "requests": [
+    {
+      "index": 1,
+      "_файл": "voloki-fileryi",
+      "params": {
+        "aspect_ratio": "16:9",
+        "prompt": "Editorial industrial still frame for a wire-drawing section. Extreme close-up of a single taut steel wire crossing the frame diagonally, cold raking light picking out its drawn surface, everything behind it dissolving into deep shadow. Cool steel grey and graphite palette, very low chroma. Large calm dark area for a caption. No text, no logos, no UI, no people, no faces, no hands, no machines, no tools, no brand marks. Editorial photography, large format, shallow depth of field, fine film grain, quiet and technical."
+      }
+    },
+    {
+      "index": 2,
+      "_файл": "zagotovki-volok",
+      "params": {
+        "aspect_ratio": "16:9",
+        "prompt": "Macro texture frame for a semi-finished blanks section. Extreme close-up of a matte cylindrical metal surface with a shallow bore shadow at one edge, satin ground finish, one soft highlight travelling across, the rest sinking into darkness. Almost abstract, no complete object visible. Cool pale steel and graphite palette, very low chroma. Even calm regions for overlaying text. No text, no logos, no UI, no people, no hands, no tools, no dimensions, no markings. Studio macro photography, large format, fine film grain, restrained."
+      }
+    },
+    {
+      "index": 3,
+      "_файл": "voloki-dlya-trub",
+      "params": {
+        "aspect_ratio": "16:9",
+        "prompt": "Editorial industrial frame for a tube-drawing section. Stacked seamless steel tubes seen end-on far out of focus, a forest of soft dark circles receding into shadow, one cold highlight grazing the nearest edges. Cool grey and graphite palette, very low chroma, no warm cast. Generous dark negative space on one side. No text, no logos, no UI, no people, no hands, no machinery, no labels, no paint marks. Editorial photography, large format, shallow depth of field, fine film grain, restrained."
+      }
+    },
+    {
+      "index": 4,
+      "_файл": "opravki-trubnye",
+      "params": {
+        "aspect_ratio": "16:9",
+        "prompt": "Macro frame for a drawing-mandrel section. Extreme close-up of a slender polished metal rod lying across the frame, a long specular highlight running its length, deep soft shadow beneath, background completely dark and out of focus. Cool steel and graphite palette, very low chroma. Calm dark area for typography. No text, no logos, no UI, no people, no hands, no tools, no measuring instruments. Studio macro photography, large format, fine grain, quiet."
+      }
+    },
+    {
+      "index": 5,
+      "_файл": "matritsy",
+      "params": {
+        "aspect_ratio": "16:9",
+        "prompt": "Atmospheric frame for a cold-forming die section. Dark press shop rendered far out of focus, heavy steel mass suggested rather than shown, a low warm ember glow deep in the background, cold blue-grey air in front. Entirely abstract through defocus. Palette locked to graphite near-black, cold blue-grey and one restrained red-oxide ember. Large calm dark region for typography. No text, no logos, no UI, no people, no hands, no recognizable machines, no sparks shower. Cinematic editorial photography, fine film grain, restrained."
+      }
+    },
+    {
+      "index": 6,
+      "_файл": "puansony",
+      "params": {
+        "aspect_ratio": "16:9",
+        "prompt": "Macro frame for a punch tooling section. Extreme close-up of a row of slender vertical metal shafts, only the nearest in focus, the rest fading into dark blur, cold light from above catching their tips. Cool steel grey and graphite palette, very low chroma. Dark calm area at the bottom for a caption. No text, no logos, no UI, no people, no hands, no machinery, no markings. Studio macro photography, large format, shallow depth of field, fine grain, restrained."
+      }
+    },
+    {
+      "index": 7,
+      "_файл": "vstavki-dlya-vysadki",
+      "params": {
+        "aspect_ratio": "16:9",
+        "prompt": "Industrial still frame for a cold heading section. Loose steel fasteners spilled across a dark matte surface, seen from a low angle, only a narrow band in focus, cold light from the side, the rest deep shadow. Cool steel grey and graphite palette, very low chroma, no warm cast. Generous dark space for typography. No text, no logos, no UI, no people, no hands, no packaging, no brand marks. Editorial photography, large format, shallow depth of field, fine film grain, restrained."
+      }
+    },
+    {
+      "index": 8,
+      "_файл": "sterzhni",
+      "params": {
+        "aspect_ratio": "16:9",
+        "prompt": "Macro frame for a carbide rod stock section. A tight bundle of slim cylindrical rods seen end-on, a dense honeycomb of small dark circles filling the frame, cold light grazing from one side, focus falling off quickly. Cool pale steel and graphite palette, very low chroma. Calm darker corner for a caption. No text, no logos, no UI, no people, no hands, no labels, no dimensions. Studio macro photography, large format, fine film grain, restrained."
+      }
+    },
+    {
+      "index": 9,
+      "_файл": "plastiny",
+      "params": {
+        "aspect_ratio": "16:9",
+        "prompt": "Macro frame for a flat blank stock section. A stack of thin flat metal plates seen almost edge-on, razor-thin bright lines of their edges repeating into the dark, cold light from the left, background black. Cool steel grey and graphite palette, very low chroma. Large calm dark region for typography. No text, no logos, no UI, no people, no hands, no tools, no markings. Studio macro photography, large format, shallow depth of field, fine grain, restrained."
+      }
+    },
+    {
+      "index": 10,
+      "_файл": "shariki",
+      "params": {
+        "aspect_ratio": "16:9",
+        "prompt": "Macro frame for a precision ball section. A cluster of polished metal spheres filling the lower frame, each reflecting a single soft studio highlight, sharp only in a narrow band, the rest melting into dark. Cool steel grey and graphite palette, very low chroma, no rainbow reflections. Calm dark area above for typography. No text, no logos, no UI, no people, no hands, no packaging, no visible environment reflections. Studio macro photography, large format, fine film grain, restrained."
+      }
+    },
+    {
+      "index": 11,
+      "_файл": "sopla-abrazivnye",
+      "params": {
+        "aspect_ratio": "16:9",
+        "prompt": "Atmospheric frame for an abrasive blasting section. A dense cloud of fine abrasive dust suspended in a cold shaft of light against a black background, motion frozen, grain and particles clearly visible, nothing else in frame. Entirely abstract. Cool grey and graphite palette, very low chroma. Dark calm areas on both sides for typography. No text, no logos, no UI, no people, no hands, no equipment, no hoses, no nozzles. Editorial photography, large format, fine film grain, restrained."
+      }
+    },
+    {
+      "index": 12,
+      "_файл": "prokatnye-roliki",
+      "params": {
+        "aspect_ratio": "16:9",
+        "prompt": "Atmospheric frame for a rolling mill section. Deep dark mill interior far out of focus, one long horizontal band of hot red-orange glow low in the frame, cold grey haze above, strong depth, nothing identifiable. Palette locked to graphite near-black, cold grey haze and a single deep red-oxide glow, low chroma, no bright saturated orange. Generous dark negative space in the upper half. No text, no logos, no UI, no people, no hands, no rollers, no machines. Cinematic editorial photography, fine film grain, restrained."
+      }
+    },
+    {
+      "index": 13,
+      "_файл": "bandazhi-valkov",
+      "params": {
+        "aspect_ratio": "16:9",
+        "prompt": "Macro frame for a roll ring section. Extreme close-up of a heavy circular metal edge sweeping across the frame as a wide arc, ground surface texture visible, cold light along the arc, everything inside and outside falling into deep shadow. Almost abstract, the object never fully shown. Cool steel grey and graphite palette, very low chroma. Calm dark region for typography. No text, no logos, no UI, no people, no hands, no machines, no markings. Studio macro photography, large format, fine grain, restrained."
+      }
+    },
+    {
+      "index": 14,
+      "_файл": "provodka-kanatnaya",
+      "params": {
+        "aspect_ratio": "16:9",
+        "prompt": "Industrial still frame for a rolling guide section. A steel rope or stranded cable crossing the frame in tight helical repetition, extreme close-up, cold raking light following the lay of the strands, deep shadow between them. Cool steel grey and graphite palette, very low chroma. Dark calm area for a caption. No text, no logos, no UI, no people, no hands, no machinery, no hooks, no brand marks. Editorial macro photography, large format, shallow depth of field, fine film grain, restrained."
+      }
+    },
+    {
+      "index": 15,
+      "_файл": "drosselnye-pary",
+      "params": {
+        "aspect_ratio": "16:9",
+        "prompt": "Macro abstraction for an oilfield choke section. Extreme close-up of a dark metal surface scoured by fluid: flowing erosion channels and shallow pitting, wet cold sheen, one raking highlight following the flow lines. Fully abstract, no object silhouette. Cool graphite and dark steel palette with a faint cold teal reflection, very low chroma. Calm darker area on the left for typography. No text, no logos, no UI, no people, no hands, no valves, no pipes, no rust colour. Scientific macro photography, large format, fine grain, restrained."
+      }
+    },
+    {
+      "index": 16,
+      "_файл": "klapannye-pary",
+      "params": {
+        "aspect_ratio": "16:9",
+        "prompt": "Macro frame for a valve pair section. Extreme close-up of a precisely lapped annular metal seat, a bright mirror ring catching a single soft studio highlight against matte surroundings, shallow focus, deep shadow beyond. Almost abstract. Cool steel grey and graphite palette, very low chroma. Calm dark region for typography. No text, no logos, no UI, no people, no hands, no assemblies, no threads, no markings. Studio macro photography, large format, fine film grain, restrained."
+      }
+    },
+    {
+      "index": 17,
+      "_файл": "gidromonitornye-nasadki",
+      "params": {
+        "aspect_ratio": "16:9",
+        "prompt": "Atmospheric frame for a drilling jet section. A high-pressure water jet frozen mid-flight against a black background, cold light from the side revealing droplets and turbulence, nothing else in frame. Entirely abstract. Cool grey palette with a faint cold teal cast, very low chroma. Large calm dark areas for typography. No text, no logos, no UI, no people, no hands, no equipment, no nozzles, no pipes. Editorial high-speed photography, large format, fine film grain, restrained."
+      }
+    },
+    {
+      "index": 18,
+      "_файл": "vtulki",
+      "params": {
+        "aspect_ratio": "16:9",
+        "prompt": "Macro frame for a wear bushing section. Extreme close-up looking along the inside of a smooth cylindrical bore, a soft ring of cold light on the inner wall receding into darkness at the far end, honed surface texture visible. Almost abstract. Cool steel grey and graphite palette, very low chroma. Deep dark area for typography. No text, no logos, no UI, no people, no hands, no machines, no tools, no markings. Studio macro photography, large format, fine grain, restrained."
+      }
+    },
+    {
+      "index": 19,
+      "_файл": "koltsa-iznosostoykie",
+      "params": {
+        "aspect_ratio": "16:9",
+        "prompt": "Macro frame for a mechanical seal ring section. Extreme close-up of a flat lapped annular face, near-mirror finish reflecting one long soft studio highlight, faint concentric lapping traces visible, matte dark surroundings. Almost abstract. Cool steel grey and graphite palette, very low chroma, no rainbow iridescence. Calm dark region for typography. No text, no logos, no UI, no people, no hands, no assemblies, no markings. Studio macro photography, large format, fine film grain, restrained."
+      }
+    }
+  ]
+}

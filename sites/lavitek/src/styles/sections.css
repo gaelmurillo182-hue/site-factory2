@@ -1,0 +1,221 @@
+/*
+  Полосы страницы. Направление «Спецификация»: светлая бумага для чтения,
+  графитовые полосы как разделители и акценты. Тёмный сайт целиком здесь
+  был бы ошибкой — на нём хуже читаются длинные технические таблицы.
+*/
+
+.lv-sec { padding-block: var(--section-y); }
+.lv-sec--tight { padding-block: calc(var(--section-y) * 0.6); }
+
+.lv-sec--sunk { background: var(--paper-sunk); }
+
+.lv-sec--dark {
+  background: var(--graphite);
+  color: var(--ink-invert);
+}
+.lv-sec--dark h1,
+.lv-sec--dark h2,
+.lv-sec--dark h3 { color: var(--ink-invert); }
+.lv-sec--dark a { color: var(--tech-on-dark); }
+.lv-sec--dark .lv-lead { color: var(--ink-invert-soft); }
+.lv-sec--dark .lv-eyebrow { color: var(--ink-invert-soft); }
+.lv-sec--dark .lv-eyebrow::before { background: var(--signal-on-dark); }
+
+/* ── Заголовочный блок раздела ───────────────────────────── */
+
+.lv-eyebrow {
+  display: inline-flex;
+  align-items: center;
+  gap: var(--s-2);
+  font-family: var(--font-display);
+  font-size: var(--t-2xs);
+  font-weight: 500;
+  letter-spacing: var(--tr-caps);
+  text-transform: uppercase;
+  color: var(--ink-faint);
+  margin-bottom: var(--s-4);
+}
+.lv-eyebrow::before {
+  content: '';
+  width: 1.5rem;
+  height: 2px;
+  background: var(--signal);
+}
+
+.lv-lead {
+  font-size: var(--t-md);
+  line-height: var(--lh-normal);
+  color: var(--ink-soft);
+  max-width: var(--measure);
+}
+
+.lv-prose { max-width: var(--measure); display: grid; gap: var(--s-4); }
+.lv-prose p { color: var(--ink-soft); }
+.lv-sec--dark .lv-prose p { color: var(--ink-invert-soft); }
+
+/* Заголовок раздела с номером, как в спецификации. */
+.lv-head {
+  display: grid;
+  gap: var(--s-4);
+  margin-bottom: var(--s-7);
+}
+.lv-head__row {
+  display: flex;
+  align-items: baseline;
+  gap: var(--s-4);
+  border-bottom: 1px solid var(--rule);
+  padding-bottom: var(--s-4);
+}
+.lv-sec--dark .lv-head__row { border-bottom-color: var(--rule-invert); }
+.lv-head__no {
+  font-family: var(--font-display);
+  font-size: var(--t-2xs);
+  letter-spacing: var(--tr-wide);
+  color: var(--ink-faint);
+  flex: none;
+}
+.lv-sec--dark .lv-head__no { color: var(--ink-invert-soft); }
+
+/* ── Герой ───────────────────────────────────────────────── */
+
+.lv-hero {
+  background: var(--graphite);
+  color: var(--ink-invert);
+  padding-block: clamp(3rem, 8vw, 7rem) clamp(3rem, 7vw, 6rem);
+  overflow: hidden;
+}
+.lv-hero__grid {
+  display: grid;
+  gap: var(--s-8);
+  align-items: center;
+}
+@media (min-width: 64rem) {
+  .lv-hero__grid { grid-template-columns: minmax(0, 1.15fr) minmax(0, 1fr); gap: var(--s-9); }
+}
+.lv-hero h1 {
+  font-size: clamp(2.25rem, 5.2vw, var(--t-5xl));
+  color: var(--ink-invert);
+}
+.lv-hero__sub {
+  margin-top: var(--s-5);
+  font-size: var(--t-md);
+  color: var(--ink-invert-soft);
+  max-width: 46ch;
+}
+.lv-hero__actions {
+  margin-top: var(--s-6);
+  display: flex;
+  flex-wrap: wrap;
+  gap: var(--s-3);
+}
+.lv-hero__figure {
+  position: relative;
+  aspect-ratio: 4 / 3;
+  border: 1px solid var(--rule-invert);
+  background:
+    radial-gradient(120% 90% at 65% 35%, var(--graphite-raised), var(--graphite) 70%);
+}
+
+/* ── Полоса чисел ────────────────────────────────────────── */
+
+.lv-figures {
+  display: grid;
+  gap: 1px;
+  background: var(--rule-invert);
+  border-block: 1px solid var(--rule-invert);
+}
+@media (min-width: 40rem) { .lv-figures { grid-template-columns: repeat(3, 1fr); } }
+.lv-figure {
+  background: var(--graphite);
+  padding: var(--s-5) var(--s-4);
+}
+.lv-figure__value {
+  font-family: var(--font-display);
+  font-size: var(--t-2xl);
+  font-weight: 600;
+  letter-spacing: var(--tr-tight);
+  color: var(--ink-invert);
+  line-height: 1;
+}
+.lv-figure__unit { font-size: var(--t-md); color: var(--ink-invert-soft); margin-inline-start: 0.2em; }
+.lv-figure__label {
+  margin-top: var(--s-2);
+  font-size: var(--t-2xs);
+  letter-spacing: var(--tr-wide);
+  text-transform: uppercase;
+  color: var(--ink-invert-soft);
+}
+.lv-figure__note { margin-top: var(--s-2); font-size: var(--t-xs); color: var(--ink-invert-soft); }
+
+/* ── Сетки без «четырёх карточек в ряд» ──────────────────── */
+
+.lv-cols-2 { display: grid; gap: var(--s-6); }
+@media (min-width: 52rem) { .lv-cols-2 { grid-template-columns: repeat(2, minmax(0, 1fr)); gap: var(--s-7); } }
+
+.lv-split { display: grid; gap: var(--s-6); }
+@media (min-width: 64rem) {
+  /* Заголовок страницы в 20rem ломался на семь строк. Даём колонке расти. */
+  .lv-split { grid-template-columns: minmax(0, 24rem) minmax(0, 1fr); gap: var(--s-8); }
+  .lv-split--sticky > :first-child { position: sticky; top: 6rem; align-self: start; }
+}
+
+/*
+  Полоса с фактурой: изображение лежит отдельным слоем под контентом,
+  чтобы яркость картинки можно было приглушить, не трогая текст.
+*/
+.lv-tex { position: relative; isolation: isolate; overflow: hidden; }
+.lv-tex__layer {
+  position: absolute;
+  inset: 0;
+  z-index: -1;
+  background-size: cover;
+  background-position: center;
+  opacity: 0.3;
+}
+.lv-tex > .lv-wrap { position: relative; }
+
+/*
+  Герой — тёмная полоса, но класса .lv-sec--dark на нём нет.
+  Повторяем для него правила инверсии, иначе подписи уходят в нечитаемый серый.
+*/
+.lv-hero .lv-eyebrow { color: var(--ink-invert-soft); }
+.lv-hero .lv-eyebrow::before { background: var(--signal-on-dark); }
+
+/*
+  Первый экран страницы позиции. Раньше здесь стоял общий .lv-split с левой
+  колонкой в 20rem: заголовок из четырёх слов ломался на четыре строки, а
+  справа при коротком лиде оставалась дыра в пол-экрана. Теперь текст занимает
+  большую колонку, кадр — меньшую, и пустоты не остаётся.
+*/
+.lv-itemhero { display: grid; gap: var(--s-6); align-items: start; }
+
+@media (min-width: 64rem) {
+  .lv-itemhero {
+    grid-template-columns: minmax(0, 1.05fr) minmax(0, 0.95fr);
+    gap: var(--s-8);
+  }
+}
+
+/*
+  Вторая строка заголовка первого экрана. Позиционирование должно стоять на
+  самом дорогом месте страницы, но одним кеглем с предметом оно ломает ритм —
+  поэтому строка внутри h1, но заметно мельче.
+*/
+.lv-hero__kicker {
+  display: block;
+  margin-top: var(--s-3);
+  font-size: 0.46em;
+  font-weight: 500;
+  letter-spacing: var(--tr-flat);
+  color: var(--signal-on-dark);
+}
+
+/*
+  Заголовок страницы стоит в левой колонке двухколоночного разворота.
+  На полном дисплейном кегле длинные русские слова в неё не помещаются —
+  берём на ступень мельче. Герой сюда не попадает: у него свой размер.
+*/
+.lv-split > :first-child h1,
+.lv-itemhero > :first-child h1 {
+  font-size: clamp(1.875rem, 3.2vw, 2.75rem);
+}

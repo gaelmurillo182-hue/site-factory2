@@ -1,0 +1,116 @@
+{
+  "_комментарий": "Лавитек, направление «Спецификация». Только фактуры и атмосфера — граница честности из docs/06-ГЕНЕРАЦИЯ-ИЗОБРАЖЕНИЙ.md. Документальное не генерируется: производство, склад, партия, конкретное изделие с размерами, портреты, сертификаты — всё это слоты под материалы клиента. Отдельная поправка заказчика: PDF-каталоги как источник изображений не используются.",
+  "_палитра": "из src/styles/tokens.css: бумага oklch(97.6% .004 85), графит oklch(20.5% .012 250), сталь oklch(56% .010 250), сурик oklch(48% .150 32), патина oklch(46% .062 205)",
+  "_куда": "src/assets/texture/",
+
+  "requests": [
+    {
+      "index": 1,
+      "_файл": "01-hero-band",
+      "_куда": "Герой — тёмная подложка первого экрана, поверх схема сечения и типографика",
+      "params": {
+        "aspect_ratio": "16:9",
+        "prompt": "Abstract tactile texture for a hero background of an industrial B2B tungsten-carbide supplier website. Extremely dark cool graphite surface, matte and dense, with one slow diagonal wash of cold pale light entering from the upper right and dying out, faint micro-grain like sintered metal, no hard edges. Very dark overall exposure, low chroma, palette locked to cool graphite near-black and pale cold grey, a single barely visible warm red-oxide ember low in the frame. Enormous calm dark negative space across the left two thirds for typography. No text, no logos, no UI, no people, no faces, no hands, no tools, no machines, no products, no recognizable objects, no neon, no lens flare. Editorial studio photography, large format, cinematic tonal gradient, fine film grain, restrained and technical."
+      }
+    },
+    {
+      "index": 2,
+      "_файл": "02-grain",
+      "_куда": "Полоса-разделитель: абстракция микроструктуры спечённого сплава",
+      "params": {
+        "aspect_ratio": "21:9",
+        "prompt": "Atmospheric band for a section divider on an industrial B2B website. Extreme macro abstraction of a dense polished metallurgical surface: tightly packed angular facets in cool grey, each catching light at a different angle, like a mosaic of tiny mirrors, shallow depth of field so most of the frame drifts out of focus. Cool graphite and pale steel palette, very low chroma, no colour cast. Dark and calm at both ends, slightly brighter in the middle. No text, no logos, no UI, no people, no faces, no hands, no products, no recognizable objects, no rainbow iridescence. Scientific macro photography, large format, fine grain, restrained."
+      }
+    },
+    {
+      "index": 3,
+      "_файл": "03-wire",
+      "_куда": "Волочильный инструмент — кадр раздела",
+      "params": {
+        "aspect_ratio": "16:9",
+        "prompt": "Editorial industrial still frame for a wire-drawing section of a technical supplier website. Tightly wound coils of bright drawn steel wire filling the frame in soft repetition, cold raking light from the left grazing the strands, deep shadow between coils, shallow depth of field with the far side dissolving into darkness. Cool steel grey and graphite palette, very low chroma, no warm cast. Calm darker area on the right for a caption. No text, no logos, no UI, no people, no faces, no hands, no machinery, no brand marks, no signage. Editorial photography, large format, fine film grain, quiet and technical."
+      }
+    },
+    {
+      "index": 4,
+      "_файл": "04-press",
+      "_куда": "Пресс-оснастка — кадр раздела",
+      "params": {
+        "aspect_ratio": "16:9",
+        "prompt": "Atmospheric industrial frame for a cold-forming section of a technical supplier website. Dark forging hall interior far out of focus, a low warm ember glow deep in the background, cold blue-grey ambient light in the foreground, heavy air, drifting haze. Almost entirely abstract through extreme defocus, no readable object anywhere. Palette locked to graphite near-black, cold blue-grey and one restrained red-oxide ember. Large calm dark region across the lower half for typography. No text, no logos, no UI, no people, no faces, no hands, no sparks shower, no fire, no recognizable machines. Cinematic editorial photography, anamorphic character, fine film grain, restrained."
+      }
+    },
+    {
+      "index": 5,
+      "_файл": "05-ground",
+      "_куда": "Твердосплавные заготовки — кадр раздела",
+      "params": {
+        "aspect_ratio": "16:9",
+        "prompt": "Macro texture frame for a semi-finished blanks section of an industrial website. Extreme close-up of a precision-ground metal surface: fine parallel grinding traces running diagonally, satin sheen, a single soft highlight travelling across the frame, dust-free and cold. Entirely abstract, the surface fills the whole frame with no edges or objects. Cool pale steel and graphite palette, very low chroma, no warm tones. Even calm areas suitable for overlaying text. No text, no logos, no UI, no people, no faces, no hands, no tools, no products, no scratches that read as damage. Studio macro photography, large format, fine film grain, restrained."
+      }
+    },
+    {
+      "index": 6,
+      "_файл": "06-hotmill",
+      "_куда": "Детали металлургии — кадр раздела",
+      "params": {
+        "aspect_ratio": "16:9",
+        "prompt": "Atmospheric frame for a metallurgy section of a technical supplier website. Deep dark rolling-mill interior rendered almost entirely out of focus, one long horizontal band of hot orange-red glow low in the frame fading into darkness, cold grey haze above it, strong depth. Abstract to the point where nothing is identifiable. Palette locked to graphite near-black, cold grey haze and a single deep red-oxide glow, low chroma, no bright saturated orange. Generous dark negative space in the upper half. No text, no logos, no UI, no people, no faces, no hands, no machines, no rollers, no recognizable objects. Cinematic editorial photography, fine film grain, restrained."
+      }
+    },
+    {
+      "index": 7,
+      "_файл": "07-erosion",
+      "_куда": "Нефтегазовые детали — кадр раздела",
+      "params": {
+        "aspect_ratio": "16:9",
+        "prompt": "Macro abstraction for an oil-and-gas wear-parts section of an industrial website. Extreme close-up of a dark metal surface worn by fluid: soft flowing erosion channels and shallow pitting, wet cold sheen, one raking cold highlight following the flow lines, everything else sinking into shadow. Fully abstract, no object silhouette. Cool graphite and dark steel palette with a faint cold teal reflection, very low chroma. Calm darker area on the left for typography. No text, no logos, no UI, no people, no faces, no hands, no pipes, no valves, no equipment, no rust colour, no recognizable objects. Scientific macro photography, large format, fine grain, restrained."
+      }
+    },
+    {
+      "index": 8,
+      "_файл": "08-machined",
+      "_куда": "Детали машиностроения — кадр раздела",
+      "params": {
+        "aspect_ratio": "16:9",
+        "prompt": "Macro texture frame for a machine-building section of an industrial supplier website. Extreme close-up of a freshly machined metal surface: concentric turning marks catching a slow cold highlight, a thin film of oil giving a soft dark sheen, shallow depth of field. Entirely abstract, the surface fills the frame edge to edge. Cool steel grey and graphite palette, very low chroma, no warm cast, no rainbow oil iridescence. Even calm regions for overlaying text. No text, no logos, no UI, no people, no faces, no hands, no tools, no chuck, no machine parts, no recognizable objects. Studio macro photography, large format, fine film grain, restrained."
+      }
+    },
+    {
+      "index": 9,
+      "_файл": "09-paper",
+      "_куда": "Светлая полоса — фон под справочными разделами",
+      "params": {
+        "aspect_ratio": "16:9",
+        "prompt": "Minimal editorial background for a reference section of a technical website. Warm off-white drafting paper surface, almost flat, one very soft raking light from the upper left revealing a barely-there texture of the sheet and a single gentle fold shadow. Extremely subtle and calm, very low contrast, light overall exposure so dark text stays perfectly readable on top. Palette locked to warm near-white and pale warm grey, no cool cast, no colour. Enormous empty areas. No text, no logos, no UI, no drawings, no grid lines, no blueprint, no people, no hands, no objects. Editorial studio photography, large format, fine film grain, quiet and restrained."
+      }
+    },
+    {
+      "index": 10,
+      "_файл": "10-contact",
+      "_куда": "Контакты — фон тёмной полосы с формой",
+      "params": {
+        "aspect_ratio": "21:9",
+        "prompt": "Atmospheric dark band for a contact section of an industrial B2B website. Matte cool graphite surface with a slow horizontal wash of pale cold light crossing the middle and fading at both ends, soft depth, fine micro-grain, no hard edges. Very dark, very calm, low chroma, palette locked to cool graphite near-black and pale cold grey. Large quiet dark areas for a form and typography. No text, no logos, no UI, no people, no faces, no hands, no objects, no neon, no lens flare. Large format studio photography, cinematic tonal gradient, fine film grain, restrained."
+      }
+    },
+    {
+      "index": 11,
+      "_файл": "11-divider-light",
+      "_куда": "Светлый узкий разделитель между разделами каталога",
+      "params": {
+        "aspect_ratio": "21:9",
+        "prompt": "Thin atmospheric divider band for a technical B2B website. Pale cool grey lapped metal plate seen almost flat-on, a single wide soft highlight sweeping horizontally across the middle, faint linear scoring, very low contrast and very calm. Entirely abstract, no objects, no edges. Palette locked to pale cool grey and light graphite, no warm tones, no colour. Light overall exposure so dark type stays readable. No text, no logos, no UI, no people, no hands, no tools, no recognizable objects. Studio photography, large format, fine grain, restrained."
+      }
+    },
+    {
+      "index": 12,
+      "_файл": "12-drawing-light",
+      "_куда": "Изготовление по чертежу — светлый фон раздела",
+      "params": {
+        "aspect_ratio": "16:9",
+        "prompt": "Minimal editorial background for a made-to-drawing section of a precision engineering website. Warm pale grey lapped steel plate under soft studio light, one long gentle highlight crossing diagonally, extremely fine parallel lapping traces, a whisper of shadow at the lower edge. Completely abstract and empty, very low contrast, light overall exposure. Palette locked to warm pale grey and light graphite with a single faint cold teal reflection, very low chroma. Enormous calm areas for typography and thin line graphics. No text, no logos, no UI, no drawings, no measuring instruments, no calipers, no people, no hands, no objects. Editorial studio photography, large format, fine film grain, quiet and precise."
+      }
+    }
+  ]
+}

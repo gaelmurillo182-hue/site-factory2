@@ -1,0 +1,75 @@
+@import 'tailwindcss';
+
+@import './styles/fonts.css';
+
+@import './styles/tokens.css';
+@import './styles/base.css';
+@import './styles/layout.css';
+@import './styles/sections.css';
+@import './styles/spec.css';
+@import './styles/form.css';
+
+/*
+  Мост между токенами и утилитами Tailwind. Значения не дублируются —
+  каждое ссылается на переменную из tokens.css, поэтому источник правды один.
+*/
+@theme inline {
+  --color-paper: var(--paper);
+  --color-paper-sunk: var(--paper-sunk);
+  --color-paper-raised: var(--paper-raised);
+  --color-graphite: var(--graphite);
+  --color-graphite-deep: var(--graphite-deep);
+  --color-graphite-raised: var(--graphite-raised);
+
+  --color-ink: var(--ink);
+  --color-ink-soft: var(--ink-soft);
+  --color-ink-faint: var(--ink-faint);
+  --color-ink-invert: var(--ink-invert);
+  --color-ink-invert-soft: var(--ink-invert-soft);
+
+  --color-rule: var(--rule);
+  --color-rule-strong: var(--rule-strong);
+  --color-rule-invert: var(--rule-invert);
+  --color-rule-invert-soft: var(--rule-invert-soft);
+
+  --color-signal: var(--signal);
+  --color-signal-hover: var(--signal-hover);
+  --color-signal-on-dark: var(--signal-on-dark);
+  --color-signal-quiet: var(--signal-quiet);
+
+  --color-tech: var(--tech);
+  --color-tech-hover: var(--tech-hover);
+  --color-tech-on-dark: var(--tech-on-dark);
+  --color-tech-quiet: var(--tech-quiet);
+
+  --font-display: var(--font-display);
+  --font-text: var(--font-text);
+
+  --text-3xs: var(--t-3xs);
+  --text-2xs: var(--t-2xs);
+  --text-xs: var(--t-xs);
+  --text-sm: var(--t-sm);
+  --text-base: var(--t-base);
+  --text-md: var(--t-md);
+  --text-lg: var(--t-lg);
+  --text-xl: var(--t-xl);
+  --text-2xl: var(--t-2xl);
+  --text-3xl: var(--t-3xl);
+  --text-4xl: var(--t-4xl);
+  --text-5xl: var(--t-5xl);
+
+  --spacing-1: var(--s-1);
+  --spacing-2: var(--s-2);
+  --spacing-3: var(--s-3);
+  --spacing-4: var(--s-4);
+  --spacing-5: var(--s-5);
+  --spacing-6: var(--s-6);
+  --spacing-7: var(--s-7);
+  --spacing-8: var(--s-8);
+  --spacing-9: var(--s-9);
+  --spacing-10: var(--s-10);
+  --spacing-11: var(--s-11);
+
+  --radius-1: var(--r-1);
+  --radius-2: var(--r-2);
+}

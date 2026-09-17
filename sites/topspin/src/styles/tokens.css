@@ -1,0 +1,250 @@
+@import url("https://fonts.googleapis.com/css2?family=Unbounded:wght@400;500;600;700&family=Onest:wght@400;500;600;700&display=swap");
+
+/* ============================================================
+   ТОП-СПИН — дизайн-токены
+   Направление: «Синий стол»
+   Единственный источник значений для всех компонентов.
+   Захардкоженные hex/px в компонентах запрещены.
+   ============================================================ */
+
+:root {
+  /* ---------- 1. ЦВЕТ ----------------------------------------
+     Порядок: hex-фолбэк, затем OKLCH-переопределение ниже.
+     Браузеры без OKLCH получают hex, остальные — OKLCH.
+  ------------------------------------------------------------ */
+
+  /* Ядро палитры */
+  --color-table: #0f3f6b; /* турнирный синий — основной фон */
+  --color-board: #08263f; /* борт — шапка, футер, тёмные блоки */
+  --color-chalk: #ffffff; /* белый — текст и разметка стола */
+  --color-ball: #ff6a13; /* оранжевый мяч — акцент, плашки, CTA */
+  --color-sand: #eae3d7; /* тёплый песок — светлые секции */
+  --color-ink: #0a2c4a; /* тёмно-синий — текст на песке */
+
+  /* Служебные оттенки (выведены из ядра, не новые цвета) */
+  --color-ball-bright: #ff8a3d; /* оранжевый, безопасный как ТЕКСТ на синем (4.6:1) */
+  --color-chalk-muted: #b7cce0; /* приглушённый текст на синем (6.5:1) */
+  --color-ink-muted: #3e566e; /* приглушённый текст на песке (6.0:1) */
+  --color-table-deep: #0c3358; /* фон карточки/строки таблицы поверх --color-table */
+
+  /* Статусы наличия (для номенклатуры и расписания) */
+  --color-ok: #3fae6b; /* есть места / в наличии */
+  --color-warn: #e2a33c; /* мало мест */
+  --color-off: #7f93a6; /* нет / закрыто */
+
+  /* Семантические роли */
+  --bg-page: var(--color-table);
+  --bg-elevated: var(--color-table-deep);
+  --bg-inverse: var(--color-sand);
+  --bg-deep: var(--color-board);
+  --bg-accent: var(--color-ball);
+
+  --text-primary: var(--color-chalk);
+  --text-secondary: var(--color-chalk-muted);
+  --text-accent: var(--color-ball-bright);
+  --text-on-sand: var(--color-ink);
+  --text-on-sand-secondary: var(--color-ink-muted);
+  --text-on-accent: var(--color-board); /* тёмный текст на оранжевом: 5.3:1 */
+
+  /* Линия стола — ключевой приём направления */
+  --line-width: 2px;
+  --line-color: var(--color-chalk);
+  --line-color-dim: color-mix(in oklab, var(--color-chalk) 28%, transparent);
+  --line-color-ink: color-mix(in oklab, var(--color-ink) 22%, transparent);
+  --line-net: repeating-linear-gradient(
+    to right,
+    var(--line-color) 0 4px,
+    transparent 4px 8px
+  ); /* пунктир «сетки» шагом 8px */
+
+  --focus-ring: var(--color-ball-bright);
+  --focus-ring-width: 3px;
+  --focus-ring-offset: 2px;
+
+  /* ---------- 2. ТИПОГРАФИКА --------------------------------
+     Дисплей: Unbounded. Текст: Onest.
+     Шкала — мажорная терция (1.25) на мобильном,
+     раскрывается до ~1.33 на десктопе через clamp().
+     Опорные точки clamp: 390px … 1920px.
+  ------------------------------------------------------------ */
+
+  --font-display: "Unbounded", "Trebuchet MS", system-ui, sans-serif;
+  --font-text: "Onest", "Segoe UI", system-ui, sans-serif;
+  --font-mono: ui-monospace, "Cascadia Mono", "SF Mono", monospace;
+
+  /* Размеры */
+  --text-caption: clamp(0.6875rem, 0.66rem + 0.12vw, 0.75rem); /* 11 → 12 */
+  --text-small: clamp(0.8125rem, 0.78rem + 0.14vw, 0.875rem); /* 13 → 14 */
+  --text-body: clamp(1rem, 0.96rem + 0.16vw, 1.0625rem); /* 16 → 17 */
+  --text-body-lg: clamp(1.125rem, 1.05rem + 0.31vw, 1.25rem); /* 18 → 20 */
+  --text-h4: clamp(1.25rem, 1.16rem + 0.37vw, 1.5rem); /* 20 → 24 */
+  --text-h3: clamp(1.5rem, 1.28rem + 0.92vw, 2rem); /* 24 → 32 */
+  --text-h2: clamp(2rem, 1.56rem + 1.83vw, 3rem); /* 32 → 48 */
+  --text-h1: clamp(2.5rem, 1.16rem + 5.5vw, 5.5rem); /* 40 → 88 */
+  --text-display: clamp(3rem, 0.9rem + 8.6vw, 7.5rem); /* 48 → 120, только hero */
+
+  /* Интерлиньяж */
+  --leading-tight: 1;
+  --leading-display: 1.04;
+  --leading-heading: 1.16;
+  --leading-body: 1.6;
+  --leading-loose: 1.75;
+
+  /* Насыщенность */
+  --weight-regular: 400;
+  --weight-medium: 500;
+  --weight-semibold: 600;
+  --weight-bold: 700;
+
+  /* Трекинг */
+  --tracking-display: -0.03em;
+  --tracking-heading: -0.015em;
+  --tracking-body: 0em;
+  --tracking-caps: 0.14em; /* надзаголовки, лейблы таблиц */
+
+  /* Ширины строки */
+  --measure-narrow: 34ch;
+  --measure-base: 62ch;
+  --measure-wide: 78ch;
+
+  /* ---------- 3. СЕТКА И ОТСТУПЫ ----------------------------
+     Шаг сетки — 8px. Все отступы кратны шагу.
+     Единственное исключение — --space-0-5 (4px) для
+     оптической подгонки бордюров и иконок.
+  ------------------------------------------------------------ */
+
+  --grid-step: 0.5rem; /* 8px */
+
+  --space-0: 0;
+  --space-0-5: 0.25rem; /* 4 */
+  --space-1: 0.5rem; /* 8 */
+  --space-2: 1rem; /* 16 */
+  --space-3: 1.5rem; /* 24 */
+  --space-4: 2rem; /* 32 */
+  --space-5: 2.5rem; /* 40 */
+  --space-6: 3rem; /* 48 */
+  --space-7: 3.5rem; /* 56 */
+  --space-8: 4rem; /* 64 */
+  --space-9: 4.5rem; /* 72 */
+  --space-10: 5rem; /* 80 */
+  --space-11: 5.5rem; /* 88 */
+  --space-12: 6rem; /* 96 */
+  --space-13: 6.5rem; /* 104 */
+  --space-14: 7rem; /* 112 */
+  --space-15: 7.5rem; /* 120 */
+  --space-16: 8rem; /* 128 */
+  --space-17: 8.5rem; /* 136 */
+  --space-18: 9rem; /* 144 */
+  --space-19: 9.5rem; /* 152 */
+  --space-20: 10rem; /* 160 */
+
+  /* Композиционные отступы */
+  --gutter: var(--space-2); /* 16 на мобильном */
+  --section-y: var(--space-8); /* 64 на мобильном */
+  --container-max: 90rem; /* 1440 */
+  --container-text: 46rem; /* 736 */
+  --columns: 12;
+
+  /* ---------- 4. РАДИУСЫ -------------------------------------
+     Направление жёсткое, инженерное: скруглений мало.
+  ------------------------------------------------------------ */
+
+  --radius-sm: 2px; /* инпуты, ячейки, теги */
+  --radius-md: 6px; /* карточки, медиа */
+  --radius-lg: 14px; /* крупные панели, hero-блок */
+  --radius-full: 999px; /* мяч, пилюли, круглые кнопки */
+
+  /* ---------- 5. ТЕНИ ----------------------------------------
+     Три уровня, все — синие, а не серые.
+  ------------------------------------------------------------ */
+
+  --shadow-sm: 0 1px 2px oklch(0.15 0.05 249 / 0.32);
+  --shadow-md: 0 8px 24px -8px oklch(0.15 0.05 249 / 0.45);
+  --shadow-ball: 0 10px 32px -10px oklch(0.7 0.2 44 / 0.55); /* свечение под акцентом */
+
+  /* ---------- 6. ДВИЖЕНИЕ ------------------------------------
+     Выход быстрее входа. Анимируем только transform/opacity.
+  ------------------------------------------------------------ */
+
+  --duration-instant: 80ms;
+  --duration-fast: 150ms; /* выход, hover-out */
+  --duration-base: 250ms; /* вход, hover-in */
+  --duration-slow: 420ms; /* появление секций */
+  --duration-scroll: 700ms; /* длинные скролл-сцены */
+
+  --ease-out: cubic-bezier(0.22, 1, 0.36, 1);
+  --ease-in: cubic-bezier(0.55, 0, 1, 0.45);
+  --ease-inout: cubic-bezier(0.65, 0, 0.35, 1);
+  --ease-ball: cubic-bezier(0.34, 1.4, 0.64, 1); /* лёгкий отскок мяча */
+
+  --transition-fast: var(--duration-fast) var(--ease-in);
+  --transition-base: var(--duration-base) var(--ease-out);
+
+  /* ---------- 7. СЛОИ ----------------------------------------- */
+
+  --z-base: 0;
+  --z-sticky: 10;
+  --z-header: 100;
+  --z-overlay: 200;
+  --z-modal: 300;
+}
+
+/* Раскрытие композиции на планшете и десктопе */
+@media (min-width: 48rem) {
+  :root {
+    --gutter: var(--space-4); /* 32 */
+    --section-y: var(--space-12); /* 96 */
+  }
+}
+
+@media (min-width: 80rem) {
+  :root {
+    --gutter: var(--space-6); /* 48 */
+    --section-y: var(--space-16); /* 128 */
+  }
+}
+
+/* ---------- OKLCH-переопределение --------------------------
+   Значения совпадают с hex выше в пределах ΔE < 1.
+   Блок идёт после hex, поэтому браузеры без поддержки OKLCH
+   просто игнорируют его и остаются на hex.
+------------------------------------------------------------ */
+@supports (color: oklch(0% 0 0)) {
+  :root {
+    --color-table: oklch(36.1% 0.091 250.5);
+    --color-board: oklch(26.1% 0.058 248);
+    --color-chalk: oklch(100% 0 0);
+    --color-ball: oklch(70.1% 0.199 43.7);
+    --color-sand: oklch(91.8% 0.018 81);
+    --color-ink: oklch(28.6% 0.067 249);
+
+    --color-ball-bright: oklch(75% 0.167 50.5);
+    --color-chalk-muted: oklch(83.6% 0.036 247);
+    --color-ink-muted: oklch(44.4% 0.049 249);
+    --color-table-deep: oklch(32.2% 0.077 250);
+
+    --color-ok: oklch(68% 0.126 152);
+    --color-warn: oklch(76.5% 0.128 79);
+    --color-off: oklch(64.5% 0.028 244);
+  }
+}
+
+/* ---------- Уважение к prefers-reduced-motion --------------- */
+@media (prefers-reduced-motion: reduce) {
+  :root {
+    --duration-instant: 1ms;
+    --duration-fast: 1ms;
+    --duration-base: 1ms;
+    --duration-slow: 1ms;
+    --duration-scroll: 1ms;
+  }
+
+  *,
+  *::before,
+  *::after {
+    animation-duration: 1ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 1ms !important;
+    scroll-behavior: auto !important;
+  }
+}

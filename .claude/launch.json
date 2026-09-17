@@ -1,0 +1,47 @@
+{
+  "version": "0.0.1",
+  "configurations": [
+    {
+      "name": "protect",
+      "runtimeExecutable": "npm",
+      "runtimeArgs": [
+        "run",
+        "dev",
+        "--prefix",
+        "sites/protect"
+      ],
+      "port": 5176
+    },
+    {
+      "name": "ai-agency-kb",
+      "runtimeExecutable": "npm",
+      "runtimeArgs": [
+        "run",
+        "dev",
+        "--prefix",
+        "sites/ai-agency-kb"
+      ],
+      "port": 5183
+    },
+    {
+      "name": "svod-site",
+      "runtimeExecutable": "npm",
+      "runtimeArgs": [
+        "run",
+        "dev",
+        "--prefix",
+        "sites/ai-agency-site"
+      ],
+      "port": 5185
+    },
+    {
+      "name": "lavitek",
+      "runtimeExecutable": "node",
+      "runtimeArgs": [
+        "sites/lavitek/scripts/serve.mjs",
+        "4190"
+      ],
+      "port": 4190
+    }
+  ]
+}

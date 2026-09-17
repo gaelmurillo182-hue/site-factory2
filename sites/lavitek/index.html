@@ -1,0 +1,43 @@
+<!doctype html>
+<html lang="ru">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+
+    <!-- Подтверждения владения. Перенесены с действующего сайта, не менять. -->
+    <meta name="yandex-verification" content="3e6e0dd122c9b401" />
+    <meta name="msvalidate.01" content="C4AF80FCE4A4BDA4A97DCDBCA94995A5" />
+
+
+    <!--
+      Предзагрузка кириллических начертаний: они нужны первому экрану,
+      и без подсказки браузер узнаёт о них только после разбора CSS.
+      Латиница подтягивается по ходу — её на первом экране почти нет.
+    -->
+    <link rel=preload as=font type=font/woff2 crossorigin
+          href=/fonts/geologica-cyrillic.woff2 />
+    <link rel=preload as=font type=font/woff2 crossorigin
+          href=/fonts/commissioner-cyrillic.woff2 />
+
+    <meta name="theme-color" content="#f7f6f4" />
+    <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+    <link rel="apple-touch-icon" href="/apple-touch-icon.png" />
+
+    <!-- Яндекс.Метрика, счётчик 6503185 — перенесён с действующего сайта. -->
+    <script type="text/javascript">
+      (function (m, e, t, r, i, k, a) {
+        m[i] = m[i] || function () { (m[i].a = m[i].a || []).push(arguments) }
+        m[i].l = 1 * new Date()
+        for (var j = 0; j < document.scripts.length; j++) { if (document.scripts[j].src === r) { return } }
+        k = e.createElement(t); a = e.getElementsByTagName(t)[0]
+        k.async = 1; k.src = r; a.parentNode.insertBefore(k, a)
+      })(window, document, 'script', 'https://mc.yandex.ru/metrika/tag.js', 'ym')
+      ym(6503185, 'init', { accurateTrackBounce: true, trackLinks: true, webvisor: false })
+    </script>
+  </head>
+  <body>
+    <noscript><div><img src="https://mc.yandex.ru/watch/6503185" style="position:absolute;left:-9999px" alt="" /></div></noscript>
+    <div id="root"></div>
+    <script type="module" src="/src/main.tsx"></script>
+  </body>
+</html>

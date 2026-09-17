@@ -1,0 +1,79 @@
+{
+  "_о_чём": "Изображения для сайта агентства «Свод». Граница честности из CLAUDE.md: генерируем фактуру и атмосферу — камень, металл, свет. Не генерируем людей, интерьеры клиентов, скриншоты работ и что-либо, что читается как документальное свидетельство.",
+  "_мотив": "Знак «Свод» — плоский свод из трёх камней с замковым в центре. Отсюда вся образность: камень, шов, свет в стыке, точность измерения, порог.",
+  "_палитра": "графит #0b0d0c, камень #2a2f2c, свет #eef1ee, единственный акцент — приглушённый зелёный #5fbf89",
+  "requests": [
+    {
+      "index": 1,
+      "_файл": "01-hero",
+      "_куда": "Первый экран, фон под заголовком",
+      "params": {
+        "aspect_ratio": "21:9",
+        "prompt": "Cinematic architectural photograph. Head-on view of a massive flat stone vault, a jack-arch lintel built from three wedge-shaped blocks, the central keystone visibly tapering downward. Deep charcoal and graphite mineral stone with fine granular texture. Hard raking light from the left carves the joints into sharp black shadow. One narrow joint between the stones carries a faint cool-green light seam. Vast empty dark space above the lintel for text. Extremely dark, high contrast, monochrome graphite palette with a single desaturated green accent. Large-format architectural fine-art photography, shot on a technical camera, deep shadow detail. Absolutely no text, no letters, no numbers, no people, no logos, no watermark."
+      }
+    },
+    {
+      "index": 2,
+      "_файл": "02-metod",
+      "_куда": "Блок «Метод»",
+      "params": {
+        "aspect_ratio": "16:9",
+        "prompt": "Macro still-life photograph. A precision steel vernier caliper closes its polished jaws on a small dark rough-cut stone cube, measuring it. Cold gunmetal and graphite tones, machined metal micro-texture against raw mineral surface. Shallow depth of field, single hard directional light from the upper left, deep charcoal background falling to black. One small desaturated green reflection along the steel scale. Industrial, precise, tactile, restrained. Generous empty dark space on the right. No readable text, no legible numbers or graduations, no people, no hands, no logos, no watermark."
+      }
+    },
+    {
+      "index": 3,
+      "_файл": "03-kliniki",
+      "_куда": "Отраслевая страница: стоматологии и клиники",
+      "params": {
+        "aspect_ratio": "16:9",
+        "prompt": "Abstract sculptural still life on a deep charcoal background. An arrangement of polished white ceramic geometric forms — a cylinder, a shallow bowl, a bar — beside two slender brushed stainless steel rods, laid out in a precise row with wide empty space between them. Clinical restraint, cold and clean. Soft top light with hard defined shadows, one faint desaturated green rim light along a ceramic edge. Minimalist product photography, museum lighting. No medical instruments, no dental tools, no people, no text, no logos, no watermark."
+      }
+    },
+    {
+      "index": 4,
+      "_файл": "04-salony",
+      "_куда": "Отраслевая страница: салоны красоты",
+      "params": {
+        "aspect_ratio": "16:9",
+        "prompt": "Abstract still life. Overlapping panes of dark smoked glass and thin mirror fragments arranged on a graphite surface, catching a soft raking light that fractures into thin elongated reflections. Deep shadow, quiet and elegant, one desaturated green glint along a single glass edge. Mostly negative space, low key, high contrast. Fine-art photography, shallow depth of field. No faces, no reflections of people, no text, no logos, no watermark."
+      }
+    },
+    {
+      "index": 5,
+      "_файл": "05-dannye",
+      "_куда": "Блок «Данные и закон»",
+      "params": {
+        "aspect_ratio": "16:9",
+        "prompt": "Overhead photograph looking straight down at heavy dark stone slabs stacked in strict offset rows like an archive or a paved vault floor. Each slab carries fine parallel engraved grooves. Graphite and basalt tones, deep black crevices between the slabs. One single slab is lit from within with a faint cool-green glow, spilling light into the surrounding joints. Ordered, austere, architectural. Generous empty margin at the top. No readable characters, no inscriptions, no people, no logos, no watermark."
+      }
+    },
+    {
+      "index": 6,
+      "_файл": "06-porog",
+      "_куда": "Блок «За что не беремся»",
+      "params": {
+        "aspect_ratio": "16:9",
+        "prompt": "A single heavy dark stone threshold step photographed low and straight on. One hard blade of light falls across its front edge, splitting the frame into deep black shadow below and lit granular stone above. Charcoal and basalt, coarse mineral texture catching the raking light. Extremely high contrast, severe, minimal. One faint green tint inside the lit edge. Wide empty darkness around the step. Architectural fine-art photography. No text, no people, no doorway details, no logos, no watermark."
+      }
+    },
+    {
+      "index": 7,
+      "_файл": "07-ceny",
+      "_куда": "Блок «Цены»",
+      "params": {
+        "aspect_ratio": "16:9",
+        "prompt": "A row of precision machined steel gauge blocks of graduated heights standing upright on a dark graphite surface, lit from the side so each block casts a long sharp shadow across the frame. Cold gunmetal with mirror-polished faces reflecting the dark environment. One block in the row is subtly anodised a desaturated green. Strict rhythm, industrial precision still life, deep charcoal background, generous negative space above. No engraved numbers, no text, no measurement markings, no people, no logos, no watermark."
+      }
+    },
+    {
+      "index": 8,
+      "_файл": "08-zamok",
+      "_куда": "Финальный блок, заявка",
+      "params": {
+        "aspect_ratio": "16:9",
+        "prompt": "Extreme close-up of a wedge-shaped stone keystone set into the narrow gap of a dark stone arch. Cool green light floods through the opening behind it, rimming the stone edges and catching fine dust motes in the beam. Charcoal mineral texture, dramatic chiaroscuro, shallow depth of field, cinematic. Deep black surroundings. No text, no people, no hands, no tools, no logos, no watermark."
+      }
+    }
+  ]
+}

@@ -1,0 +1,588 @@
+<!doctype html>
+<html lang="ru"><head><meta charset="utf-8">
+<title>Каталог твердосплавных волок — ЛАВИТЕК</title>
+<style>
+/* ── шрифты, локально, без CDN ─────────────────────────────────────────── */
+@font-face { font-family: 'PT Sans'; font-style: normal; font-weight: 400; font-display: block;
+  src: url('fonts/pt-sans-cyrillic-400-normal.woff2') format('woff2');
+  unicode-range: U+0301,U+0400-045F,U+0490-0491,U+04B0-04B1,U+2116; }
+@font-face { font-family: 'PT Sans'; font-style: normal; font-weight: 400; font-display: block;
+  src: url('fonts/pt-sans-latin-400-normal.woff2') format('woff2'); }
+@font-face { font-family: 'PT Sans'; font-style: normal; font-weight: 700; font-display: block;
+  src: url('fonts/pt-sans-cyrillic-700-normal.woff2') format('woff2');
+  unicode-range: U+0301,U+0400-045F,U+0490-0491,U+04B0-04B1,U+2116; }
+@font-face { font-family: 'PT Sans'; font-style: normal; font-weight: 700; font-display: block;
+  src: url('fonts/pt-sans-latin-700-normal.woff2') format('woff2'); }
+
+@font-face { font-family: 'PT Sans Narrow'; font-style: normal; font-weight: 400; font-display: block;
+  src: url('fonts/pt-sans-narrow-cyrillic-400-normal.woff2') format('woff2');
+  unicode-range: U+0301,U+0400-045F,U+0490-0491,U+04B0-04B1,U+2116; }
+@font-face { font-family: 'PT Sans Narrow'; font-style: normal; font-weight: 400; font-display: block;
+  src: url('fonts/pt-sans-narrow-latin-400-normal.woff2') format('woff2'); }
+@font-face { font-family: 'PT Sans Narrow'; font-style: normal; font-weight: 700; font-display: block;
+  src: url('fonts/pt-sans-narrow-cyrillic-700-normal.woff2') format('woff2');
+  unicode-range: U+0301,U+0400-045F,U+0490-0491,U+04B0-04B1,U+2116; }
+@font-face { font-family: 'PT Sans Narrow'; font-style: normal; font-weight: 700; font-display: block;
+  src: url('fonts/pt-sans-narrow-latin-700-normal.woff2') format('woff2'); }
+
+/* ── токены ─────────────────────────────────────────────────────────────── */
+:root {
+  --ink:        #16191c;
+  --ink-2:      #4a5359;
+  --ink-3:      #79848b;
+  --brand:      #14304a;   /* фирменная плашка, белый текст = 12,4:1 */
+  --brand-2:    #1e4468;
+  --accent:     #a8501c;   /* маркер серии, на белом = 5,4:1 */
+  --rule:       #ccd3d8;
+  --rule-2:     #e4e9ec;
+  --zebra:      #f2f5f7;
+  --paper:      #ffffff;
+  --todo-bg:    #fdf3e3;
+  --todo-ink:   #7a4a05;   /* на --todo-bg = 6,3:1 */
+  --todo-line:  #d8a349;
+
+  --s1: 4px;  --s2: 8px;  --s3: 12px; --s4: 16px;
+  --s5: 24px; --s6: 32px; --s7: 48px;
+
+  --t-xs: 7.5pt; --t-sm: 8.5pt; --t-base: 9.5pt;
+  --t-md: 11pt;  --t-lg: 14pt;  --t-xl: 19pt; --t-2xl: 34pt;
+}
+
+/* ── страница ───────────────────────────────────────────────────────────── */
+/* Верхнее поле 24 мм: 18 мм полосы набора плюс место под колонтитул с логотипом,
+   который Chromium рисует внутри верхнего поля. Обложки печатаются отдельным
+   документом и обнуляют поля своим правилом — см. shell() в make-catalog.mjs. */
+@page { size: A4 portrait; margin: 24mm 18mm 16mm; }
+
+* { box-sizing: border-box; }
+
+html { font-size: 12pt; }
+body {
+  margin: 0;
+  background: var(--paper);
+  color: var(--ink);
+  font-family: 'PT Sans', 'Segoe UI', sans-serif;
+  font-size: var(--t-base);
+  line-height: 1.42;
+  -webkit-font-smoothing: antialiased;
+}
+
+.sheet { break-after: page; }
+.sheet:last-child { break-after: auto; }
+
+/* ── шапка раздела ──────────────────────────────────────────────────────── */
+.sec-head {
+  border-bottom: 2px solid var(--brand);
+  padding-bottom: var(--s2);
+  margin-bottom: var(--s4);
+}
+.kicker {
+  display: block;
+  min-height: 1.2em;
+  font-family: 'PT Sans Narrow', sans-serif;
+  font-size: var(--t-xs);
+  letter-spacing: .14em;
+  text-transform: uppercase;
+  color: var(--accent);
+  margin-bottom: var(--s1);
+}
+.sec-head h2 {
+  margin: 0;
+  font-size: var(--t-xl);
+  line-height: 1.15;
+  letter-spacing: -.01em;
+  font-weight: 700;
+}
+h3 {
+  font-size: var(--t-md);
+  margin: var(--s5) 0 var(--s2);
+  font-weight: 700;
+}
+h3:first-child { margin-top: 0; }
+p { margin: 0 0 var(--s3); }
+.lead { font-size: var(--t-md); color: var(--ink-2); max-width: 58em; }
+.note {
+  font-size: var(--t-sm);
+  color: var(--ink-2);
+  border-left: 2px solid var(--rule);
+  padding-left: var(--s3);
+  margin-top: var(--s4);
+  break-inside: avoid;
+}
+.flag-note { border-left-color: var(--todo-line); }
+
+/* ── обложка ────────────────────────────────────────────────────────────── */
+.cover {
+  height: 297mm;
+  padding: 22mm 20mm 18mm;
+  display: flex;
+  flex-direction: column;
+  background: var(--brand);
+  color: #fff;
+}
+.cover-logo { color: #fff; }
+.cover-logo svg { width: 62mm; height: auto; display: block; }
+.cover-mid { margin-top: auto; }
+.cover-kicker {
+  font-family: 'PT Sans Narrow', sans-serif;
+  font-size: var(--t-sm);
+  letter-spacing: .22em;
+  text-transform: uppercase;
+  opacity: .72;
+  margin-bottom: var(--s3);
+}
+.cover h1 {
+  margin: 0 0 var(--s4);
+  font-size: var(--t-2xl);
+  line-height: 1.04;
+  letter-spacing: -.02em;
+  font-weight: 700;
+}
+.cover-sub {
+  font-size: var(--t-md);
+  opacity: .82;
+  max-width: 34em;
+  margin: 0;
+}
+.cover-grid {
+  margin-top: var(--s7);
+  padding-top: var(--s4);
+  border-top: 1px solid rgba(255,255,255,.28);
+  display: flex;
+  flex-wrap: wrap;
+  gap: var(--s2) var(--s5);
+  font-family: 'PT Sans Narrow', sans-serif;
+  font-size: var(--t-sm);
+  letter-spacing: .1em;
+  opacity: .78;
+}
+.cover-foot {
+  margin-top: auto;
+  padding-top: var(--s5);
+  display: flex;
+  justify-content: space-between;
+  font-family: 'PT Sans Narrow', sans-serif;
+  font-size: var(--t-sm);
+  letter-spacing: .1em;
+  text-transform: uppercase;
+  opacity: .72;
+}
+
+/* ── содержание ─────────────────────────────────────────────────────────── */
+.toc-group {
+  display: grid;
+  grid-template-columns: 9mm 1fr;
+  gap: var(--s4);
+  padding: var(--s4) 0;
+  border-top: 1px solid var(--rule);
+}
+.toc-tag {
+  font-family: 'PT Sans Narrow', sans-serif;
+  font-size: var(--t-md);
+  font-weight: 700;
+  color: #fff;
+  background: var(--brand);
+  width: 9mm; height: 9mm;
+  display: flex; align-items: center; justify-content: center;
+}
+.toc-group.b .toc-tag { background: var(--accent); }
+.toc-group.c .toc-tag { background: var(--ink-2); }
+.toc-line {
+  display: flex;
+  align-items: baseline;
+  gap: var(--s2);
+  padding: 3px 0;
+}
+.toc-line span { flex: 0 1 auto; }
+.toc-line::after {
+  content: '';
+  flex: 1 1 auto;
+  border-bottom: 1px dotted var(--rule);
+  transform: translateY(-2px);
+  order: 1;
+}
+.toc-line b { order: 2; font-family: 'PT Sans Narrow', sans-serif; }
+
+/* ── карточки, списки ───────────────────────────────────────────────────── */
+.cols-2 { display: grid; grid-template-columns: 1fr 1fr; gap: var(--s4); }
+.card {
+  border-top: 2px solid var(--brand);
+  padding-top: var(--s3);
+  break-inside: avoid;
+}
+.card h3 { margin-top: 0; font-size: var(--t-base); }
+.card p, .card ul, .card dl { margin-bottom: 0; }
+
+ul.tick { list-style: none; margin: 0; padding: 0; }
+ul.tick li {
+  position: relative;
+  padding-left: var(--s4);
+  margin-bottom: var(--s1);
+}
+ul.tick li::before {
+  content: '';
+  position: absolute;
+  left: 0; top: .48em;
+  width: 5px; height: 5px;
+  background: var(--accent);
+}
+ol.numbered { margin: 0; padding-left: var(--s5); }
+ol.numbered li { margin-bottom: var(--s2); }
+
+dl { margin: 0; }
+dt { font-weight: 700; margin-top: var(--s2); }
+dd { margin: 0 0 var(--s1); color: var(--ink-2); }
+.wide-dl { display: grid; grid-template-columns: 48mm 1fr; gap: var(--s2) var(--s4); }
+.wide-dl dt, .wide-dl dd { margin: 0; }
+
+.proc { display: grid; grid-template-columns: repeat(4, 1fr); gap: var(--s3); margin-bottom: var(--s5); }
+.proc-item {
+  border-top: 2px solid var(--accent);
+  padding-top: var(--s2);
+}
+.proc-item b { display: block; font-size: var(--t-base); }
+.proc-item span { display: block; font-size: var(--t-sm); color: var(--ink-2); margin-top: 2px; }
+
+/* ── цепочка переделов ──────────────────────────────────────────────────── */
+.chain {
+  display: flex;
+  align-items: stretch;
+  gap: 0;
+  margin: var(--s4) 0 var(--s3);
+}
+.chain .node {
+  flex: 1 1 0;
+  border: 1px solid var(--rule);
+  padding: var(--s3) var(--s2);
+  font-size: var(--t-sm);
+  text-align: center;
+  display: flex; align-items: center; justify-content: center;
+  min-height: 18mm;
+}
+.chain .node.ore { background: var(--brand); color: #fff; border-color: var(--brand); font-weight: 700; }
+.chain .node.hi { background: var(--zebra); font-weight: 700; }
+.chain .arr {
+  flex: 0 0 7mm;
+  align-self: center;
+  height: 1px;
+  background: var(--rule);
+  position: relative;
+}
+.chain .arr::after {
+  content: '';
+  position: absolute; right: 0; top: -3px;
+  border-left: 5px solid var(--rule);
+  border-top: 3.5px solid transparent;
+  border-bottom: 3.5px solid transparent;
+}
+.chain-out { display: grid; grid-template-columns: repeat(5, 1fr); gap: var(--s2); }
+.chain-out .leaf {
+  border-top: 1px solid var(--rule);
+  padding-top: var(--s2);
+  font-size: var(--t-sm);
+  color: var(--ink-2);
+}
+.chain-out .leaf.me {
+  border-top-color: var(--accent);
+  border-top-width: 2px;
+  color: var(--ink);
+  font-weight: 700;
+}
+
+/* ── карточка марки ─────────────────────────────────────────────────────── */
+.grade-card {
+  border-top: 2px solid var(--brand);
+  padding-top: var(--s3);
+  margin-bottom: var(--s5);
+  break-inside: avoid;
+}
+.grade-card h3 {
+  margin: 0 0 2px;
+  font-size: var(--t-lg);
+  letter-spacing: -.01em;
+  color: var(--brand-2);
+}
+.gc-lead { font-size: var(--t-sm); color: var(--ink-2); margin-bottom: var(--s3); }
+.gc-body { display: grid; grid-template-columns: 1fr 1.3fr; gap: var(--s5); }
+.gc-body b { display: block; font-size: var(--t-sm); margin-bottom: var(--s1);
+  font-family: 'PT Sans Narrow', sans-serif; letter-spacing: .08em; text-transform: uppercase; color: var(--ink-3); }
+
+/* ── зоны волоки ────────────────────────────────────────────────────────── */
+.zones { display: grid; grid-template-columns: 82mm 1fr; gap: var(--s5); margin-bottom: var(--s4); align-items: start; }
+.zone { display: grid; grid-template-columns: 9mm 1fr; gap: var(--s3); margin-bottom: var(--s3); break-inside: avoid; }
+.zone .rn {
+  font-family: 'PT Sans Narrow', sans-serif;
+  font-weight: 700;
+  color: #fff; background: var(--brand);
+  width: 9mm; height: 9mm;
+  display: flex; align-items: center; justify-content: center;
+  font-size: var(--t-sm);
+}
+.zone b { display: block; margin-bottom: 2px; }
+.zone p { margin: 0; font-size: var(--t-sm); color: var(--ink-2); text-align: justify; }
+
+/* ── иллюстрация ────────────────────────────────────────────────────────── */
+.fig { margin: 0 0 var(--s4); break-inside: avoid; }
+.fig img { display: block; width: 100%; max-width: 114mm; height: auto; margin: 0 auto; }
+.fig-sm img { max-width: 96mm; }
+.fig-sm figcaption { max-width: 96mm; margin-left: auto; margin-right: auto; }
+.fig figcaption {
+  font-size: var(--t-xs);
+  color: var(--ink-3);
+  border-top: 1px solid var(--rule-2);
+  padding-top: var(--s2);
+  margin-top: var(--s2);
+  text-align: left;
+}
+.zones .fig img { max-width: 100%; }
+
+/* ── таблицы ────────────────────────────────────────────────────────────── */
+.spec-table {
+  width: 100%;
+  border-collapse: collapse;
+  font-family: 'PT Sans Narrow', sans-serif;
+  font-size: var(--t-sm);
+  line-height: 1.3;
+}
+.spec-table thead { display: table-header-group; }
+.spec-table tr { break-inside: avoid; }
+
+.spec-table .plate th {
+  background: var(--brand);
+  color: #fff;
+  text-align: left;
+  font-size: var(--t-base);
+  font-weight: 700;
+  padding: 5px 7px;
+  letter-spacing: .01em;
+}
+.spec-table .head th {
+  background: var(--brand-2);
+  color: #fff;
+  font-weight: 700;
+  padding: 5px 7px 6px;
+  vertical-align: bottom;
+  border-right: 1px solid rgba(255,255,255,.18);
+}
+.spec-table .head th:last-child { border-right: 0; }
+.spec-table .head .u {
+  display: block;
+  font-weight: 400;
+  font-size: var(--t-xs);
+  opacity: .78;
+  letter-spacing: .04em;
+}
+
+.spec-table td {
+  padding: 3px 7px;
+  border-bottom: 1px solid var(--rule-2);
+  vertical-align: top;
+}
+.spec-table tr.z td { background: var(--zebra); }
+
+.spec-table .item { width: 30mm; white-space: nowrap; }
+.spec-table td.item { font-variant-numeric: tabular-nums; }
+.spec-table .spec { width: 24mm; text-align: right; white-space: nowrap; }
+.spec-table .ang  { width: 22mm; text-align: right; white-space: nowrap; }
+.spec-table .num  { text-align: right; white-space: nowrap; }
+.spec-table th.num, .spec-table th.spec, .spec-table th.ang { text-align: right; }
+.spec-table .holes { text-align: left; }
+
+/* ряд диаметров: моноширинные колонки, чтобы значения читались столбиком */
+.spec-table td.holes .v {
+  display: inline-block;
+  min-width: 11.4mm;
+  text-align: right;
+  padding-right: 2.2mm;
+  font-variant-numeric: tabular-nums;
+}
+.spec-table .empty { color: var(--ink-3); }
+
+.grade .ser { width: 12mm; text-align: center; font-weight: 700; vertical-align: middle; }
+.grade .s-GK { background: #e8eef2 !important; }
+.grade .s-GU { background: #f4ece6 !important; }
+.grade .s-GF { background: #eceef0 !important; }
+.grade .app { font-size: var(--t-xs); line-height: 1.32; }
+.grade .item { width: 20mm; }
+.grade .num { width: 19mm; }
+.new {
+  display: inline-block;
+  margin-left: 4px;
+  background: var(--accent); color: #fff;
+  font-size: 5.5pt; letter-spacing: .06em; text-transform: uppercase;
+  padding: 1px 3px; vertical-align: 1px;
+}
+.flag { border-bottom: 2px dotted var(--todo-line); }
+
+.narrow-table { width: 74mm; margin-top: var(--s5); }
+.plate-solo {
+  background: var(--brand); color: #fff;
+  font-size: var(--t-base); font-weight: 700;
+  padding: 5px 7px;
+}
+.two-col { display: grid; grid-template-columns: 1fr 1fr; gap: var(--s4); align-items: start; }
+.two-col .spec-table td { padding: 2.6px 7px; }
+
+/* ── пробелы, ожидающие данных клиента ──────────────────────────────────── */
+.placeholder-block {
+  background: var(--todo-bg);
+  border-left: 3px solid var(--todo-line);
+  padding: var(--s3) var(--s4);
+  margin: var(--s4) 0;
+  break-inside: avoid;
+}
+.placeholder-block p:last-child { margin-bottom: 0; }
+.todo {
+  color: var(--todo-ink);
+  font-size: var(--t-sm);
+  font-style: italic;
+}
+li .todo, dd .todo { font-style: italic; }
+
+/* ── задняя обложка ─────────────────────────────────────────────────────── */
+.back {
+  height: 297mm;
+  padding: 22mm 20mm 18mm;
+  display: flex;
+  flex-direction: column;
+  background: var(--brand);
+  color: #fff;
+}
+.back-logo { color: #fff; }
+.back-logo svg { width: 62mm; height: auto; display: block; }
+.back-body { margin-top: auto; }
+.back-body h2 { margin: 0 0 2px; font-size: var(--t-xl); font-weight: 700; }
+.back-city {
+  font-family: 'PT Sans Narrow', sans-serif;
+  letter-spacing: .18em; text-transform: uppercase;
+  opacity: .72; margin-bottom: var(--s5);
+}
+.req {
+  display: grid;
+  grid-template-columns: 46mm 1fr;
+  gap: var(--s2) var(--s4);
+  border-top: 1px solid rgba(255,255,255,.28);
+  padding-top: var(--s4);
+}
+.req dt { margin: 0; font-weight: 400; opacity: .7; font-size: var(--t-sm); }
+.req dd { margin: 0; color: #fff; }
+.back .todo { color: #ffd9a0; }
+.back-foot {
+  margin-top: auto;
+  padding-top: var(--s5);
+  font-family: 'PT Sans Narrow', sans-serif;
+  font-size: var(--t-sm);
+  letter-spacing: .08em;
+  opacity: .6;
+}
+
+/* ── печать ─────────────────────────────────────────────────────────────── */
+@media print {
+  .cover, .back { -webkit-print-color-adjust: exact; print-color-adjust: exact; }
+  body { -webkit-print-color-adjust: exact; print-color-adjust: exact; }
+}
+@media (prefers-reduced-motion: reduce) {
+  *, *::before, *::after { animation: none !important; transition: none !important; }
+}
+
+.toc-line b.nofolio { font-size: var(--t-xs); color: var(--ink-3); font-weight: 400; }
+
+.sec-head + .grade-card { border-top: 0; padding-top: 0; }
+
+/* Шапка может переноситься, иначе длинный заголовок распирает колонку
+   и отнимает место у ряда диаметров. Значения в ячейках — по-прежнему в строку. */
+.spec-table th.ang, .spec-table th.spec, .spec-table th.num { white-space: normal; }
+
+/* ── микрофотография в карточке марки ───────────────────────────────────── */
+.gc-body { grid-template-columns: 32mm 1fr 1.25fr; }
+.gc-img {
+  width: 32mm; height: 32mm;
+  object-fit: cover;
+  display: block;
+  border: 1px solid var(--rule);
+}
+
+/* ── графики по сплавам ─────────────────────────────────────────────────── */
+.charts { display: grid; grid-template-columns: 1fr 1fr; gap: var(--s5); margin-bottom: var(--s3); }
+.charts h3 { margin: 0 0 var(--s2); font-size: var(--t-base); }
+.charts img { display: block; width: 100%; height: auto; }
+.legend {
+  display: flex; flex-wrap: wrap; align-items: center;
+  gap: var(--s2) var(--s5);
+  font-size: var(--t-sm);
+  border-top: 1px solid var(--rule-2);
+  padding-top: var(--s2);
+}
+.legend span { display: inline-flex; align-items: center; gap: 6px; }
+.legend em { color: var(--ink-3); font-style: normal; margin-left: auto; }
+.sw { width: 16px; height: 5px; display: inline-block; }
+.sw-fine  { background: #ecdc23; }
+.sw-sub   { background: #d8232a; }
+.sw-ultra { background: #2aa0d8; }
+
+/* ── диаграмма «марка → диапазон Ø» ─────────────────────────────────────── */
+.dia { font-size: var(--t-sm); }
+.dia-head, .dia-row {
+  display: grid;
+  grid-template-columns: 20mm 62mm 18mm 1fr;
+  gap: var(--s3);
+  align-items: center;
+  padding: 4px var(--s2);
+}
+.dia-head {
+  background: var(--brand-2); color: #fff; font-weight: 700;
+  font-family: 'PT Sans Narrow', sans-serif;
+  align-items: end; padding-bottom: 14px;
+}
+.dia-row { border-bottom: 1px solid var(--rule-2); break-inside: avoid; }
+.dia-row.z { background: var(--zebra); }
+.dia-g { font-family: 'PT Sans Narrow', sans-serif; font-weight: 700; }
+.dia-n { font-family: 'PT Sans Narrow', sans-serif; text-align: right; font-variant-numeric: tabular-nums; }
+.dia-u { font-size: var(--t-xs); color: var(--ink-2); line-height: 1.3; }
+.dia-track { position: relative; height: 9px; background: #fff; border-left: 1px solid var(--rule); }
+.dia-row .dia-track { background: linear-gradient(90deg, var(--rule-2) 0 100%); }
+.dia-track i { position: absolute; top: 0; bottom: 0; background: var(--brand); display: block; }
+.dia-axis { position: absolute; left: 0; right: 0; bottom: -12px; display: block; }
+.dia-axis span {
+  position: absolute; transform: translateX(-50%);
+  font-size: var(--t-xs); font-weight: 400; opacity: .85;
+}
+
+/* шапка диаграммы: шкала внутри плашки, подписи белые */
+.dia-head .dia-track {
+  position: relative;
+  height: 12px;
+  background: none;
+  border-left: 0;
+}
+.dia-head .dia-g, .dia-head .dia-n, .dia-head .dia-u { color: #fff; }
+.dia-head .dia-u { font-size: var(--t-xs); }
+.dia-axis { position: absolute; left: 0; right: 0; top: 0; bottom: auto; }
+.dia-axis span { color: #fff; opacity: .9; }
+
+@page { size: A4 portrait; margin: 0; }
+</style></head>
+<body class="bleed">
+
+<!-- ОБЛОЖКА -->
+<section class="sheet cover">
+  <div class="cover-logo"><svg class="logo-ph" viewBox="0 0 240 44" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Место под логотип ЛАВИТЕК">
+       <rect x="1" y="1" width="238" height="42" rx="3" fill="none" stroke="currentColor"
+             stroke-width="1.5" stroke-dasharray="5 4"/>
+       <text x="120" y="21" text-anchor="middle" font-family="PT Sans, sans-serif"
+             font-size="15" font-weight="700" letter-spacing="2.5" fill="currentColor">ЛАВИТЕК</text>
+       <text x="120" y="34" text-anchor="middle" font-family="PT Sans, sans-serif"
+             font-size="7.5" letter-spacing="0.8" fill="currentColor" opacity=".75">место под логотип — input/logo.svg</text>
+     </svg></div>
+  <div class="cover-mid">
+    <p class="cover-kicker">Каталог продукции</p>
+    <h1>Твердосплавные<br>волоки</h1>
+    <p class="cover-sub">фильеры для волочения проволоки, прутка, трубы и профиля</p>
+  </div>
+  <div class="cover-grid">
+    <span>GT01</span><span>GS11</span><span>GS2</span><span>GV</span><span>GW</span>
+    <span>GY01</span><span>G22</span><span>G23</span><span>GP01</span><span>оправки</span>
+  </div>
+  <div class="cover-foot"><span>ООО «ЛАВИТЕК»</span><span>Екатеринбург</span></div>
+</section>
+</body></html>

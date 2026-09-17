@@ -1,0 +1,5 @@
+<!-- Знак «Лавитек» для тёмного фона. -->
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 32 32" width="32" height="32">
+  <path fill="#f7f6f4" fill-rule="evenodd"
+        d="M2 2h28v28H2V2zm9.4 0L14.9 13.1v5.8L11.4 30h9.2l-3.5-11.1v-5.8L20.6 2h-9.2z"/>
+</svg>

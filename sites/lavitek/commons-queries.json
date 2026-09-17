@@ -1,0 +1,21 @@
+{
+  "voloki-fileryi": ["wire drawing die", "drawing die carbide", "wire die"],
+  "zagotovki-volok": ["cemented carbide blank", "carbide preform"],
+  "voloki-dlya-trub": ["tube drawing", "seamless tube stack"],
+  "opravki-trubnye": ["drawing mandrel", "tube mandrel"],
+  "matritsy": ["forging die", "cold forging die", "extrusion die"],
+  "puansony": ["punch tool steel", "stamping punch"],
+  "vstavki-dlya-vysadki": ["cold heading fastener", "steel fasteners bolts"],
+  "sterzhni": ["tungsten carbide rod", "carbide round bar", "cemented carbide rod"],
+  "plastiny": ["carbide insert", "cutting insert", "indexable insert"],
+  "shariki": ["tungsten carbide ball", "precision ball bearing balls"],
+  "sopla-abrazivnye": ["sandblasting nozzle", "abrasive blasting"],
+  "prokatnye-roliki": ["rolling mill roll", "rolling mill stand"],
+  "bandazhi-valkov": ["roll ring carbide", "mill roll ring"],
+  "provodka-kanatnaya": ["wire rope", "steel wire coil"],
+  "drosselnye-pary": ["choke valve", "wellhead choke"],
+  "klapannye-pary": ["valve seat", "ball valve seat"],
+  "gidromonitornye-nasadki": ["tricone drill bit", "drill bit nozzle"],
+  "vtulki": ["bushing bearing sleeve", "carbide bushing"],
+  "koltsa-iznosostoykie": ["mechanical seal ring", "silicon carbide seal"]
+}

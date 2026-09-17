@@ -1,0 +1,34 @@
+{
+  "name": "lavitek",
+  "private": true,
+  "version": "0.1.0",
+  "type": "module",
+  "scripts": {
+    "dev": "vite",
+    "build": "tsc -b && vite build && vite build --ssr src/entry-server.tsx --outDir dist-ssr",
+    "preview": "vite preview",
+    "prerender": "node scripts/prerender.mjs",
+    "sitemap": "node scripts/sitemap.mjs",
+    "release": "npm run build && npm run prerender && npm run sitemap",
+    "qa": "node scripts/qa.mjs",
+    "serve": "node scripts/serve.mjs"
+  },
+  "dependencies": {
+    "react": "^19.0.0",
+    "react-dom": "^19.0.0",
+    "react-router-dom": "^7.1.0",
+    "three": "^0.185.1"
+  },
+  "devDependencies": {
+    "@tailwindcss/vite": "^4.0.0",
+    "@types/node": "^26.5.0",
+    "@types/react": "^19.0.0",
+    "@types/react-dom": "^19.0.0",
+    "@types/three": "^0.185.4",
+    "@vitejs/plugin-react": "^4.3.4",
+    "playwright": "^1.62.1",
+    "tailwindcss": "^4.0.0",
+    "typescript": "~5.6.2",
+    "vite": "^6.0.5"
+  }
+}

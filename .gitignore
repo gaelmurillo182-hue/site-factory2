@@ -1,0 +1,13 @@
+node_modules/
+dist/
+.DS_Store
+sites/*/node_modules/
+sites/*/dist/
+
+# Ключи API. Хранятся только локально, в репозиторий не попадают.
+.env
+.env.*
+!.env.local.example
+
+# Артефакты визуального QA — десятки скриншотов на прогон
+sites/*/qa-screenshots/

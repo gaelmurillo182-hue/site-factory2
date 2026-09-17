@@ -1,0 +1,11 @@
+{
+  "voloki-fileryi": ["Ziehstein", "Drahtziehen", "filière tréfilage", "wire drawing machine"],
+  "zagotovki-volok": ["Hartmetall", "cemented carbide", "Widia Hartmetall"],
+  "voloki-dlya-trub": ["Rohrziehen", "tube drawing bench", "cold drawn tube"],
+  "opravki-trubnye": ["mandrel bar", "Dorn Rohr", "piercing mandrel"],
+  "shariki": ["bearing balls", "steel balls precision", "Kugellager Kugeln"],
+  "bandazhi-valkov": ["Walzring", "rolling mill rolls", "Walzwerk Walzen"],
+  "drosselnye-pary": ["choke manifold", "wellhead christmas tree", "oilfield valve"],
+  "klapannye-pary": ["Ventilsitz", "valve seat insert engine", "pump valve seat"],
+  "puansony": ["punch and die set", "Stanzwerkzeug", "Stempel Werkzeug Metall"]
+}

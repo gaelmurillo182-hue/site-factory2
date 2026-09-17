@@ -1,0 +1,148 @@
+/* ========================================================================
+   Токены. Единственное место в проекте, где встречаются конкретные значения
+   цвета, размера и времени. В компонентах — только var(--…).
+
+   Шрифты: Golos Text (текст) и Unbounded (дисплейный). Оба с кириллицей,
+   оба под открытой лицензией, оба самохостятся — приложение работает офлайн.
+   Inter, Roboto, Open Sans, Montserrat, Poppins не используются.
+   ======================================================================== */
+
+:root {
+  /* ── Цвет: тёмная тема (основная) ─────────────────────────────────── */
+  --c-bg:            #0b0d0c;
+  --c-surface:       #111412;
+  --c-surface-2:     #171b19;
+  --c-surface-3:     #1e2320;
+  --c-line:          #232825;
+  --c-line-strong:   #303733;
+
+  --c-text:          #eef1ee;   /* 16.8:1 на --c-bg */
+  --c-text-2:        #a6b0aa;   /*  7.4:1 на --c-bg */
+  --c-text-3:        #79847e;   /*  4.2:1 — только служебное, не носитель смысла */
+
+  --c-accent:        #5fbf89;
+  --c-accent-hover:  #74cf9b;
+  --c-accent-ink:    #06140d;   /* текст на акцентной заливке */
+  --c-accent-soft:   #16261e;
+  --c-accent-line:   #24402f;
+
+  --c-link:          #7fb6ea;
+  --c-link-hover:    #9dcbf5;
+
+  --c-warn:          #d8a441;
+  --c-warn-soft:     #2a2214;
+  --c-danger:        #dc7461;
+  --c-danger-soft:   #2b1a16;
+
+  --c-focus:         #5fbf89;
+  --c-shadow:        0 1px 2px rgb(0 0 0 / 0.4), 0 8px 24px rgb(0 0 0 / 0.28);
+
+  /* ── Типографика ──────────────────────────────────────────────────── */
+  --f-text:    'Golos Text', ui-sans-serif, system-ui, 'Segoe UI', sans-serif;
+  --f-display: 'Unbounded', 'Golos Text', ui-sans-serif, system-ui, sans-serif;
+
+  /* шкала 1.2 от 13px */
+  --t-2xs: 11px;
+  --t-xs:  12px;
+  --t-sm:  13px;
+  --t-md:  15px;
+  --t-lg:  17px;
+  --t-xl:  21px;
+  --t-2xl: 26px;
+  --t-3xl: 31px;
+
+  --lh-tight: 1.2;
+  --lh-snug:  1.35;
+  --lh-base:  1.6;
+
+  --w-regular: 400;
+  --w-medium:  500;
+  --w-semi:    600;
+
+  /* ── Сетка 4px ────────────────────────────────────────────────────── */
+  --s-1:  4px;
+  --s-2:  8px;
+  --s-3:  12px;
+  --s-4:  16px;
+  --s-5:  20px;
+  --s-6:  24px;
+  --s-8:  32px;
+  --s-10: 40px;
+  --s-12: 48px;
+  --s-16: 64px;
+
+  --r-sm: 6px;
+  --r-md: 10px;
+  --r-lg: 14px;
+  --r-xl: 20px;
+  --r-full: 999px;
+
+  /* ── Раскладка ────────────────────────────────────────────────────── */
+  --w-nav:   290px;
+  --w-list:  260px;
+  --w-read:  760px;
+  --h-header: 84px;
+
+  /* ── Движение. Выход быстрее входа. ──────────────────────────────── */
+  --d-in:  250ms;
+  --d-out: 150ms;
+  --e-out: cubic-bezier(0.22, 1, 0.36, 1);
+  --e-in:  cubic-bezier(0.4, 0, 1, 1);
+}
+
+/* ── Светлая тема ───────────────────────────────────────────────────── */
+:root[data-theme='light'] {
+  --c-bg:          #f7f8f7;
+  --c-surface:     #ffffff;
+  --c-surface-2:   #f1f3f1;
+  --c-surface-3:   #e7eae8;
+  --c-line:        #e0e4e1;
+  --c-line-strong: #c9d0cb;
+
+  --c-text:        #141a17;
+  --c-text-2:      #4d5852;
+  --c-text-3:      #6d7873;
+
+  --c-accent:      #1f7d4f;
+  --c-accent-hover:#186540;
+  --c-accent-ink:  #ffffff;
+  --c-accent-soft: #e6f3ec;
+  --c-accent-line: #bcdccb;
+
+  --c-link:        #14568f;
+  --c-link-hover:  #0e4270;
+
+  --c-warn:        #8a6212;
+  --c-warn-soft:   #fbf3df;
+  --c-danger:      #a53f2a;
+  --c-danger-soft: #fbeae6;
+
+  --c-shadow: 0 1px 2px rgb(20 26 23 / 0.06), 0 8px 24px rgb(20 26 23 / 0.07);
+}
+
+/* Уважение к системной настройке, пока пользователь не выбрал тему сам. */
+@media (prefers-color-scheme: light) {
+  :root:not([data-theme='dark']) {
+    --c-bg:          #f7f8f7;
+    --c-surface:     #ffffff;
+    --c-surface-2:   #f1f3f1;
+    --c-surface-3:   #e7eae8;
+    --c-line:        #e0e4e1;
+    --c-line-strong: #c9d0cb;
+    --c-text:        #141a17;
+    --c-text-2:      #4d5852;
+    --c-text-3:      #6d7873;
+    --c-accent:      #1f7d4f;
+    --c-accent-hover:#186540;
+    --c-accent-ink:  #ffffff;
+    --c-accent-soft: #e6f3ec;
+    --c-accent-line: #bcdccb;
+    --c-link:        #14568f;
+    --c-link-hover:  #0e4270;
+    --c-warn:        #8a6212;
+    --c-warn-soft:   #fbf3df;
+    --c-danger:      #a53f2a;
+    --c-danger-soft: #fbeae6;
+    --c-shadow: 0 1px 2px rgb(20 26 23 / 0.06), 0 8px 24px rgb(20 26 23 / 0.07);
+  }
+}
