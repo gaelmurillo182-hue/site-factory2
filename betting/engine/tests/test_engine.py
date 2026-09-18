@@ -216,6 +216,27 @@ def test_btts_complements():
     assert b["yes"] + b["no"] == pytest.approx(1.0)
 
 
+def test_calibration_recovers_lambdas_it_generated():
+    """Round trip: price a match, then recover the lambdas from those prices."""
+    m = football.score_matrix(1.7, 1.1, -0.05)
+    o, t = football.match_odds(m), football.total_probs(m, 2.5)
+    fit = football.calibrate_to_market(o["home"], o["draw"], o["away"],
+                                       t["over"], 2.5)
+    assert fit.converged
+    assert fit.lambda_home == pytest.approx(1.7, abs=0.05)
+    assert fit.lambda_away == pytest.approx(1.1, abs=0.05)
+
+
+def test_calibration_refuses_prices_it_cannot_represent():
+    """A 1X2 and a total that no Dixon-Coles pair can produce together must be
+    reported as a failed fit, not silently turned into a fitted answer whose
+    residual then looks like an edge on the next market."""
+    fit = football.calibrate_to_market(0.34, 0.26, 0.40, 0.90, 2.5)
+    assert not fit.converged
+    with pytest.raises(ValueError, match="did not converge"):
+        fit.matrix()
+
+
 # -- hockey ---------------------------------------------------------------
 
 def test_moneyline_beats_regulation_for_the_favourite():
@@ -238,6 +259,14 @@ def test_moneyline_is_two_way():
     m = hockey.reg_score_matrix(3.0, 2.8)
     ml = hockey.moneyline(m, hockey.ot_win_probability(3.0, 2.8))
     assert ml["home"] + ml["away"] == pytest.approx(1.0)
+
+
+def test_ot_shrink_matches_the_measured_market_value():
+    """The default is a measurement, not a preference: 41 Fonbet hockey games
+    priced both regulation and moneyline on 2026-09-18, which pins the implied
+    overtime probability. Changing this constant changes every hockey price, so
+    it is pinned by a test."""
+    assert hockey.OT_SHRINK == pytest.approx(0.256)
 
 
 def test_ot_probability_is_shrunk_toward_a_coin_flip():

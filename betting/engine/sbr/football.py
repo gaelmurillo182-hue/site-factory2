@@ -343,3 +343,72 @@ def fit_dixon_coles(matches: Sequence[MatchResult],
         converged=bool(res.success),
         log_likelihood=-float(res.fun),
     )
+
+
+# --------------------------------------------------------------------------
+# calibration to a bookmaker's own prices
+# --------------------------------------------------------------------------
+
+@dataclass(frozen=True)
+class MarketFit:
+    """Lambdas implied by a book's own 1X2 and total, plus how well they fit.
+
+    `converged` is the part that matters. When a single Dixon-Coles pair cannot
+    reproduce the prices the book actually posted, every further number derived
+    from this fit is meaningless — and the residual will masquerade as an edge
+    on whatever market you check next. Refusing to return a verdict is the
+    correct behaviour, not a limitation.
+    """
+    lambda_home: float
+    lambda_away: float
+    rho: float
+    rms_error: float
+    converged: bool
+
+    def matrix(self, max_goals: int = MAX_GOALS) -> np.ndarray:
+        if not self.converged:
+            raise ValueError(
+                f"fit did not converge (rms {self.rms_error:.5f}); "
+                "any market derived from it would be noise, not an edge"
+            )
+        return score_matrix(self.lambda_home, self.lambda_away, self.rho, max_goals)
+
+
+# A fit worse than this cannot reproduce the book's own prices, so anything
+# derived from it is the model's error rather than the book's.
+FIT_TOLERANCE = 0.004
+
+
+def calibrate_to_market(p_home: float, p_draw: float, p_away: float,
+                        p_over: float, total_line: float,
+                        tolerance: float = FIT_TOLERANCE) -> MarketFit:
+    """Solve for the lambdas that reproduce a book's de-vigged 1X2 and total.
+
+    Use this to ask whether a book's *other* markets agree with its main ones.
+    Always check `converged` before trusting the answer: on 2026-09-18 the three
+    largest apparent BTTS mispricings in a 21-match Fonbet sample were all
+    matches where this fit failed, and none of them were real.
+    """
+    from scipy.optimize import minimize
+
+    target = np.array([p_home, p_draw, p_away, p_over])
+
+    def loss(x: np.ndarray) -> float:
+        lh, la = math.exp(x[0]), math.exp(x[1])
+        rho = math.tanh(x[2]) * 0.2
+        m = score_matrix(lh, la, rho)
+        o = match_odds(m)
+        t = total_probs(m, total_line)
+        got = np.array([o["home"], o["draw"], o["away"], t["over"]])
+        return float(((got - target) ** 2).sum())
+
+    res = minimize(loss, [0.2, 0.0, -0.25], method="Nelder-Mead",
+                   options={"maxiter": 4000, "xatol": 1e-9, "fatol": 1e-12})
+    rms = math.sqrt(max(res.fun, 0.0) / len(target))
+    return MarketFit(
+        lambda_home=math.exp(res.x[0]),
+        lambda_away=math.exp(res.x[1]),
+        rho=math.tanh(res.x[2]) * 0.2,
+        rms_error=rms,
+        converged=rms <= tolerance,
+    )

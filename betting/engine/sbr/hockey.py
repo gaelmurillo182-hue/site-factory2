@@ -38,7 +38,16 @@ MAX_GOALS = 15
 # Extra time is close to a coin flip even between mismatched teams: 3-on-3 and
 # the shootout compress skill differences. We therefore shrink any rating-based
 # estimate hard toward 0.5.
-OT_SHRINK = 0.35
+#
+# 0.256 is measured, not chosen. On 2026-09-18 Fonbet priced 41 hockey games
+# (KHL, VHL, MHL, Liiga, DEL, Czech, Swiss, Belarus) with BOTH a regulation
+# three-way and a moneyline including OT/SO. Those two prices pin down the
+# implied P(home wins the extra period); regressing it on regulation strength
+# over 35 usable games gives 0.256 with a residual standard deviation of 0.012.
+# The earlier default of 0.35 gave favourites more credit in overtime than the
+# market does, which inflated every moneyline and deflated every regulation
+# market by a small, systematic amount.
+OT_SHRINK = 0.256
 
 
 def _poisson_pmf(lam: float, n: int) -> np.ndarray:
