@@ -61,6 +61,12 @@
       "skillPath": "skills/fastf1/SKILL.md",
       "computedHash": "5518732d589e487e2a96347b9bf30665dc704ed73d08c348b280f29dc6bbde65"
     },
+    "find-skills": {
+      "source": "vercel-labs/skills",
+      "sourceType": "github",
+      "skillPath": "skills/find-skills/SKILL.md",
+      "computedHash": "913b9d37d0d54047dd65222bb8c67b2bf04e3cb87dcad1729068d7a8b2c8c396"
+    },
     "football-data": {
       "source": "machina-sports/sports-skills",
       "sourceType": "github",
