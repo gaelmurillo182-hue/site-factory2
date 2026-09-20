@@ -71,15 +71,22 @@ def shrink_toward_market(p_model: float, p_market: float,
     return (1.0 - u) * p_model + u * p_market
 
 
-def min_acceptable_odds(p_model: float, required_edge_pp: float) -> float:
-    """The worst price at which this bet still clears its edge requirement.
+def min_acceptable_odds(p_model: float, min_ev: float = 0.02) -> float:
+    """The worst price at which this bet is still worth making.
 
-    Below this number the bet is no longer the bet that was analysed.
+    Defined by expected value, not by comparing `p_model` with `1 / odds`.
+    That comparison looks natural and is wrong: `1 / odds` is the GROSS implied
+    probability and still contains the bookmaker's margin, so subtracting a
+    required edge from `p_model` and inverting charges the margin twice. On a
+    5% two-way market that mistake moves the floor by three or four points of
+    price and rejects bets that clear every other test.
+
+    The edge requirement is checked separately, against the DE-VIGGED market
+    probability, which is the only like-for-like comparison.
     """
-    p_needed = p_model - required_edge_pp / 100.0
-    if p_needed <= 0:
+    if p_model <= 0:
         return float("inf")
-    return 1.0 / p_needed
+    return (1.0 + min_ev) / p_model
 
 
 @dataclass(frozen=True)
@@ -143,7 +150,7 @@ def size_bet(p_model: float,
         # or the line it occupies in the journal.
         units, capped = 0.0, "below_min_stake"
 
-    required = MIN_EDGE_PP.get(market_class, MIN_EDGE_PP["core"])
+    MIN_EDGE_PP.get(market_class, MIN_EDGE_PP["core"])
     return StakeAdvice(
         p_model_raw=p_model,
         p_model_used=p_used,
@@ -155,6 +162,6 @@ def size_bet(p_model: float,
         kelly_used=k_used,
         units=units,
         stake=round(units * unit, 2),
-        min_odds=min_acceptable_odds(p_used, required),
+        min_odds=min_acceptable_odds(p_used),
         capped_by=capped,
     )

@@ -140,10 +140,19 @@ def test_stake_never_exceeds_cap():
     assert a.units <= 1.5
 
 
-def test_min_acceptable_odds_removes_the_edge_exactly():
+def test_min_acceptable_odds_is_defined_by_expected_value():
+    """The floor is the price where EV falls to the minimum, nothing else."""
     p = 0.58
-    o = min_acceptable_odds(p, 4.0)
-    assert 1.0 / o == pytest.approx(p - 0.04, abs=1e-9)
+    o = min_acceptable_odds(p, min_ev=0.02)
+    assert p * o - 1.0 == pytest.approx(0.02, abs=1e-9)
+
+
+def test_min_acceptable_odds_does_not_charge_the_margin_twice():
+    """Regression: the old formula inverted (p_model - required_edge), which
+    compares a de-vigged probability with a gross one and rejects sound bets.
+    On this real case it produced a floor of 1.92 against an offer of 1.90."""
+    p_used = 0.5603
+    assert min_acceptable_odds(p_used) < 1.90
 
 
 # -- football -------------------------------------------------------------
