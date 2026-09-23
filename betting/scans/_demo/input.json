@@ -1,0 +1,48 @@
+{
+  "scan_date": "ДЕМО (вымышленные данные, не для ставок)",
+  "bankroll": 100000,
+  "unit": 1000,
+  "max_session_units": 5.0,
+  "reserve_units": 1.5,
+  "kelly_fraction": 0.25,
+  "data_notes": [
+    "ЭТО ДЕМО-ПРОГОН НА ВЫМЫШЛЕННЫХ ЦИФРАХ. Ни один коэффициент и ни один xG здесь не взят из реального источника."
+  ],
+  "events": [
+    {
+      "match": "Команда A - Команда B",
+      "sport": "football",
+      "competition": "ДЕМО-лига",
+      "kickoff": "2026-09-18T21:00",
+      "model": {"lambda_home": 1.62, "lambda_away": 1.05, "rho": -0.05, "uncertainty": 0.25},
+      "data_quality": {"lineup_goalie_certainty": 21, "source_quality": 17, "freshness": 13, "advanced_stats": 13, "market_data": 12, "schedule_context": 8},
+      "confidence_parts": {"model_agreement": 13, "lineup_goalie_certainty": 13, "market_agreement": 9, "source_reliability": 8},
+      "flags": {},
+      "reason_codes": ["XG_EDGE", "LINEUP_EDGE"],
+      "markets": [
+        {"key": "moneyline", "odds": {"home": 1.95, "draw": 3.60, "away": 4.20}},
+        {"key": "total", "line": 2.5, "odds": {"over": 1.92, "under": 1.88}},
+        {"key": "btts", "odds": {"yes": 1.80, "no": 1.98}},
+        {"key": "dnb", "odds": {"home": 1.50, "away": 2.55}}
+      ]
+    },
+    {
+      "match": "Клуб C - Клуб D",
+      "sport": "hockey",
+      "competition": "ДЕМО-хоккей",
+      "kickoff": "2026-09-18T19:30",
+      "model": {"lambda_home": 3.30, "lambda_away": 2.70, "uncertainty": 0.30},
+      "data_quality": {"lineup_goalie_certainty": 10, "source_quality": 15, "freshness": 12, "advanced_stats": 11, "market_data": 11, "schedule_context": 7},
+      "confidence_parts": {"model_agreement": 11, "lineup_goalie_certainty": 5, "market_agreement": 8, "source_reliability": 7},
+      "flags": {"goalie_sensitive_unconfirmed": true},
+      "wait_trigger": "вратарь подтверждён официальным источником клуба за 30-60 мин до старта",
+      "cancel_if": "стартует backup ИЛИ кэф упал ниже минимального",
+      "reason_codes": ["GOALIE_EDGE"],
+      "markets": [
+        {"key": "moneyline", "odds": {"home": 1.85, "away": 2.05}},
+        {"key": "total", "line": 5.5, "odds": {"over": 1.90, "under": 1.95}},
+        {"key": "regulation_winner", "odds": {"home": 2.30, "tie": 4.10, "away": 2.70}}
+      ]
+    }
+  ]
+}

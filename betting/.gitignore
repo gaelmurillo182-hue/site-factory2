@@ -1,0 +1,6 @@
+journal/*.db
+journal/*.csv
+scans/**/graded.json
+__pycache__/
+*.pyc
+.pytest_cache/
