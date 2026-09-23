@@ -246,6 +246,87 @@ def test_calibration_refuses_prices_it_cannot_represent():
         fit.matrix()
 
 
+def _simulate_league(seed=7, rounds=4):
+    """Generate a league from KNOWN ratings so the fit can be checked against
+    the truth instead of against itself."""
+    import random
+    rng = random.Random(seed)
+    truth = {"Strong": 0.45, "Good": 0.20, "Mid": 0.0, "Weak": -0.25, "Awful": -0.45}
+    defence = {"Strong": -0.30, "Good": -0.10, "Mid": 0.0, "Weak": 0.15, "Awful": 0.35}
+    teams = list(truth)
+    out, day = [], 0
+    for _ in range(rounds):
+        for h in teams:
+            for a in teams:
+                if h == a:
+                    continue
+                lh, la = football.lambdas_from_ratings(
+                    truth[h], defence[h], truth[a], defence[a], 0.25, 2.7)
+                out.append(football.MatchResult(
+                    h, a, _poisson_draw(rng, lh), _poisson_draw(rng, la), day))
+                day += 0.4
+    return truth, defence, out
+
+
+def _poisson_draw(rng, lam):
+    import math
+    l, k, p = math.exp(-lam), 0, 1.0
+    while True:
+        p *= rng.random()
+        if p <= l:
+            return k
+        k += 1
+
+
+def test_rating_fit_recovers_the_ratings_that_generated_the_data():
+    """The whole point of the fitter: given results, get the strengths back.
+    Without this test the most complex function in the package is unverified,
+    and it is the one that would set every lambda on a real card."""
+    truth, _, matches = _simulate_league()
+    fit = football.fit_dixon_coles(matches, half_life_days=400.0)
+    assert fit.converged
+    order_true = sorted(truth, key=lambda t: -truth[t])
+    order_fit = sorted(fit.teams, key=lambda t: -fit.attack[t])
+    assert order_fit[0] == order_true[0]
+    assert order_fit[-1] == order_true[-1]
+
+
+def test_rating_fit_separates_the_best_from_the_worst_attack():
+    truth, _, matches = _simulate_league()
+    fit = football.fit_dixon_coles(matches, half_life_days=400.0)
+    assert fit.attack["Strong"] - fit.attack["Awful"] > 0.4
+
+
+def test_rating_fit_finds_a_home_advantage():
+    _, _, matches = _simulate_league()
+    fit = football.fit_dixon_coles(matches, half_life_days=400.0)
+    assert 0.0 < fit.home_advantage < 0.7
+
+
+def test_rating_fit_weights_recent_matches_more():
+    """A short half-life must make an old blowout count for less than a new one."""
+    old = [football.MatchResult("A", "B", 6, 0, days_ago=400.0) for _ in range(6)]
+    new = [football.MatchResult("A", "B", 0, 3, days_ago=2.0) for _ in range(6)]
+    filler = [football.MatchResult("B", "A", 1, 1, days_ago=d) for d in range(0, 300, 30)]
+    slow = football.fit_dixon_coles(old + new + filler, half_life_days=2000.0)
+    fast = football.fit_dixon_coles(old + new + filler, half_life_days=20.0)
+    assert fast.attack["A"] < slow.attack["A"]
+
+
+def test_rating_fit_accepts_xg_instead_of_goals():
+    """xG is the better input and is not integer; the fit must not choke."""
+    _, _, matches = _simulate_league()
+    as_xg = [football.MatchResult(m.home, m.away, m.home_goals + 0.3,
+                                  m.away_goals + 0.2, m.days_ago) for m in matches]
+    fit = football.fit_dixon_coles(as_xg, half_life_days=400.0)
+    assert fit.converged
+
+
+def test_rating_fit_refuses_an_empty_season():
+    with pytest.raises(ValueError):
+        football.fit_dixon_coles([])
+
+
 # -- hockey ---------------------------------------------------------------
 
 def test_moneyline_beats_regulation_for_the_favourite():
